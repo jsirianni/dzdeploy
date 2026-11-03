@@ -36,7 +36,7 @@ git push origin v1.0.0
 
 Each release contains four `dzdeploy_<version>_<linux|windows>_<amd64|arm64>.zip` archives and `checksums.txt` with their SHA-256 hashes. Extract the entire archive: it contains the client, `agents/windows-amd64/dzdeploy.exe`, bootstrap script, example YAML, and operator documentation. Keep that companion beside Linux and Windows arm64 clients; Windows amd64 clients upload their own executable. The archives contain no populated `deploy.yaml`, private keys, credentials, or game files.
 
-Pull requests build snapshots without publishing. To check the same packaging locally with GoReleaser OSS 2.19.0:
+Pull requests and manual workflow runs build snapshots without publishing; only a tag push can publish a release. To check the same packaging locally with GoReleaser OSS 2.19.0:
 
 ```text
 goreleaser check
