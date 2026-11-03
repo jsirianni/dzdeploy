@@ -43,7 +43,7 @@ goreleaser check
 goreleaser release --snapshot --clean
 ```
 
-Output is written to the ignored `.tools/releases/` directory. Verify a downloaded ZIP against the matching entry in `checksums.txt` before extracting it (`sha256sum --check checksums.txt` on Linux, or `Get-FileHash -Algorithm SHA256 <archive.zip>` on Windows). Release checksums cover the complete archives; the existing source packager continues to produce its own per-file `checksums.json` format.
+Output is written to the ignored `.tools/releases/` directory. Verify a downloaded ZIP against the matching entry in `checksums.txt` before extracting it (`sha256sum --ignore-missing --check checksums.txt` with the downloaded ZIP beside the checksum file on Linux, or `Get-FileHash -Algorithm SHA256 <archive.zip>` on Windows). Release checksums cover the complete archives; the existing source packager continues to produce its own per-file `checksums.json` format.
 
 ## Configuration repository
 
