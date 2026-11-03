@@ -15,6 +15,8 @@ go vet ./...
 go run ./cmd/dzdeploy-package --os windows --arch amd64
 ```
 
+The root Makefile provides `build`, `check`, `test`, and `tidy` targets. [GitHub Actions](https://github.com/jsirianni/dzdeploy/actions/workflows/dzdeploy.yml) runs the existing Windows/Linux build and test jobs, portable package artifacts, Windows SSH and operator integration, race tests, and vulnerability checks on pushes to `main` and pull requests.
+
 The configuration-repository baseline test is omitted because its server configuration tree is not part of this tooling repository. All other existing Go tests are retained.
 
 The existing portable packager supports Windows and Linux clients on amd64 and arm64, and includes a Windows amd64 host companion, bootstrap script, example configuration, documentation, and internal checksums.
@@ -23,6 +25,6 @@ The existing portable packager supports Windows and Linux clients on amd64 and a
 
 Server configuration remains in `dayz_config`. Run the client from that checkout, or pass its path with the existing `--repo` option, for example `dzdeploy status nasdara --repo /path/to/dayz_config`. The client reads `deploy.yaml` from that configuration repository by default and still requires its tracked target definitions and server files.
 
-See [deployment documentation](docs/deployment.md) and [operator workflows](docs/operator-workflows.md). These documents, example configuration, and existing bootstrap/test scripts are copied from the source repository and retain its server-specific operational context. CI references in the copied documentation describe the source repository; this repository has no workflows.
+See [deployment documentation](docs/deployment.md) and [operator workflows](docs/operator-workflows.md). These documents, example configuration, and existing bootstrap/test scripts are copied from the source repository and retain its server-specific operational context. The existing dzdeploy CI workflow, root Makefile, and root scripts are also copied from that revision.
 
 Keep populated configuration, private keys, credentials, and compiled binaries out of Git.
