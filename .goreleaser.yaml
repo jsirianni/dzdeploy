@@ -1,0 +1,44 @@
+version: 2
+project_name: dzdeploy
+dist: .tools/releases
+
+builds:
+  - id: dzdeploy
+    main: ./cmd/dzdeploy
+    # Stable, distinct staging paths let every archive reuse the amd64 host agent.
+    binary: '{{ .Os }}_{{ .Arch }}/dzdeploy'
+    no_unique_dist_dir: true
+    env:
+      - CGO_ENABLED=0
+    goos: [linux, windows]
+    goarch: [amd64, arm64]
+    flags:
+      - -trimpath
+      - -buildvcs=false
+    ldflags:
+      - -s -w
+
+archives:
+  - id: portable
+    ids: [dzdeploy]
+    formats: [zip]
+    name_template: '{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}'
+    strip_binary_directory: true
+    # Only these tracked public assets and the freshly built agent are packaged.
+    files:
+      - src: .tools/releases/windows_amd64/dzdeploy.exe
+        dst: agents/windows-amd64
+        strip_parent: true
+        info:
+          mode: 0755
+      - src: scripts/bootstrap-windows.ps1
+        strip_parent: true
+      - deploy.example.yaml
+      - src: docs/deployment.md
+        strip_parent: true
+      - src: docs/operator-workflows.md
+        strip_parent: true
+
+checksum:
+  name_template: checksums.txt
+  algorithm: sha256

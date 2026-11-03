@@ -21,6 +21,30 @@ The configuration-repository baseline test is omitted because its server configu
 
 The existing portable packager supports Windows and Linux clients on amd64 and arm64, and includes a Windows amd64 host companion, bootstrap script, example configuration, documentation, and internal checksums.
 
+## Releases
+
+Pushing a stable `vMAJOR.MINOR.PATCH` tag (for example, `v1.0.0`) runs the [release workflow](https://github.com/jsirianni/dzdeploy/actions/workflows/release.yml). After tests, vet, GoReleaser configuration checks, and a snapshot build pass for that commit, pinned GoReleaser OSS publishes a [GitHub Release](https://github.com/jsirianni/dzdeploy/releases) using the repository's `GITHUB_TOKEN`. Tags with prerelease suffixes or leading zeros are rejected. Tag a reviewed commit from `main` after its CI passes.
+
+To publish a reviewed `main` commit after its CI passes, choose an unused version and push its tag (replace `v1.0.0` below):
+
+```text
+git switch main
+git pull --ff-only
+git tag -a v1.0.0 -m "Release v1.0.0"
+git push origin v1.0.0
+```
+
+Each release contains four `dzdeploy_<version>_<linux|windows>_<amd64|arm64>.zip` archives and `checksums.txt` with their SHA-256 hashes. Extract the entire archive: it contains the client, `agents/windows-amd64/dzdeploy.exe`, bootstrap script, example YAML, and operator documentation. Keep that companion beside Linux and Windows arm64 clients; Windows amd64 clients upload their own executable. The archives contain no populated `deploy.yaml`, private keys, credentials, or game files.
+
+Pull requests build snapshots without publishing. To check the same packaging locally with GoReleaser OSS 2.19.0:
+
+```text
+goreleaser check
+goreleaser release --snapshot --clean
+```
+
+Output is written to the ignored `.tools/releases/` directory. Verify a downloaded ZIP against the matching entry in `checksums.txt` before extracting it (`sha256sum --check checksums.txt` on Linux, or `Get-FileHash -Algorithm SHA256 <archive.zip>` on Windows). Release checksums cover the complete archives; the existing source packager continues to produce its own per-file `checksums.json` format.
+
 ## Configuration repository
 
 Server configuration remains in `dayz_config`. Run the client from that checkout, or pass its path with the existing `--repo` option, for example `dzdeploy status nasdara --repo /path/to/dayz_config`. The client reads `deploy.yaml` from that configuration repository by default and still requires its tracked target definitions and server files.
