@@ -48,7 +48,7 @@ jobs:
             Includes new minor releases and patches; never lowers the effective selected toolchain.
             Review compatibility, explicit legacy-analysis baselines, and all CI results before merging.
             This workflow does not auto-merge.
-      # GITHUB_TOKEN-created PRs need explicit dispatch to run validations.
+      # Dispatch explicitly for unattended validation of token-created PRs.
       - name: Run validations on the updated PR branch
         if: steps.pr.outputs.pull-request-operation == 'created' || steps.pr.outputs.pull-request-operation == 'updated'
         env:
