@@ -39,6 +39,36 @@ archives:
       - src: docs/operator-workflows.md
         strip_parent: true
 
+nfpms:
+  - id: linux
+    ids: [dzdeploy]
+    package_name: dzdeploy
+    file_name_template: '{{ .ConventionalFileName }}'
+    homepage: https://github.com/jsirianni/dzdeploy
+    maintainer: jsirianni <23043836+jsirianni@users.noreply.github.com>
+    description: DayZ configuration deployment client for Windows hosts over SSH/SFTP.
+    formats: [deb, rpm]
+    dependencies: [git, ca-certificates]
+    # Artifact names include linux_<arch>/; keep the companion next to the real
+    # executable. /usr/bin exposes a symlink, resolved by Go's os.Executable.
+    bindir: /usr/lib/dzdeploy
+    contents:
+      - src: '/usr/lib/dzdeploy/linux_{{ .Arch }}/dzdeploy'
+        dst: /usr/bin/dzdeploy
+        type: symlink
+      - src: .tools/releases/windows_amd64/dzdeploy.exe
+        dst: '/usr/lib/dzdeploy/linux_{{ .Arch }}/agents/windows-amd64/dzdeploy.exe'
+        file_info:
+          mode: 0755
+      - src: scripts/bootstrap-windows.ps1
+        dst: /usr/share/dzdeploy/bootstrap-windows.ps1
+      - src: deploy.example.yaml
+        dst: /usr/share/doc/dzdeploy/deploy.example.yaml
+      - src: docs/deployment.md
+        dst: /usr/share/doc/dzdeploy/deployment.md
+      - src: docs/operator-workflows.md
+        dst: /usr/share/doc/dzdeploy/operator-workflows.md
+
 checksum:
   name_template: checksums.txt
   algorithm: sha256
