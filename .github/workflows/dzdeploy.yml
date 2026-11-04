@@ -42,7 +42,7 @@ jobs:
         shell: powershell
         run: .\scripts\test-bootstrap-windows.ps1
       - run: go run ./cmd/dzdeploy-package
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: dzdeploy-${{ runner.os }}
           path: .tools/packages/*.zip
@@ -82,7 +82,7 @@ jobs:
           test -z "$(git status --porcelain)"
       - name: Upload measured quality reports
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: quality-${{ runner.os }}
           path: .tools/ci-reports/
@@ -101,7 +101,7 @@ jobs:
         run: .\scripts\test-bootstrap-windows-integration.ps1 -DisposableRunner
       - name: Upload SSH integration diagnostics
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: ssh-bootstrap-${{ matrix.os }}
           path: .tools/bootstrap-integration/
@@ -136,7 +136,7 @@ jobs:
       - run: go test ./internal/logreader -run '^$' -fuzz '^FuzzDecodeRecord$' -fuzztime 1000x -fuzzminimizetime 2s -parallel 2 -timeout 2m
       - name: Preserve failing fuzz reproducers
         if: failure()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: fuzz-reproducers
           path: internal/**/testdata/fuzz/
