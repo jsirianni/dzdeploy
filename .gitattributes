@@ -1,0 +1,2 @@
+scripts/package-integration.sh text eol=lf
+scripts/linux-package.Dockerfile text eol=lf

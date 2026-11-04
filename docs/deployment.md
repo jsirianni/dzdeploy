@@ -1,5 +1,7 @@
 # Go DayZ deployment
 
+For Linux DEB/RPM installation, upgrades, and removal, see [Linux packages](linux-packages.md). The package manager exposes `dzdeploy` on PATH and retains the Windows agent companion; operator configuration stays in its separate checkout.
+
 ## Build and configure
 
 ```text
