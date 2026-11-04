@@ -61,12 +61,12 @@ deps:
 	$(GO) mod download
 tidy:
 	$(GO) mod tidy
-check:
+check: vet
 	$(PYTHON) scripts/ci.py all
 ci: tools
 	$(MAKE) coverage-smoke
 	$(PYTHON) scripts/smoke_ci.py
-	$(MAKE) check vet build test-race govulncheck fuzz
+	$(MAKE) check build test-race govulncheck fuzz
 	$(GO) mod verify
 	$(PYTHON) scripts/ci.py tidy
 	git diff --exit-code
