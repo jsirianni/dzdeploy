@@ -9,7 +9,7 @@ require (
 	github.com/multiplay/go-battleye v0.0.0-20171201123450-5c3fa7b6ea4c
 	github.com/pkg/sftp v1.13.12
 	github.com/rumblefrog/go-a2s v1.0.3
-	go.yaml.in/yaml/v3 v3.0.5
+	go.yaml.in/yaml/v3 v3.0.6
 	golang.org/x/crypto v0.58.0
 	golang.org/x/sys v0.49.0
 	golang.org/x/term v0.47.0
