@@ -1,6 +1,6 @@
 module github.com/jsirianni/dzdeploy
 
-go 1.26.0
+go 1.27.3
 
 toolchain go1.27.3
 
