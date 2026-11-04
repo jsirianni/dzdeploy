@@ -27,7 +27,7 @@ jobs:
         with:
           go-version-file: go.mod
           cache-dependency-path: go.sum
-      - uses: actions/setup-python@v6
+      - uses: actions/setup-python@v7
         with:
           python-version: '3.13'
       - run: go version
@@ -68,7 +68,7 @@ jobs:
           cache-dependency-path: |
             go.sum
             scripts/ci-tools.json
-      - uses: actions/setup-python@v6
+      - uses: actions/setup-python@v7
         with:
           python-version: '3.13'
       - run: python scripts/ci.py install
