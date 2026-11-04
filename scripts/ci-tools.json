@@ -1,0 +1,8 @@
+{
+  "staticcheck": "honnef.co/go/tools/cmd/staticcheck@v0.8.2",
+  "revive": "github.com/mgechev/revive@v1.17.1",
+  "errcheck": "github.com/kisielk/errcheck@v1.30.0",
+  "goimports": "golang.org/x/tools/cmd/goimports@v0.52.0",
+  "gosec": "github.com/securego/gosec/v2/cmd/gosec@v2.30.0",
+  "govulncheck": "golang.org/x/vuln/cmd/govulncheck@v1.9.0"
+}

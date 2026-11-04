@@ -1,0 +1,58 @@
+[
+  {
+    "file": "internal/deploy/git.go",
+    "context": "func Eligible(ctx context.Context, repo string) (string, error) {",
+    "rule": "unnecessary-format",
+    "source": "return \"\", fmt.Errorf(\"deployment declined: HEAD must equal latest origin/main; merge/push or update the checkout explicitly\")",
+    "message": "unnecessary use of formatting function \"fmt.Errorf\", you can replace it with \"errors.New\""
+  },
+  {
+    "file": "internal/deploy/git.go",
+    "context": "func Eligible(ctx context.Context, repo string) (string, error) {",
+    "rule": "unnecessary-format",
+    "source": "return \"\", fmt.Errorf(\"deployment declined: checkout must be on main\")",
+    "message": "unnecessary use of formatting function \"fmt.Errorf\", you can replace it with \"errors.New\""
+  },
+  {
+    "file": "internal/deploy/git.go",
+    "context": "func Eligible(ctx context.Context, repo string) (string, error) {",
+    "rule": "unnecessary-format",
+    "source": "return \"\", fmt.Errorf(\"deployment declined: working tree is dirty (including untracked files); commit and merge changes to main first\")",
+    "message": "unnecessary use of formatting function \"fmt.Errorf\", you can replace it with \"errors.New\""
+  },
+  {
+    "file": "internal/deploy/prerequisites.go",
+    "context": "func downloadOfficial(ctx context.Context, url string, max int64) ([]byte, error) {",
+    "rule": "redefines-builtin-id",
+    "source": "func downloadOfficial(ctx context.Context, url string, max int64) ([]byte, error) {",
+    "message": "redefinition of the built-in function max"
+  },
+  {
+    "file": "cmd/dzdeploy-package/main.go",
+    "context": "func run() error {",
+    "rule": "unnecessary-format",
+    "source": "return fmt.Errorf(\"unsafe package staging directory\")",
+    "message": "unnecessary use of formatting function \"fmt.Errorf\", you can replace it with \"errors.New\""
+  },
+  {
+    "file": "cmd/dzdeploy-package/main.go",
+    "context": "func run() error {",
+    "rule": "unnecessary-format",
+    "source": "return fmt.Errorf(\"unsupported client platform\")",
+    "message": "unnecessary use of formatting function \"fmt.Errorf\", you can replace it with \"errors.New\""
+  },
+  {
+    "file": "internal/deploycli/backup.go",
+    "context": "func runBackup(args []string) error {",
+    "rule": "unchecked-type-assertion",
+    "source": "if stopping, _ := preview[\"willStop\"].(bool); stopping && !*stopGame {",
+    "message": "type cast result is unchecked in preview[\"willStop\"].(bool) - type assertion result ignored"
+  },
+  {
+    "file": "internal/deploy/transport_test.go",
+    "context": "func sshExecFixture(t *testing.T, execute func(string, io.Reader, io.Writer) error) (Endpoint, string) {",
+    "rule": "unnecessary-format",
+    "source": "return nil, fmt.Errorf(\"unexpected key\")",
+    "message": "unnecessary use of formatting function \"fmt.Errorf\", you can replace it with \"errors.New\""
+  }
+]

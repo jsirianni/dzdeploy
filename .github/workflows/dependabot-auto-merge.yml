@@ -1,0 +1,58 @@
+name: Dependabot auto-merge
+on:
+  pull_request_target:
+    branches: [main]
+    types: [opened, synchronize, reopened, ready_for_review]
+permissions: {}
+concurrency:
+  group: dependabot-auto-merge-${{ github.event.pull_request.number }}
+  cancel-in-progress: false
+jobs:
+  enable:
+    # Opt in only after configuring protection documented in development.md.
+    if: >-
+      vars.DEPENDABOT_AUTO_MERGE == 'true' &&
+      github.event.pull_request.user.login == 'dependabot[bot]' &&
+      github.event.pull_request.head.repo.full_name == github.repository &&
+      !github.event.pull_request.draft
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      # Never check out, download, or execute code from this privileged PR.
+      - name: Verify Dependabot commits and read metadata
+        id: metadata
+        uses: dependabot/fetch-metadata@25dd0e34f4fe68f24cc83900b1fe3fe149efef98 # v3.1.0
+        with:
+          github-token: ${{ github.token }}
+      - name: Enable auto-merge only behind verified protection
+        if: >-
+          steps.metadata.outputs.update-type == 'version-update:semver-patch' ||
+          steps.metadata.outputs.update-type == 'version-update:semver-minor'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          PR_HEAD: ${{ github.event.pull_request.head.sha }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          # Unreadable protection safely leaves the PR for manual review.
+          if ! gh api "repos/$GH_REPO" --jq '.allow_auto_merge' | grep -qx true; then
+            echo "::notice::Repository auto-merge is unavailable; manual review required."
+            exit 0
+          fi
+          owner=${GH_REPO%/*}
+          name=${GH_REPO#*/}
+          query='query($owner:String!,$name:String!){repository(owner:$owner,name:$name){ref(qualifiedName:"refs/heads/main"){branchProtectionRule{requiresStatusChecks requiresStrictStatusChecks requiredStatusCheckContexts}}}}'
+          if ! protection=$(gh api graphql -f query="$query" -F owner="$owner" -F name="$name" --jq '.data.repository.ref.branchProtectionRule'); then
+            echo "::notice::Unable to verify main protection; manual review required."
+            exit 0
+          fi
+          if ! jq -e '.requiresStatusChecks and .requiresStrictStatusChecks and (.requiredStatusCheckContexts | index("CI") != null) and (.requiredStatusCheckContexts | index("validate") != null)' <<< "$protection"; then
+            echo "::notice::Strict main protection must require CI and release validate; manual review required."
+            exit 0
+          fi
+          gh pr merge --auto --squash --match-head-commit "$PR_HEAD" "$PR_URL"

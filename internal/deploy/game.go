@@ -26,7 +26,7 @@ type Game interface {
 	Healthy(context.Context, Target) (*DZSAReport, error)
 }
 type NativeGame struct {
-	logs *processLogs
+	logs           *processLogs
 	captureMu      sync.Mutex
 	captureDone    chan struct{}
 	captureErr     error
@@ -311,8 +311,10 @@ func (g *NativeGame) Launch(t Target) (int, string, error) {
 	g.captureMu.Lock()
 	g.captureErr = nil
 	g.captureMu.Unlock()
-	logContext:=context.Background()
-	if g.logs!=nil {logContext=context.WithValue(logContext,processLogsKey{},g.logs)}
+	logContext := context.Background()
+	if g.logs != nil {
+		logContext = context.WithValue(logContext, processLogsKey{}, g.logs)
+	}
 	capture, err := captureFromContext(logContext, g.Config, "console", func(err error) {
 		g.captureMu.Lock()
 		g.captureErr = err

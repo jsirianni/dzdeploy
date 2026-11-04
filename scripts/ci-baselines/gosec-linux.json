@@ -1,0 +1,641 @@
+[
+  {
+    "file": "internal/deploy/engine.go",
+    "context": "func (a *Agent) Process(ctx context.Context, req Request) (r Result) {",
+    "rule": "G304",
+    "source": "if existing, e := os.ReadFile(dest); e == nil && Digest(existing) != Digest(raw) {",
+    "message": "Potential file inclusion via variable",
+    "severity": "MEDIUM",
+    "confidence": "HIGH"
+  },
+  {
+    "file": "internal/deploy/engine.go",
+    "context": "func (a *Agent) Process(ctx context.Context, req Request) (r Result) {",
+    "rule": "G304",
+    "source": "raw, err = os.ReadFile(p)",
+    "message": "Potential file inclusion via variable",
+    "severity": "MEDIUM",
+    "confidence": "HIGH"
+  },
+  {
+    "file": "internal/deploy/game.go",
+    "context": "func (g *NativeGame) Launch(t Target) (int, string, error) {",
+    "rule": "G204",
+    "source": "cmd := exec.Command(exe, args...)",
+    "message": "Subprocess launched with variable",
+    "severity": "MEDIUM",
+    "confidence": "HIGH"
+  },
+  {
+    "file": "internal/deploy/game.go",
+    "context": "func (g *NativeGame) Update(ctx context.Context, t Target) error {",
+    "rule": "G304",
+    "source": "raw, err := os.ReadFile(src)",
+    "message": "Potential file inclusion via variable",
+    "severity": "MEDIUM",
+    "confidence": "HIGH"
+  },
+  {
+    "file": "internal/deploy/game.go",
+    "context": "func (g *NativeGame) run(ctx context.Context, exe string, args ...string) error {",
+    "rule": "G204",
+    "source": "cmd := exec.CommandContext(ctx, exe, args...)",
+    "message": "Subprocess launched with variable",
+    "severity": "MEDIUM",
+    "confidence": "HIGH"
+  },
+  {
+    "file": "internal/deploy/enrollment.go",
+    "context": "func (r *Remote) Authenticate(ctx context.Context, prompt func(AuthFrame) (string, error), progress io.Writer) error {",
+    "rule": "G104",
+    "source": "stop := context.AfterFunc(ctx, func() { s.Close() })",
+    "message": "Errors unhandled",
+    "severity": "LOW",
+    "confidence": "HIGH"
+  },
+  {
+    "file": "internal/deploy/transport.go",
+    "context": "func (r *Remote) Close() {",
+    "rule": "G104",
+    "source": "r.SFTP.Close()",
+    "message": "Errors unhandled",
+    "severity": "LOW",
+    "confidence": "HIGH"
+  },
+  {
+    "file": "internal/deploy/transport.go",
+    "context": "func (r *Remote) Close() {",
+    "rule": "G104",
+    "source": "r.SSH.Close()",
+    "message": "Errors unhandled",
+    "severity": "LOW",
+    "confidence": "HIGH"
+  },
+  {
+    "file": "internal/deploy/transport.go",
+    "context": "func (r *Remote) Close() {",
+    "rule": "G104",
+    "source": "r.agent.Close()",
+    "message": "Errors unhandled",
+    "severity": "LOW",
+    "confidence": "HIGH"
+  },
+  {
+    "file": "internal/deploy/backup_remote.go",
+    "context": "func (r *Remote) DownloadBackup(ctx context.Context, alias, id, destination string) (BackupReceipt, error) {",
+    "rule": "G104",
+    "source": "temp.Close()",
+    "message": "Errors unhandled",
+    "severity": "LOW",
+    "confidence": "HIGH"
+  },
+  {
+    "file": "internal/deploy/backup_remote.go",
+    "context": "func (r *Remote) DownloadBackup(ctx context.Context, alias, id, destination string) (BackupReceipt, error) {",
+    "rule": "G104",
+    "source": "temp.Close()",
+    "message": "Errors unhandled",
+    "severity": "LOW",
+    "confidence": "HIGH"
+  },
+  {
+    "file": "internal/deploy/backup_remote.go",
+    "context": "func (r *Remote) DownloadBackup(ctx context.Context, alias, id, destination string) (BackupReceipt, error) {",
+    "rule": "G104",
+    "source": "temp.Close()",
+    "message": "Errors unhandled",
+    "severity": "LOW",
+    "confidence": "HIGH"
+  },
+  {
+    "file": "internal/deploy/inspection.go",
+    "context": "func (r *Remote) Health(ctx context.Context, alias string, since time.Time) HealthReport {",
+    "rule": "G104",
+    "source": "f.Close()",
+    "message": "Errors unhandled",
+    "severity": "LOW",
+    "confidence": "HIGH"
+  },
+  {
+    "file": "internal/deploy/history.go",
+    "context": "func (r *Remote) History(alias string, host HostConfig, since time.Time) HistoryReport {",
+    "rule": "G104",
+    "source": "f.Close()",
+    "message": "Errors unhandled",
+    "severity": "LOW",
+    "confidence": "HIGH"
+  },
+  {
+    "file": "internal/deploy/history.go",
+    "context": "func (r *Remote) History(alias string, host HostConfig, since time.Time) HistoryReport {",
+    "rule": "G104",
+    "source": "f.Close()",
+    "message": "Errors unhandled",
+    "severity": "LOW",
+    "confidence": "HIGH"
+  },
+  {
+    "file": "internal/deploy/transport.go",
+    "context": "func (r *Remote) Preview(b *Bundle, restart bool) (Preview, error) {",
+    "rule": "G104",
+    "source": "fRemote.Close()",
+    "message": "Errors unhandled",
+    "severity": "LOW",
+    "confidence": "HIGH"
+  },
+  {
+    "file": "internal/deploy/diagnostics.go",
+    "context": "func (r *Remote) collectDiagnostics(ctx context.Context, alias string, since time.Time, directory string) (Diagnostics, error) {",
+    "rule": "G104",
+    "source": "f.Close()",
+    "message": "Errors unhandled",
+    "severity": "LOW",
+    "confidence": "HIGH"
+  },
+  {
+    "file": "internal/deploy/enrollment.go",
+    "context": "func (r *Remote) exec(ctx context.Context, command string, in io.Reader, out, stderr io.Writer) error {",
+    "rule": "G104",
+    "source": "stop := context.AfterFunc(ctx, func() { s.Close() })",
+    "message": "Errors unhandled",
+    "severity": "LOW",
+    "confidence": "HIGH"
+  },
+  {
+    "file": "internal/deploy/inspection.go",
+    "context": "func (r *Remote) observe(ctx context.Context, c HostConfig, t Target) (*hostinspect.Snapshot, error) {",
+    "rule": "G104",
+    "source": "stop := context.AfterFunc(ctx, func() { session.Close() })",
+    "message": "Errors unhandled",
+    "severity": "LOW",
+    "confidence": "HIGH"
+  },
+  {
+    "file": "internal/deploy/transport.go",
+    "context": "func (r *Remote) put(rel string, raw []byte, verify bool) error {",
+    "rule": "G104",
+    "source": "f.Close()",
+    "message": "Errors unhandled",
+    "severity": "LOW",
+    "confidence": "HIGH"
+  },
+  {
+    "file": "internal/deploy/store.go",
+    "context": "func (s *Store) Apply(b *Bundle, operation string) (changed, deleted []string, err error) {",
+    "rule": "G703",
+    "source": "data, e := os.ReadFile(p)",
+    "message": "Path traversal via taint analysis: os.ReadFile",
+    "severity": "HIGH",
+    "confidence": "HIGH"
+  },
+  {
+    "file": "internal/deploy/store.go",
+    "context": "func (s *Store) Apply(b *Bundle, operation string) (changed, deleted []string, err error) {",
+    "rule": "G703",
+    "source": "if e = os.Remove(p); e != nil && !os.IsNotExist(e) {",
+    "message": "Path traversal via taint analysis: os.Remove",
+    "severity": "HIGH",
+    "confidence": "HIGH"
+  },
+  {
+    "file": "internal/deploy/store.go",
+    "context": "func (s *Store) Apply(b *Bundle, operation string) (changed, deleted []string, err error) {",
+    "rule": "G703",
+    "source": "fi, e := os.Stat(p)",
+    "message": "Path traversal via taint analysis: os.Stat",
+    "severity": "HIGH",
+    "confidence": "HIGH"
+  },
+  {
+    "file": "internal/deploy/store.go",
+    "context": "func (s *Store) Apply(b *Bundle, operation string) (changed, deleted []string, err error) {",
+    "rule": "G304",
+    "source": "data, e := os.ReadFile(p)",
+    "message": "Potential file inclusion via variable",
+    "severity": "MEDIUM",
+    "confidence": "HIGH"
+  },
+  {
+    "file": "internal/deploy/store.go",
+    "context": "func (s *Store) Apply(b *Bundle, operation string) (changed, deleted []string, err error) {",
+    "rule": "G304",
+    "source": "data, e := os.ReadFile(p)",
+    "message": "Potential file inclusion via variable",
+    "severity": "MEDIUM",
+    "confidence": "HIGH"
+  },
+  {
+    "file": "internal/deploy/store.go",
+    "context": "func (s *Store) Diff(b *Bundle) ([]string, []string, error) {",
+    "rule": "G304",
+    "source": "data, err := os.ReadFile(p)",
+    "message": "Potential file inclusion via variable",
+    "severity": "MEDIUM",
+    "confidence": "HIGH"
+  },
+  {
+    "file": "internal/deploy/preflight.go",
+    "context": "func (s *Store) Preflight(b *Bundle) error {",
+    "rule": "G703",
+    "source": "if err = os.MkdirAll(filepath.Dir(p), 0700); err != nil {",
+    "message": "Path traversal via taint analysis: os.MkdirAll",
+    "severity": "HIGH",
+    "confidence": "HIGH"
+  },
+  {
+    "file": "internal/deploy/preflight.go",
+    "context": "func (s *Store) Preflight(b *Bundle) error {",
+    "rule": "G703",
+    "source": "removeErr := os.Remove(name)",
+    "message": "Path traversal via taint analysis: os.Remove",
+    "severity": "HIGH",
+    "confidence": "HIGH"
+  },
+  {
+    "file": "internal/deploy/preflight.go",
+    "context": "func (s *Store) Preflight(b *Bundle) error {",
+    "rule": "G703",
+    "source": "if info, err := os.Stat(p); err == nil {",
+    "message": "Path traversal via taint analysis: os.Stat",
+    "severity": "HIGH",
+    "confidence": "HIGH"
+  },
+  {
+    "file": "internal/deploy/store.go",
+    "context": "func (s *Store) restore(j Journal) error {",
+    "rule": "G304",
+    "source": "raw, err := os.ReadFile(backup)",
+    "message": "Potential file inclusion via variable",
+    "severity": "MEDIUM",
+    "confidence": "HIGH"
+  },
+  {
+    "file": "internal/snapshot/archive.go",
+    "context": "func Create(ctx context.Context, root, destination string, manifest Manifest, roots []string, rules Rules) (Manifest, error) {",
+    "rule": "G104",
+    "source": "input.Close()",
+    "message": "Errors unhandled",
+    "severity": "LOW",
+    "confidence": "HIGH"
+  },
+  {
+    "file": "internal/snapshot/archive.go",
+    "context": "func Create(ctx context.Context, root, destination string, manifest Manifest, roots []string, rules Rules) (Manifest, error) {",
+    "rule": "G304",
+    "source": "input, e := os.Open(source)",
+    "message": "Potential file inclusion via variable",
+    "severity": "MEDIUM",
+    "confidence": "HIGH"
+  },
+  {
+    "file": "internal/deploy/git.go",
+    "context": "func Git(ctx context.Context, repo string, args ...string) ([]byte, error) {",
+    "rule": "G204",
+    "source": "cmd := exec.CommandContext(ctx, \"git\", append([]string{\"-C\", repo}, args...)...)",
+    "message": "Subprocess launched with a potential tainted input or cmd arguments",
+    "severity": "MEDIUM",
+    "confidence": "HIGH"
+  },
+  {
+    "file": "internal/snapshot/archive.go",
+    "context": "func Hash(ctx context.Context, file string) (string, error) {",
+    "rule": "G304",
+    "source": "f, err := os.Open(file)",
+    "message": "Potential file inclusion via variable",
+    "severity": "MEDIUM",
+    "confidence": "HIGH"
+  },
+  {
+    "file": "internal/deploy/bundle.go",
+    "context": "func LoadBundle(p, alias string) (*Bundle, error) {",
+    "rule": "G304",
+    "source": "data, err := os.ReadFile(p)",
+    "message": "Potential file inclusion via variable",
+    "severity": "MEDIUM",
+    "confidence": "HIGH"
+  },
+  {
+    "file": "internal/deploy/bootstrap.go",
+    "context": "func LoadClient(p string) (ClientConfig, error) {",
+    "rule": "G304",
+    "source": "raw, err := os.ReadFile(p)",
+    "message": "Potential file inclusion via variable",
+    "severity": "MEDIUM",
+    "confidence": "HIGH"
+  },
+  {
+    "file": "internal/deploy/model.go",
+    "context": "func ReadJSON(p string, v any) error {",
+    "rule": "G304",
+    "source": "b, err := os.ReadFile(p)",
+    "message": "Potential file inclusion via variable",
+    "severity": "MEDIUM",
+    "confidence": "HIGH"
+  },
+  {
+    "file": "internal/deploy/validation.go",
+    "context": "func Validate(ctx context.Context, dz, root string) (Validation, error) {",
+    "rule": "G204",
+    "source": "cmd := exec.CommandContext(ctx, dz, c.ArgList...)",
+    "message": "Subprocess launched with a potential tainted input or cmd arguments",
+    "severity": "MEDIUM",
+    "confidence": "HIGH"
+  },
+  {
+    "file": "internal/deploy/enrollment.go",
+    "context": "func agentBinary(e Endpoint) ([]byte, error) {",
+    "rule": "G304",
+    "source": "return os.ReadFile(p)",
+    "message": "Potential file inclusion via variable",
+    "severity": "MEDIUM",
+    "confidence": "HIGH"
+  },
+  {
+    "file": "internal/deploy/model.go",
+    "context": "func atomicCopyContext(ctx context.Context, source, dest string, mode os.FileMode) error {",
+    "rule": "G304",
+    "source": "in, err := os.Open(source)",
+    "message": "Potential file inclusion via variable",
+    "severity": "MEDIUM",
+    "confidence": "HIGH"
+  },
+  {
+    "file": "internal/deploy/transport.go",
+    "context": "func connect(ctx context.Context, e Endpoint, fingerprint string, persist, firstUse bool) (*Remote, error) {",
+    "rule": "G104",
+    "source": "conn.Close()",
+    "message": "Errors unhandled",
+    "severity": "LOW",
+    "confidence": "HIGH"
+  },
+  {
+    "file": "internal/deploy/transport.go",
+    "context": "func connect(ctx context.Context, e Endpoint, fingerprint string, persist, firstUse bool) (*Remote, error) {",
+    "rule": "G104",
+    "source": "r.cancel = context.AfterFunc(ctx, func() { r.SSH.Close() })",
+    "message": "Errors unhandled",
+    "severity": "LOW",
+    "confidence": "HIGH"
+  },
+  {
+    "file": "internal/deploy/tools.go",
+    "context": "func ensureDz(ctx context.Context, repo string, offline bool, client *http.Client) (string, error) {",
+    "rule": "G204",
+    "source": "installed, err := exec.CommandContext(ctx, dest, \"version\").Output()",
+    "message": "Subprocess launched with variable",
+    "severity": "MEDIUM",
+    "confidence": "HIGH"
+  },
+  {
+    "file": "internal/snapshot/verify.go",
+    "context": "func inspect(z *zip.Reader, rules Rules) (Manifest, map[string]*zip.File, error) {",
+    "rule": "G104",
+    "source": "r.Close()",
+    "message": "Errors unhandled",
+    "severity": "LOW",
+    "confidence": "HIGH"
+  },
+  {
+    "file": "internal/deploy/prerequisites.go",
+    "context": "func installNasdaraMission(ctx context.Context, root string, raw []byte) error {",
+    "rule": "G104",
+    "source": "r.Close()",
+    "message": "Errors unhandled",
+    "severity": "LOW",
+    "confidence": "HIGH"
+  },
+  {
+    "file": "internal/deploy/agent_linux.go",
+    "context": "func lockHost(dir string) (func(), error) {",
+    "rule": "G104",
+    "source": "f.Close()",
+    "message": "Errors unhandled",
+    "severity": "LOW",
+    "confidence": "HIGH"
+  },
+  {
+    "file": "internal/deploy/agent_linux.go",
+    "context": "func lockHost(dir string) (func(), error) {",
+    "rule": "G104",
+    "source": "return func() { f.Close() }, nil",
+    "message": "Errors unhandled",
+    "severity": "LOW",
+    "confidence": "HIGH"
+  },
+  {
+    "file": "internal/deploy/agent_linux.go",
+    "context": "func lockHost(dir string) (func(), error) {",
+    "rule": "G304",
+    "source": "f, err := os.OpenFile(dir+\"/agent.lock\", os.O_CREATE|os.O_RDWR, 0600)",
+    "message": "Potential file inclusion via variable",
+    "severity": "MEDIUM",
+    "confidence": "HIGH"
+  },
+  {
+    "file": "internal/deploy/paths.go",
+    "context": "func noLink(p string) error {",
+    "rule": "G703",
+    "source": "fi, err := os.Lstat(p)",
+    "message": "Path traversal via taint analysis: os.Lstat",
+    "severity": "HIGH",
+    "confidence": "HIGH"
+  },
+  {
+    "file": "internal/deploy/processlog.go",
+    "context": "func openProcessCapture(ctx context.Context, config HostConfig, kind string, onError func(error)) (*processCapture, error) {",
+    "rule": "G304",
+    "source": "f, err := os.OpenFile(filename, os.O_CREATE|os.O_RDWR, 0600)",
+    "message": "Potential file inclusion via variable",
+    "severity": "MEDIUM",
+    "confidence": "HIGH"
+  },
+  {
+    "file": "internal/deploy/private_linux.go",
+    "context": "func protectPrivateDirectory(file string) error { return os.Chmod(file, 0700) }",
+    "rule": "G302",
+    "source": "func protectPrivateDirectory(file string) error { return os.Chmod(file, 0700) }",
+    "message": "Expect file permissions to be 0600 or less",
+    "severity": "MEDIUM",
+    "confidence": "HIGH"
+  },
+  {
+    "file": "internal/deploy/private_linux.go",
+    "context": "func protectPrivateDirectory(file string) error { return os.Chmod(file, 0700) }",
+    "rule": "G703",
+    "source": "func protectPrivateDirectory(file string) error { return os.Chmod(file, 0700) }",
+    "message": "Path traversal via taint analysis: os.Chmod",
+    "severity": "HIGH",
+    "confidence": "HIGH"
+  },
+  {
+    "file": "internal/deploy/private_linux.go",
+    "context": "func protectPrivateFile(file string) error      { return os.Chmod(file, 0600) }",
+    "rule": "G703",
+    "source": "func protectPrivateFile(file string) error      { return os.Chmod(file, 0600) }",
+    "message": "Path traversal via taint analysis: os.Chmod",
+    "severity": "HIGH",
+    "confidence": "HIGH"
+  },
+  {
+    "file": "internal/snapshot/verify.go",
+    "context": "func readContents(ctx context.Context, z *zip.Reader, target, destination string, rules Rules, skip map[string]bool) (Manifest, error) {",
+    "rule": "G104",
+    "source": "input.Close()",
+    "message": "Errors unhandled",
+    "severity": "LOW",
+    "confidence": "HIGH"
+  },
+  {
+    "file": "internal/snapshot/verify.go",
+    "context": "func readContents(ctx context.Context, z *zip.Reader, target, destination string, rules Rules, skip map[string]bool) (Manifest, error) {",
+    "rule": "G104",
+    "source": "input.Close()",
+    "message": "Errors unhandled",
+    "severity": "LOW",
+    "confidence": "HIGH"
+  },
+  {
+    "file": "internal/snapshot/verify.go",
+    "context": "func readContents(ctx context.Context, z *zip.Reader, target, destination string, rules Rules, skip map[string]bool) (Manifest, error) {",
+    "rule": "G104",
+    "source": "input.Close()",
+    "message": "Errors unhandled",
+    "severity": "LOW",
+    "confidence": "HIGH"
+  },
+  {
+    "file": "internal/deploy/enrollment.go",
+    "context": "func rememberHost(file, host string, addr net.Addr, key ssh.PublicKey) error {",
+    "rule": "G304",
+    "source": "old, err := os.ReadFile(file)",
+    "message": "Potential file inclusion via variable",
+    "severity": "MEDIUM",
+    "confidence": "HIGH"
+  },
+  {
+    "file": "cmd/dzdeploy-package/main.go",
+    "context": "func run() error {",
+    "rule": "G104",
+    "source": "z.Close()",
+    "message": "Errors unhandled",
+    "severity": "LOW",
+    "confidence": "HIGH"
+  },
+  {
+    "file": "cmd/dzdeploy-package/main.go",
+    "context": "func run() error {",
+    "rule": "G304",
+    "source": "f, err := os.Create(archive)",
+    "message": "Potential file inclusion via variable",
+    "severity": "MEDIUM",
+    "confidence": "HIGH"
+  },
+  {
+    "file": "cmd/dzdeploy-package/main.go",
+    "context": "func run() error {",
+    "rule": "G304",
+    "source": "raw, err := os.ReadFile(source)",
+    "message": "Potential file inclusion via variable",
+    "severity": "MEDIUM",
+    "confidence": "HIGH"
+  },
+  {
+    "file": "cmd/dzdeploy-package/main.go",
+    "context": "func run() error {",
+    "rule": "G204",
+    "source": "cmd := exec.Command(\"go\", \"build\", \"-buildvcs=false\", \"-trimpath\", \"-o\", dest, \"./cmd/dzdeploy\")",
+    "message": "Subprocess launched with variable",
+    "severity": "MEDIUM",
+    "confidence": "HIGH"
+  },
+  {
+    "file": "internal/deploy/bootstrap.go",
+    "context": "func setupRCon(c HostConfig) error {",
+    "rule": "G304",
+    "source": "raw, err := os.ReadFile(p)",
+    "message": "Potential file inclusion via variable",
+    "severity": "MEDIUM",
+    "confidence": "HIGH"
+  },
+  {
+    "file": "internal/deploy/prerequisites.go",
+    "context": "func steamExecutable(raw []byte) ([]byte, error) {",
+    "rule": "G104",
+    "source": "r.Close()",
+    "message": "Errors unhandled",
+    "severity": "LOW",
+    "confidence": "HIGH"
+  },
+  {
+    "file": "internal/deploy/restore.go",
+    "context": "func (a *Agent) restoreBackup(ctx context.Context, req Request, b *Bundle, r Result, running bool) Result {",
+    "rule": "G115",
+    "source": "archivedBytes += uint64(entry.Size)",
+    "message": "integer overflow conversion int64 -> uint64",
+    "severity": "HIGH",
+    "confidence": "MEDIUM"
+  },
+  {
+    "file": "internal/deploy/preflight.go",
+    "context": "func (s *Store) Preflight(b *Bundle) error {",
+    "rule": "G115",
+    "source": "required += uint64(f.Size) * 3",
+    "message": "integer overflow conversion int64 -> uint64",
+    "severity": "HIGH",
+    "confidence": "MEDIUM"
+  },
+  {
+    "file": "internal/deploy/preflight.go",
+    "context": "func (s *Store) Preflight(b *Bundle) error {",
+    "rule": "G115",
+    "source": "required += uint64(info.Size())",
+    "message": "integer overflow conversion int64 -> uint64",
+    "severity": "HIGH",
+    "confidence": "MEDIUM"
+  },
+  {
+    "file": "internal/deploy/snapshots.go",
+    "context": "func (s *Store) snapshotSpace(ctx context.Context, multiplier uint64) (uint64, error) {",
+    "rule": "G115",
+    "source": "required := uint64(size)*multiplier + 64<<20",
+    "message": "integer overflow conversion int64 -> uint64",
+    "severity": "HIGH",
+    "confidence": "MEDIUM"
+  },
+  {
+    "file": "internal/hostinspect/collector.go",
+    "context": "func Command(s Spec) (string, error) {",
+    "rule": "G115",
+    "source": "b[i*2] = byte(w)",
+    "message": "integer overflow conversion uint16 -> byte",
+    "severity": "HIGH",
+    "confidence": "MEDIUM"
+  },
+  {
+    "file": "internal/deploy/agent_linux.go",
+    "context": "func freeSpace(dir string) (uint64, error) {",
+    "rule": "G115",
+    "source": "return stat.Bavail * uint64(stat.Bsize), err",
+    "message": "integer overflow conversion int64 -> uint64",
+    "severity": "HIGH",
+    "confidence": "MEDIUM"
+  },
+  {
+    "file": "internal/deploy/game.go",
+    "context": "func syncModContext(ctx context.Context, source, dest string) error {",
+    "rule": "G122",
+    "source": "return os.Chtimes(out, info.ModTime(), info.ModTime())",
+    "message": "Filesystem operation in filepath.Walk/WalkDir callback uses race-prone path; consider root-scoped APIs (e.g. os.Root) to prevent symlink TOCTOU traversal",
+    "severity": "HIGH",
+    "confidence": "MEDIUM"
+  },
+  {
+    "file": "internal/deploy/game.go",
+    "context": "func syncModContext(ctx context.Context, source, dest string) error {",
+    "rule": "G122",
+    "source": "return os.MkdirAll(out, 0700)",
+    "message": "Filesystem operation in filepath.Walk/WalkDir callback uses race-prone path; consider root-scoped APIs (e.g. os.Root) to prevent symlink TOCTOU traversal",
+    "severity": "HIGH",
+    "confidence": "MEDIUM"
+  }
+]

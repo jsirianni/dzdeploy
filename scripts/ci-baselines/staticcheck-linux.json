@@ -1,0 +1,121 @@
+[
+  {
+    "file": "internal/deploy/prerequisites.go",
+    "context": "const steamInstallerURL = \"https://steamcdn-a.akamaihd.net/client/installer/steamcmd.zip\"",
+    "rule": "U1000",
+    "source": "const steamInstallerURL = \"https://steamcdn-a.akamaihd.net/client/installer/steamcmd.zip\"",
+    "message": "const steamInstallerURL is unused"
+  },
+  {
+    "file": "internal/deploy/processlog.go",
+    "context": "func (b *commandTail) String() string { b.mu.Lock(); defer b.mu.Unlock(); return string(b.data) }",
+    "rule": "U1000",
+    "source": "func (b *commandTail) String() string { b.mu.Lock(); defer b.mu.Unlock(); return string(b.data) }",
+    "message": "func (*commandTail).String is unused"
+  },
+  {
+    "file": "internal/deploy/processlog.go",
+    "context": "func (b *commandTail) Write(p []byte) (int, error) {",
+    "rule": "U1000",
+    "source": "func (b *commandTail) Write(p []byte) (int, error) {",
+    "message": "func (*commandTail).Write is unused"
+  },
+  {
+    "file": "internal/deploy/model.go",
+    "context": "func (c *HostConfig) Validate() error {",
+    "rule": "ST1005",
+    "source": "return errors.New(\"Steam/workshop directories must not be volume roots\")",
+    "message": "error strings should not be capitalized"
+  },
+  {
+    "file": "internal/deploy/inspection.go",
+    "context": "func (r *Remote) observe(ctx context.Context, c HostConfig, t Target) (*hostinspect.Snapshot, error) {",
+    "rule": "ST1005",
+    "source": "return nil, errors.New(\"Windows inspection omitted observation time\")",
+    "message": "error strings should not be capitalized"
+  },
+  {
+    "file": "internal/deploy/enroll_linux.go",
+    "context": "func RelaySteamAuth(context.Context, HostConfig, io.Reader, io.Writer) error {",
+    "rule": "ST1005",
+    "source": "return errors.New(\"Steam authentication relay must execute on Windows\")",
+    "message": "error strings should not be capitalized"
+  },
+  {
+    "file": "internal/deploy/git_test.go",
+    "context": "func TestSourceSymlinkIsNotPackaged(t *testing.T) {",
+    "rule": "SA4006",
+    "source": "repo, commit := gitFixture(t)",
+    "message": "this value of commit is never used"
+  },
+  {
+    "file": "internal/deploy/enrollment.go",
+    "context": "func agentBinary(e Endpoint) ([]byte, error) {",
+    "rule": "ST1005",
+    "source": "return nil, fmt.Errorf(\"Windows agent companion missing; use a packaged client or set agent_binary in deploy.yaml: %w\", err)",
+    "message": "error strings should not be capitalized"
+  },
+  {
+    "file": "internal/deploy/auth.go",
+    "context": "func authConversation(out io.Reader, in io.Writer, prompt func(AuthFrame) (string, error)) error {",
+    "rule": "ST1005",
+    "source": "return errors.New(\"Steam authentication failed; rerun deploy to retry authentication\")",
+    "message": "error strings should not be capitalized"
+  },
+  {
+    "file": "internal/deploy/auth.go",
+    "context": "func authConversation(out io.Reader, in io.Writer, prompt func(AuthFrame) (string, error)) error {",
+    "rule": "ST1005",
+    "source": "return errors.New(\"Steam authentication requires an interactive terminal\")",
+    "message": "error strings should not be capitalized"
+  },
+  {
+    "file": "internal/deploy/auth.go",
+    "context": "func authConversation(out io.Reader, in io.Writer, prompt func(AuthFrame) (string, error)) error {",
+    "rule": "ST1005",
+    "source": "return fmt.Errorf(\"Steam authentication stream ended before success: %w\", err)",
+    "message": "error strings should not be capitalized"
+  },
+  {
+    "file": "internal/deploy/enrollment.go",
+    "context": "func hostVerifier(file, pin string, persist bool) (ssh.HostKeyCallback, error) {",
+    "rule": "U1000",
+    "source": "func hostVerifier(file, pin string, persist bool) (ssh.HostKeyCallback, error) {",
+    "message": "func hostVerifier is unused"
+  },
+  {
+    "file": "internal/deploy/enrollment.go",
+    "context": "func remoteStateDir(c HostConfig) string {",
+    "rule": "U1000",
+    "source": "func remoteStateDir(c HostConfig) string {",
+    "message": "func remoteStateDir is unused"
+  },
+  {
+    "file": "internal/deploy/signals.go",
+    "context": "func signalContext() (context.Context, context.CancelFunc) {",
+    "rule": "U1000",
+    "source": "func signalContext() (context.Context, context.CancelFunc) {",
+    "message": "func signalContext is unused"
+  },
+  {
+    "file": "internal/deploy/prerequisites.go",
+    "context": "func steamExecutable(raw []byte) ([]byte, error) {",
+    "rule": "U1000",
+    "source": "func steamExecutable(raw []byte) ([]byte, error) {",
+    "message": "func steamExecutable is unused"
+  },
+  {
+    "file": "internal/deploy/processlog.go",
+    "context": "type commandTail struct {",
+    "rule": "U1000",
+    "source": "type commandTail struct {",
+    "message": "type commandTail is unused"
+  },
+  {
+    "file": "internal/deploy/enrollment.go",
+    "context": "var digestPattern = regexp.MustCompile(`^[a-f0-9]{64}$`)",
+    "rule": "U1000",
+    "source": "var digestPattern = regexp.MustCompile(`^[a-f0-9]{64}$`)",
+    "message": "var digestPattern is unused"
+  }
+]

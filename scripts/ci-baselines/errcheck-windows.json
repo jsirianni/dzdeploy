@@ -1,0 +1,2557 @@
+[
+  {
+    "file": "internal/deploy/engine.go",
+    "context": "func (a *Agent) Process(ctx context.Context, req Request) (r Result) {",
+    "rule": "unchecked-error",
+    "source": "_ = WriteJSON(a.resultPath(r.ID), r)",
+    "message": "_ = WriteJSON(a.resultPath(r.ID), r)"
+  },
+  {
+    "file": "internal/deploy/engine.go",
+    "context": "func (a *Agent) Process(ctx context.Context, req Request) (r Result) {",
+    "rule": "unchecked-error",
+    "source": "_ = a.progress(&r, \"failed\")",
+    "message": "_ = a.progress(&r, \"failed\")"
+  },
+  {
+    "file": "internal/deploy/engine.go",
+    "context": "func (a *Agent) event(kind, cause string, r *Result) {",
+    "rule": "unchecked-error",
+    "source": "_ = AtomicWrite(filepath.Join(a.Store.Config.StateDir, \"logs\", \"lifecycle-error.txt\"), []byte(err.Error()), 0600)",
+    "message": "_ = AtomicWrite(filepath.Join(a.Store.Config.StateDir, \"logs\", \"lifecycle-error.txt\"), []byte(err.Error()), 0600)"
+  },
+  {
+    "file": "internal/deploy/maintenance.go",
+    "context": "func (a *Agent) pauseAndStop(ctx context.Context, r *Result, hard bool) error {",
+    "rule": "unchecked-error",
+    "source": "_ = a.Store.Save()",
+    "message": "_ = a.Store.Save()"
+  },
+  {
+    "file": "internal/deploy/backup_operations.go",
+    "context": "func (a *Agent) processBackup(ctx context.Context, req Request) (r Result) {",
+    "rule": "unchecked-error",
+    "source": "_ = WriteJSON(a.resultPath(req.ID), r)",
+    "message": "_ = WriteJSON(a.resultPath(req.ID), r)"
+  },
+  {
+    "file": "internal/deploy/backup_operations.go",
+    "context": "func (a *Agent) processBackup(ctx context.Context, req Request) (r Result) {",
+    "rule": "unchecked-error",
+    "source": "_ = WriteJSON(a.resultPath(req.ID), r)",
+    "message": "_ = WriteJSON(a.resultPath(req.ID), r)"
+  },
+  {
+    "file": "internal/deploy/backup_operations.go",
+    "context": "func (a *Agent) processBackup(ctx context.Context, req Request) (r Result) {",
+    "rule": "unchecked-error",
+    "source": "_ = WriteJSON(a.resultPath(req.ID), r)",
+    "message": "_ = WriteJSON(a.resultPath(req.ID), r)"
+  },
+  {
+    "file": "internal/deploy/backup_operations.go",
+    "context": "func (a *Agent) processBackup(ctx context.Context, req Request) (r Result) {",
+    "rule": "unchecked-error",
+    "source": "_ = a.Store.Save()",
+    "message": "_ = a.Store.Save()"
+  },
+  {
+    "file": "internal/deploy/backup_operations.go",
+    "context": "func (a *Agent) processBackup(ctx context.Context, req Request) (r Result) {",
+    "rule": "unchecked-error",
+    "source": "_ = a.progress(&r, \"failed\")",
+    "message": "_ = a.progress(&r, \"failed\")"
+  },
+  {
+    "file": "internal/deploy/backup_operations.go",
+    "context": "func (a *Agent) processBackup(ctx context.Context, req Request) (r Result) {",
+    "rule": "unchecked-error",
+    "source": "_ = a.progress(&r, \"failed\")",
+    "message": "_ = a.progress(&r, \"failed\")"
+  },
+  {
+    "file": "internal/deploy/restore_recovery.go",
+    "context": "func (a *Agent) recoverRestore(ctx context.Context) error {",
+    "rule": "unchecked-error",
+    "source": "_ = os.RemoveAll(checked)",
+    "message": "_ = os.RemoveAll(checked)"
+  },
+  {
+    "file": "internal/deploy/restore.go",
+    "context": "func (a *Agent) restoreBackup(ctx context.Context, req Request, b *Bundle, r Result, running bool) Result {",
+    "rule": "unchecked-error",
+    "source": "_ = a.progress(&r, \"failed\")",
+    "message": "_ = a.progress(&r, \"failed\")"
+  },
+  {
+    "file": "internal/deploy/restore.go",
+    "context": "func (a *Agent) restoreBackup(ctx context.Context, req Request, b *Bundle, r Result, running bool) Result {",
+    "rule": "unchecked-error",
+    "source": "_ = a.start(ctx, b, &r, false)",
+    "message": "_ = a.start(ctx, b, &r, false)"
+  },
+  {
+    "file": "internal/deploy/restore.go",
+    "context": "func (a *Agent) restoreBackup(ctx context.Context, req Request, b *Bundle, r Result, running bool) Result {",
+    "rule": "unchecked-error",
+    "source": "_ = a.start(ctx, b, &r, false)",
+    "message": "_ = a.start(ctx, b, &r, false)"
+  },
+  {
+    "file": "internal/deploy/restore.go",
+    "context": "func (a *Agent) restoreBackup(ctx context.Context, req Request, b *Bundle, r Result, running bool) Result {",
+    "rule": "unchecked-error",
+    "source": "_ = os.RemoveAll(checked)",
+    "message": "_ = os.RemoveAll(checked)"
+  },
+  {
+    "file": "internal/logreader/follow.go",
+    "context": "func (f *Follower) consume(data []byte) (string, bool) {",
+    "rule": "unchecked-error",
+    "source": "out.WriteByte('\\n')",
+    "message": "out.WriteByte('\\n')"
+  },
+  {
+    "file": "internal/deploy/hardstop_windows.go",
+    "context": "func (g *NativeGame) HardStop(ctx context.Context, state State) error {",
+    "rule": "unchecked-error",
+    "source": "defer windows.CloseHandle(h)",
+    "message": "defer windows.CloseHandle(h)"
+  },
+  {
+    "file": "internal/deploy/game.go",
+    "context": "func (g *NativeGame) Healthy(ctx context.Context, t Target) (*DZSAReport, error) {",
+    "rule": "unchecked-error",
+    "source": "defer c.Close()",
+    "message": "defer c.Close()"
+  },
+  {
+    "file": "internal/deploy/game.go",
+    "context": "func (g *NativeGame) Launch(t Target) (int, string, error) {",
+    "rule": "unchecked-error",
+    "source": "_ = capture.Close()",
+    "message": "_ = capture.Close()"
+  },
+  {
+    "file": "internal/deploy/game.go",
+    "context": "func (g *NativeGame) Stop(ctx context.Context, s State) error {",
+    "rule": "unchecked-error",
+    "source": "_ = g.rcon(\"#shutdown\")",
+    "message": "_ = g.rcon(\"#shutdown\")"
+  },
+  {
+    "file": "internal/deploy/game.go",
+    "context": "func (g *NativeGame) rcon(command string) error {",
+    "rule": "unchecked-error",
+    "source": "defer c.Close()",
+    "message": "defer c.Close()"
+  },
+  {
+    "file": "internal/deploy/service_windows.go",
+    "context": "func (h *serviceHandler) Execute(_ []string, requests <-chan svc.ChangeRequest, status chan<- svc.Status) (bool, uint32) {",
+    "rule": "unchecked-error",
+    "source": "_ = AtomicWrite(filepath.Join(h.config.StateDir, \"logs\", \"agent-error.txt\"), []byte(err.Error()), 0600)",
+    "message": "_ = AtomicWrite(filepath.Join(h.config.StateDir, \"logs\", \"agent-error.txt\"), []byte(err.Error()), 0600)"
+  },
+  {
+    "file": "internal/deploy/service_windows.go",
+    "context": "func (h *serviceHandler) Execute(_ []string, requests <-chan svc.ChangeRequest, status chan<- svc.Status) (bool, uint32) {",
+    "rule": "unchecked-error",
+    "source": "_ = AtomicWrite(filepath.Join(h.config.StateDir, \"logs\", \"agent-error.txt\"), []byte(err.Error()), 0600)",
+    "message": "_ = AtomicWrite(filepath.Join(h.config.StateDir, \"logs\", \"agent-error.txt\"), []byte(err.Error()), 0600)"
+  },
+  {
+    "file": "internal/deploy/enrollment.go",
+    "context": "func (r *Remote) Authenticate(ctx context.Context, prompt func(AuthFrame) (string, error), progress io.Writer) error {",
+    "rule": "unchecked-error",
+    "source": "defer in.Close()",
+    "message": "defer in.Close()"
+  },
+  {
+    "file": "internal/deploy/enrollment.go",
+    "context": "func (r *Remote) Authenticate(ctx context.Context, prompt func(AuthFrame) (string, error), progress io.Writer) error {",
+    "rule": "unchecked-error",
+    "source": "defer s.Close()",
+    "message": "defer s.Close()"
+  },
+  {
+    "file": "internal/deploy/enrollment.go",
+    "context": "func (r *Remote) Authenticate(ctx context.Context, prompt func(AuthFrame) (string, error), progress io.Writer) error {",
+    "rule": "unchecked-error",
+    "source": "stop := context.AfterFunc(ctx, func() { s.Close() })",
+    "message": "stop := context.AfterFunc(ctx, func() { s.Close() })"
+  },
+  {
+    "file": "internal/deploy/transport.go",
+    "context": "func (r *Remote) Close() {",
+    "rule": "unchecked-error",
+    "source": "r.SFTP.Close()",
+    "message": "r.SFTP.Close()"
+  },
+  {
+    "file": "internal/deploy/transport.go",
+    "context": "func (r *Remote) Close() {",
+    "rule": "unchecked-error",
+    "source": "r.SSH.Close()",
+    "message": "r.SSH.Close()"
+  },
+  {
+    "file": "internal/deploy/transport.go",
+    "context": "func (r *Remote) Close() {",
+    "rule": "unchecked-error",
+    "source": "r.agent.Close()",
+    "message": "r.agent.Close()"
+  },
+  {
+    "file": "internal/deploy/backup_remote.go",
+    "context": "func (r *Remote) DownloadBackup(ctx context.Context, alias, id, destination string) (BackupReceipt, error) {",
+    "rule": "unchecked-error",
+    "source": "defer f.Close()",
+    "message": "defer f.Close()"
+  },
+  {
+    "file": "internal/deploy/backup_remote.go",
+    "context": "func (r *Remote) DownloadBackup(ctx context.Context, alias, id, destination string) (BackupReceipt, error) {",
+    "rule": "unchecked-error",
+    "source": "defer os.Remove(temp.Name())",
+    "message": "defer os.Remove(temp.Name())"
+  },
+  {
+    "file": "internal/deploy/backup_remote.go",
+    "context": "func (r *Remote) DownloadBackup(ctx context.Context, alias, id, destination string) (BackupReceipt, error) {",
+    "rule": "unchecked-error",
+    "source": "temp.Close()",
+    "message": "temp.Close()"
+  },
+  {
+    "file": "internal/deploy/backup_remote.go",
+    "context": "func (r *Remote) DownloadBackup(ctx context.Context, alias, id, destination string) (BackupReceipt, error) {",
+    "rule": "unchecked-error",
+    "source": "temp.Close()",
+    "message": "temp.Close()"
+  },
+  {
+    "file": "internal/deploy/backup_remote.go",
+    "context": "func (r *Remote) DownloadBackup(ctx context.Context, alias, id, destination string) (BackupReceipt, error) {",
+    "rule": "unchecked-error",
+    "source": "temp.Close()",
+    "message": "temp.Close()"
+  },
+  {
+    "file": "internal/deploy/enrollment.go",
+    "context": "func (r *Remote) Enroll(ctx context.Context, b *Bundle, progress io.Writer) error {",
+    "rule": "unchecked-error",
+    "source": "root, _ := WindowsPath(r.Endpoint.Host.StateDir)",
+    "message": "root, _ := WindowsPath(r.Endpoint.Host.StateDir)"
+  },
+  {
+    "file": "internal/deploy/inspection.go",
+    "context": "func (r *Remote) Health(ctx context.Context, alias string, since time.Time) HealthReport {",
+    "rule": "unchecked-error",
+    "source": "_ = r.ReadJSON(\"heartbeat.json\", &heartbeat)",
+    "message": "_ = r.ReadJSON(\"heartbeat.json\", &heartbeat)"
+  },
+  {
+    "file": "internal/deploy/inspection.go",
+    "context": "func (r *Remote) Health(ctx context.Context, alias string, since time.Time) HealthReport {",
+    "rule": "unchecked-error",
+    "source": "f.Close()",
+    "message": "f.Close()"
+  },
+  {
+    "file": "internal/deploy/inspection.go",
+    "context": "func (r *Remote) Health(ctx context.Context, alias string, since time.Time) HealthReport {",
+    "rule": "unchecked-error",
+    "source": "name, _ := configuredHostname(raw)",
+    "message": "name, _ := configuredHostname(raw)"
+  },
+  {
+    "file": "internal/deploy/inspection.go",
+    "context": "func (r *Remote) Health(ctx context.Context, alias string, since time.Time) HealthReport {",
+    "rule": "unchecked-error",
+    "source": "t, _ := TargetFor(alias)",
+    "message": "t, _ := TargetFor(alias)"
+  },
+  {
+    "file": "internal/deploy/history.go",
+    "context": "func (r *Remote) History(alias string, host HostConfig, since time.Time) HistoryReport {",
+    "rule": "unchecked-error",
+    "source": "f.Close()",
+    "message": "f.Close()"
+  },
+  {
+    "file": "internal/deploy/history.go",
+    "context": "func (r *Remote) History(alias string, host HostConfig, since time.Time) HistoryReport {",
+    "rule": "unchecked-error",
+    "source": "f.Close()",
+    "message": "f.Close()"
+  },
+  {
+    "file": "internal/deploy/transport.go",
+    "context": "func (r *Remote) Preview(b *Bundle, restart bool) (Preview, error) {",
+    "rule": "unchecked-error",
+    "source": "fRemote.Close()",
+    "message": "fRemote.Close()"
+  },
+  {
+    "file": "internal/deploy/maintenance.go",
+    "context": "func (r *Remote) PreviewMaintenance(ctx context.Context, alias string) (map[string]any, error) {",
+    "rule": "unchecked-error",
+    "source": "target, _ := TargetFor(alias)",
+    "message": "target, _ := TargetFor(alias)"
+  },
+  {
+    "file": "internal/deploy/transport.go",
+    "context": "func (r *Remote) ReadJSON(rel string, v any) error {",
+    "rule": "unchecked-error",
+    "source": "defer f.Close()",
+    "message": "defer f.Close()"
+  },
+  {
+    "file": "internal/deploy/logs.go",
+    "context": "func (r *Remote) ReadLog(source LogSource, lines int, completeOnly bool) (LogExcerpt, error) {",
+    "rule": "unchecked-error",
+    "source": "defer f.Close()",
+    "message": "defer f.Close()"
+  },
+  {
+    "file": "internal/deploy/backup_remote.go",
+    "context": "func (r *Remote) VerifyBackup(ctx context.Context, alias, id string) (BackupReceipt, error) {",
+    "rule": "unchecked-error",
+    "source": "defer f.Close()",
+    "message": "defer f.Close()"
+  },
+  {
+    "file": "internal/deploy/backup_remote.go",
+    "context": "func (r *Remote) VerifyBackup(ctx context.Context, alias, id string) (BackupReceipt, error) {",
+    "rule": "unchecked-error",
+    "source": "target, _ := TargetFor(alias)",
+    "message": "target, _ := TargetFor(alias)"
+  },
+  {
+    "file": "internal/deploy/dzsa.go",
+    "context": "func (r *Remote) checkDZSA(ctx context.Context, alias string, client *http.Client, baseURL string) (*DZSAReport, error) {",
+    "rule": "unchecked-error",
+    "source": "defer file.Close()",
+    "message": "defer file.Close()"
+  },
+  {
+    "file": "internal/deploy/diagnostics.go",
+    "context": "func (r *Remote) collectDiagnostics(ctx context.Context, alias string, since time.Time, directory string) (Diagnostics, error) {",
+    "rule": "unchecked-error",
+    "source": "defer os.Remove(f.Name())",
+    "message": "defer os.Remove(f.Name())"
+  },
+  {
+    "file": "internal/deploy/diagnostics.go",
+    "context": "func (r *Remote) collectDiagnostics(ctx context.Context, alias string, since time.Time, directory string) (Diagnostics, error) {",
+    "rule": "unchecked-error",
+    "source": "f.Close()",
+    "message": "f.Close()"
+  },
+  {
+    "file": "internal/deploy/enrollment.go",
+    "context": "func (r *Remote) exec(ctx context.Context, command string, in io.Reader, out, stderr io.Writer) error {",
+    "rule": "unchecked-error",
+    "source": "defer s.Close()",
+    "message": "defer s.Close()"
+  },
+  {
+    "file": "internal/deploy/enrollment.go",
+    "context": "func (r *Remote) exec(ctx context.Context, command string, in io.Reader, out, stderr io.Writer) error {",
+    "rule": "unchecked-error",
+    "source": "stop := context.AfterFunc(ctx, func() { s.Close() })",
+    "message": "stop := context.AfterFunc(ctx, func() { s.Close() })"
+  },
+  {
+    "file": "internal/deploy/logs.go",
+    "context": "func (r *Remote) followLog(source LogSource, cursor *logreader.Follower, lines int) (logreader.FollowExcerpt, error) {",
+    "rule": "unchecked-error",
+    "source": "defer f.Close()",
+    "message": "defer f.Close()"
+  },
+  {
+    "file": "internal/deploy/inspection.go",
+    "context": "func (r *Remote) observe(ctx context.Context, c HostConfig, t Target) (*hostinspect.Snapshot, error) {",
+    "rule": "unchecked-error",
+    "source": "defer session.Close()",
+    "message": "defer session.Close()"
+  },
+  {
+    "file": "internal/deploy/inspection.go",
+    "context": "func (r *Remote) observe(ctx context.Context, c HostConfig, t Target) (*hostinspect.Snapshot, error) {",
+    "rule": "unchecked-error",
+    "source": "stop := context.AfterFunc(ctx, func() { session.Close() })",
+    "message": "stop := context.AfterFunc(ctx, func() { session.Close() })"
+  },
+  {
+    "file": "internal/deploy/transport.go",
+    "context": "func (r *Remote) put(rel string, raw []byte, verify bool) error {",
+    "rule": "unchecked-error",
+    "source": "defer r.SFTP.Remove(tmp)",
+    "message": "defer r.SFTP.Remove(tmp)"
+  },
+  {
+    "file": "internal/deploy/transport.go",
+    "context": "func (r *Remote) put(rel string, raw []byte, verify bool) error {",
+    "rule": "unchecked-error",
+    "source": "f.Close()",
+    "message": "f.Close()"
+  },
+  {
+    "file": "internal/logreader/record.go",
+    "context": "func (r *redactor) prepareMessages(text string) {",
+    "rule": "unchecked-error",
+    "source": "messages.WriteByte('\\n')",
+    "message": "messages.WriteByte('\\n')"
+  },
+  {
+    "file": "internal/deploy/store.go",
+    "context": "func (s *Store) Apply(b *Bundle, operation string) (changed, deleted []string, err error) {",
+    "rule": "unchecked-error",
+    "source": "_ = os.Remove(filepath.Join(s.Config.StateDir, \"journal.json\"))",
+    "message": "_ = os.Remove(filepath.Join(s.Config.StateDir, \"journal.json\"))"
+  },
+  {
+    "file": "internal/deploy/snapshots.go",
+    "context": "func (s *Store) createSnapshot(ctx context.Context, id string, safety bool, provenance *DZSAReport) (BackupReceipt, error) {",
+    "rule": "unchecked-error",
+    "source": "metadata, _ := receiptPath(s.Config, id, safety)",
+    "message": "metadata, _ := receiptPath(s.Config, id, safety)"
+  },
+  {
+    "file": "internal/deploy/store.go",
+    "context": "func (s *Store) restore(j Journal) error {",
+    "rule": "unchecked-error",
+    "source": "backup, _ := SafeJoin(s.Config.StateDir, \"backups/\"+j.Operation+\"/\"+pre.Destination)",
+    "message": "backup, _ := SafeJoin(s.Config.StateDir, \"backups/\"+j.Operation+\"/\"+pre.Destination)"
+  },
+  {
+    "file": "internal/deploy/store.go",
+    "context": "func (s *Store) restore(j Journal) error {",
+    "rule": "unchecked-error",
+    "source": "canonical, _ := TargetFor(s.Config.Target)",
+    "message": "canonical, _ := TargetFor(s.Config.Target)"
+  },
+  {
+    "file": "internal/deploy/store.go",
+    "context": "func (s *Store) restore(j Journal) error {",
+    "rule": "unchecked-error",
+    "source": "p, _ := SafeJoin(s.Config.InstallDir, pre.Destination)",
+    "message": "p, _ := SafeJoin(s.Config.InstallDir, pre.Destination)"
+  },
+  {
+    "file": "internal/deploy/snapshots.go",
+    "context": "func (s *Store) verifiedSnapshot(ctx context.Context, id string, safety bool) (BackupReceipt, string, error) {",
+    "rule": "unchecked-error",
+    "source": "target, _ := TargetFor(s.Config.Target)",
+    "message": "target, _ := TargetFor(s.Config.Target)"
+  },
+  {
+    "file": "internal/deploy/model.go",
+    "context": "func AtomicWrite(p string, b []byte, mode os.FileMode) error {",
+    "rule": "unchecked-error",
+    "source": "defer os.Remove(tmp)",
+    "message": "defer os.Remove(tmp)"
+  },
+  {
+    "file": "internal/deploy/service_windows.go",
+    "context": "func Bootstrap(ctx context.Context, opt BootstrapOptions) (result map[string]string, resultErr error) {",
+    "rule": "unchecked-error",
+    "source": "_ = service.Delete()",
+    "message": "_ = service.Delete()"
+  },
+  {
+    "file": "internal/deploy/service_windows.go",
+    "context": "func Bootstrap(ctx context.Context, opt BootstrapOptions) (result map[string]string, resultErr error) {",
+    "rule": "unchecked-error",
+    "source": "defer existing.Close()",
+    "message": "defer existing.Close()"
+  },
+  {
+    "file": "internal/deploy/service_windows.go",
+    "context": "func Bootstrap(ctx context.Context, opt BootstrapOptions) (result map[string]string, resultErr error) {",
+    "rule": "unchecked-error",
+    "source": "defer service.Close()",
+    "message": "defer service.Close()"
+  },
+  {
+    "file": "internal/deploy/service_windows.go",
+    "context": "func Bootstrap(ctx context.Context, opt BootstrapOptions) (result map[string]string, resultErr error) {",
+    "rule": "unchecked-error",
+    "source": "defer serviceManager.Disconnect()",
+    "message": "defer serviceManager.Disconnect()"
+  },
+  {
+    "file": "internal/deploy/service_windows.go",
+    "context": "func Bootstrap(ctx context.Context, opt BootstrapOptions) (result map[string]string, resultErr error) {",
+    "rule": "unchecked-error",
+    "source": "destAbs, _ := filepath.Abs(dest)",
+    "message": "destAbs, _ := filepath.Abs(dest)"
+  },
+  {
+    "file": "internal/deploy/service_windows.go",
+    "context": "func Bootstrap(ctx context.Context, opt BootstrapOptions) (result map[string]string, resultErr error) {",
+    "rule": "unchecked-error",
+    "source": "selfAbs, _ := filepath.Abs(self)",
+    "message": "selfAbs, _ := filepath.Abs(self)"
+  },
+  {
+    "file": "internal/logreader/compressed.go",
+    "context": "func CompressedTail(input io.Reader, lines int) (Excerpt, error) {",
+    "rule": "unchecked-error",
+    "source": "defer gz.Close()",
+    "message": "defer gz.Close()"
+  },
+  {
+    "file": "internal/snapshot/archive.go",
+    "context": "func Create(ctx context.Context, root, destination string, manifest Manifest, roots []string, rules Rules) (Manifest, error) {",
+    "rule": "unchecked-error",
+    "source": "defer os.Remove(f.Name())",
+    "message": "defer os.Remove(f.Name())"
+  },
+  {
+    "file": "internal/snapshot/archive.go",
+    "context": "func Create(ctx context.Context, root, destination string, manifest Manifest, roots []string, rules Rules) (Manifest, error) {",
+    "rule": "unchecked-error",
+    "source": "input.Close()",
+    "message": "input.Close()"
+  },
+  {
+    "file": "internal/deploy/transport_test.go",
+    "context": "func FuzzDecode(f *testing.F) {",
+    "rule": "unchecked-error",
+    "source": "_, _ = Decode(data, \"nasdara-staging\")",
+    "message": "_, _ = Decode(data, \"nasdara-staging\")"
+  },
+  {
+    "file": "internal/snapshot/archive.go",
+    "context": "func Hash(ctx context.Context, file string) (string, error) {",
+    "rule": "unchecked-error",
+    "source": "defer f.Close()",
+    "message": "defer f.Close()"
+  },
+  {
+    "file": "internal/deploycli/command.go",
+    "context": "func Main(args []string) int {",
+    "rule": "unchecked-error",
+    "source": "_ = json.NewEncoder(os.Stdout).Encode(map[string]string{\"error\": err.Error()})",
+    "message": "_ = json.NewEncoder(os.Stdout).Encode(map[string]string{\"error\": err.Error()})"
+  },
+  {
+    "file": "internal/deploycli/command.go",
+    "context": "func Main(args []string) int {",
+    "rule": "unchecked-error",
+    "source": "fmt.Fprintln(os.Stderr, \"dzdeploy:\", err)",
+    "message": "fmt.Fprintln(os.Stderr, \"dzdeploy:\", err)"
+  },
+  {
+    "file": "internal/deploy/auth.go",
+    "context": "func ReadInput(message string) (string, error) {",
+    "rule": "unchecked-error",
+    "source": "fmt.Fprint(os.Stderr, message)",
+    "message": "fmt.Fprint(os.Stderr, message)"
+  },
+  {
+    "file": "internal/deploy/auth.go",
+    "context": "func ReadSecret(message string) (string, error) {",
+    "rule": "unchecked-error",
+    "source": "fmt.Fprint(os.Stderr, message)",
+    "message": "fmt.Fprint(os.Stderr, message)"
+  },
+  {
+    "file": "internal/deploy/auth.go",
+    "context": "func ReadSecret(message string) (string, error) {",
+    "rule": "unchecked-error",
+    "source": "fmt.Fprintln(os.Stderr)",
+    "message": "fmt.Fprintln(os.Stderr)"
+  },
+  {
+    "file": "internal/deploy/engine.go",
+    "context": "func RunAgent(ctx context.Context, c HostConfig, game Game) (resultErr error) {",
+    "rule": "unchecked-error",
+    "source": "_ = WriteJSON(filepath.Join(c.StateDir, \"heartbeat.json\"), Heartbeat{Version: Protocol, Updated: time.Now().UTC(), Capabilities: []string{\"history.v1\", HardStopCapability, BackupCapability}})",
+    "message": "_ = WriteJSON(filepath.Join(c.StateDir, \"heartbeat.json\"), Heartbeat{Version: Protocol, Updated: time.Now().UTC(), Capabilities: []string{\"history.v1\", HardStopCapability, BackupCapability}})"
+  },
+  {
+    "file": "internal/deploy/engine.go",
+    "context": "func RunAgent(ctx context.Context, c HostConfig, game Game) (resultErr error) {",
+    "rule": "unchecked-error",
+    "source": "_ = a.progress(&r, \"complete\")",
+    "message": "_ = a.progress(&r, \"complete\")"
+  },
+  {
+    "file": "internal/deploy/engine.go",
+    "context": "func RunAgent(ctx context.Context, c HostConfig, game Game) (resultErr error) {",
+    "rule": "unchecked-error",
+    "source": "_ = a.progress(&r, \"failed\")",
+    "message": "_ = a.progress(&r, \"failed\")"
+  },
+  {
+    "file": "internal/deploy/engine.go",
+    "context": "func RunAgent(ctx context.Context, c HostConfig, game Game) (resultErr error) {",
+    "rule": "unchecked-error",
+    "source": "_ = store.Retain()",
+    "message": "_ = store.Retain()"
+  },
+  {
+    "file": "internal/deploy/engine.go",
+    "context": "func RunAgent(ctx context.Context, c HostConfig, game Game) (resultErr error) {",
+    "rule": "unchecked-error",
+    "source": "_ = store.Save()",
+    "message": "_ = store.Save()"
+  },
+  {
+    "file": "internal/deploy/engine.go",
+    "context": "func RunAgent(ctx context.Context, c HostConfig, game Game) (resultErr error) {",
+    "rule": "unchecked-error",
+    "source": "_ = store.Save()",
+    "message": "_ = store.Save()"
+  },
+  {
+    "file": "internal/deploy/enroll_windows.go",
+    "context": "func RunEnrollment(ctx context.Context, requestFile string, output io.Writer) (resultErr error) {",
+    "rule": "unchecked-error",
+    "source": "_, query, _ := net.SplitHostPort(c.QueryAddress)",
+    "message": "_, query, _ := net.SplitHostPort(c.QueryAddress)"
+  },
+  {
+    "file": "internal/deploy/enroll_windows.go",
+    "context": "func RunEnrollment(ctx context.Context, requestFile string, output io.Writer) (resultErr error) {",
+    "rule": "unchecked-error",
+    "source": "canonical, _ := TargetFor(c.Target)",
+    "message": "canonical, _ := TargetFor(c.Target)"
+  },
+  {
+    "file": "internal/deploy/enroll_windows.go",
+    "context": "func RunEnrollment(ctx context.Context, requestFile string, output io.Writer) (resultErr error) {",
+    "rule": "unchecked-error",
+    "source": "fmt.Fprintf(output, \"Enrollment %s for %s: %s\\n\", journal.ID, c.Target, journal.Phase)",
+    "message": "fmt.Fprintf(output, \"Enrollment %s for %s: %s\\n\", journal.ID, c.Target, journal.Phase)"
+  },
+  {
+    "file": "internal/deploy/enroll_windows.go",
+    "context": "func RunEnrollment(ctx context.Context, requestFile string, output io.Writer) (resultErr error) {",
+    "rule": "unchecked-error",
+    "source": "fmt.Fprintln(output, \"Installing the per-instance Windows service...\")",
+    "message": "fmt.Fprintln(output, \"Installing the per-instance Windows service...\")"
+  },
+  {
+    "file": "internal/deploy/enroll_windows.go",
+    "context": "func RunEnrollment(ctx context.Context, requestFile string, output io.Writer) (resultErr error) {",
+    "rule": "unchecked-error",
+    "source": "fmt.Fprintln(output, \"Installing verified SteamCMD and Microsoft runtime prerequisites...\")",
+    "message": "fmt.Fprintln(output, \"Installing verified SteamCMD and Microsoft runtime prerequisites...\")"
+  },
+  {
+    "file": "internal/deploy/enroll_windows.go",
+    "context": "func RunEnrollment(ctx context.Context, requestFile string, output io.Writer) (resultErr error) {",
+    "rule": "unchecked-error",
+    "source": "fmt.Fprintln(output, \"Service enrolled; Steam authentication and installation continue through dzdeploy.\")",
+    "message": "fmt.Fprintln(output, \"Service enrolled; Steam authentication and installation continue through dzdeploy.\")"
+  },
+  {
+    "file": "internal/deploy/enroll_windows.go",
+    "context": "func RunEnrollment(ctx context.Context, requestFile string, output io.Writer) (resultErr error) {",
+    "rule": "unchecked-error",
+    "source": "port, _ := strconv.Atoi(query)",
+    "message": "port, _ := strconv.Atoi(query)"
+  },
+  {
+    "file": "internal/deploy/recovery_test.go",
+    "context": "func TestAgentProcessesQueueAndResumesAfterServiceRestart(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "<-done",
+    "message": "<-done"
+  },
+  {
+    "file": "internal/deploy/inspection_test.go",
+    "context": "func TestAssessActualIdentityAndReadiness(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "target, _ := TargetFor(\"nasdara-staging\")",
+    "message": "target, _ := TargetFor(\"nasdara-staging\")"
+  },
+  {
+    "file": "internal/deploy/agent_windows_test.go",
+    "context": "func TestAtomicReplaceRetriesTransientWindowsReader(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "windows.CloseHandle(handle)",
+    "message": "windows.CloseHandle(handle)"
+  },
+  {
+    "file": "internal/deploy/enrollment_test.go",
+    "context": "func TestAutomaticFirstUseTrust(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "if got, _ := os.ReadFile(e.KnownHosts); !bytes.Equal(got, changed) {",
+    "message": "if got, _ := os.ReadFile(e.KnownHosts); !bytes.Equal(got, changed) {"
+  },
+  {
+    "file": "internal/deploy/git_test.go",
+    "context": "func TestBuildUsesCommittedBytesAndExcludesRuntimeData(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "target, _ := TargetFor(\"nasdara-staging\")",
+    "message": "target, _ := TargetFor(\"nasdara-staging\")"
+  },
+  {
+    "file": "internal/deploy/processlog_test.go",
+    "context": "func TestCaptureConcurrentStreams(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "_ = c.Close()",
+    "message": "_ = c.Close()"
+  },
+  {
+    "file": "internal/deploy/processlog_test.go",
+    "context": "func TestCaptureConcurrentStreams(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "fmt.Fprintf(s, \"line %d\\n\", i)",
+    "message": "fmt.Fprintf(s, \"line %d\\n\", i)"
+  },
+  {
+    "file": "internal/deploy/processlog_test.go",
+    "context": "func TestCaptureFramesAndFlushes(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "_, _ = c.stderr.Write([]byte(\"<warning>\\nerror tail\"))",
+    "message": "_, _ = c.stderr.Write([]byte(\"<warning>\\nerror tail\"))"
+  },
+  {
+    "file": "internal/deploy/processlog_test.go",
+    "context": "func TestCaptureFramesAndFlushes(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "_, _ = c.stdout.Write([]byte(chunk))",
+    "message": "_, _ = c.stdout.Write([]byte(chunk))"
+  },
+  {
+    "file": "internal/deploy/processlog_test.go",
+    "context": "func TestCaptureHelper(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "_ = c.Close()",
+    "message": "_ = c.Close()"
+  },
+  {
+    "file": "internal/deploy/processlog_test.go",
+    "context": "func TestCaptureHelper(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "_, _ = io.Copy(io.Discard, os.Stdin)",
+    "message": "_, _ = io.Copy(io.Discard, os.Stdin)"
+  },
+  {
+    "file": "internal/deploy/processlog_test.go",
+    "context": "func TestCaptureHelper(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "fmt.Fprint(os.Stderr, \"error\\nfinal stderr\")",
+    "message": "fmt.Fprint(os.Stderr, \"error\\nfinal stderr\")"
+  },
+  {
+    "file": "internal/deploy/processlog_test.go",
+    "context": "func TestCaptureHelper(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "fmt.Fprint(os.Stdout, \"ordinary\\nfinal stdout\")",
+    "message": "fmt.Fprint(os.Stdout, \"ordinary\\nfinal stdout\")"
+  },
+  {
+    "file": "internal/deploy/processlog_test.go",
+    "context": "func TestCaptureHelper(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "fmt.Fprintln(os.Stderr, err)",
+    "message": "fmt.Fprintln(os.Stderr, err)"
+  },
+  {
+    "file": "internal/deploy/processlog_test.go",
+    "context": "func TestCaptureHelper(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "fmt.Fprintln(os.Stderr, strings.Repeat(\"b\", 4096))",
+    "message": "fmt.Fprintln(os.Stderr, strings.Repeat(\"b\", 4096))"
+  },
+  {
+    "file": "internal/deploy/processlog_test.go",
+    "context": "func TestCaptureHelper(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "fmt.Fprintln(os.Stdout, \"locked\")",
+    "message": "fmt.Fprintln(os.Stdout, \"locked\")"
+  },
+  {
+    "file": "internal/deploy/processlog_test.go",
+    "context": "func TestCaptureHelper(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "fmt.Fprintln(os.Stdout, strings.Repeat(\"a\", 4096))",
+    "message": "fmt.Fprintln(os.Stdout, strings.Repeat(\"a\", 4096))"
+  },
+  {
+    "file": "internal/deploy/processlog_test.go",
+    "context": "func TestCaptureOversizePreservesTextAndUTF8(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "_, _ = c.stdout.Write([]byte(input[:n]))",
+    "message": "_, _ = c.stdout.Write([]byte(input[:n]))"
+  },
+  {
+    "file": "internal/deploy/processlog_test.go",
+    "context": "func TestClosedLogSessionCannotReopenWriter(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "_, _ = c.stdout.Write([]byte(\"late output\\n\"))",
+    "message": "_, _ = c.stdout.Write([]byte(\"late output\\n\"))"
+  },
+  {
+    "file": "internal/deploy/backups_test.go",
+    "context": "func TestCorruptBackupNeverStopsGame(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "archive, _ := snapshotPath(a.Store.Config, created.Backup.ID, false)",
+    "message": "archive, _ := snapshotPath(a.Store.Config, created.Backup.ID, false)"
+  },
+  {
+    "file": "internal/deploy/identity_test.go",
+    "context": "func TestDZSAAcceptsTruncatedHostname(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "fmt.Fprint(w, dzsaJSON(t, found))",
+    "message": "fmt.Fprint(w, dzsaJSON(t, found))"
+  },
+  {
+    "file": "internal/deploy/dzsa_test.go",
+    "context": "func TestDZSAFindsServerAndReturnsVerifiedMods(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "fmt.Fprint(w, dzsaJSON(t, found))",
+    "message": "fmt.Fprint(w, dzsaJSON(t, found))"
+  },
+  {
+    "file": "internal/deploy/dzsa_test.go",
+    "context": "func TestDZSARejectsFailedAndMalformedResponses(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) { w.WriteHeader(tc.code); fmt.Fprint(w, tc.body) }))",
+    "message": "server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) { w.WriteHeader(tc.code); fmt.Fprint(w, tc.body) }))"
+  },
+  {
+    "file": "internal/deploy/dzsa_test.go",
+    "context": "func TestDZSARejectsWrongServerAndModSet(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) { fmt.Fprint(w, body) }))",
+    "message": "server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) { fmt.Fprint(w, body) }))"
+  },
+  {
+    "file": "internal/deploy/logs_test.go",
+    "context": "func TestDiagnosticBundleContainsOnlyRedactedEvidence(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "defer archive.Close()",
+    "message": "defer archive.Close()"
+  },
+  {
+    "file": "internal/deploy/logs_test.go",
+    "context": "func TestDiagnosticBundleContainsOnlyRedactedEvidence(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "f.Close()",
+    "message": "f.Close()"
+  },
+  {
+    "file": "internal/deploy/logs_test.go",
+    "context": "func TestDiagnosticSourcesRecognizeArchivesAndReadGzip(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "_ = gz.Close()",
+    "message": "_ = gz.Close()"
+  },
+  {
+    "file": "internal/deploy/logs_test.go",
+    "context": "func TestDiagnosticSourcesRecognizeArchivesAndReadGzip(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "_, _ = gz.Write([]byte(\"password=archive-sensitive\\narchived safe line\\n\"))",
+    "message": "_, _ = gz.Write([]byte(\"password=archive-sensitive\\narchived safe line\\n\"))"
+  },
+  {
+    "file": "internal/deploy/store_test.go",
+    "context": "func TestFailedRecoveryRetainsJournal(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "_ = WriteJSON(filepath.Join(s.Config.StateDir, \"journal.json\"), j)",
+    "message": "_ = WriteJSON(filepath.Join(s.Config.StateDir, \"journal.json\"), j)"
+  },
+  {
+    "file": "internal/deploy/logs_test.go",
+    "context": "func TestFollowAppendsOnceRotatesAndCancels(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "_, _ = f.WriteString(\"password=hidden\\nappended line\\n\")",
+    "message": "_, _ = f.WriteString(\"password=hidden\\nappended line\\n\")"
+  },
+  {
+    "file": "internal/deploy/logs_test.go",
+    "context": "func TestFollowAppendsOnceRotatesAndCancels(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "f.Close()",
+    "message": "f.Close()"
+  },
+  {
+    "file": "internal/lifecycle/events_test.go",
+    "context": "func TestImmutableEventFiles(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "f.Close()",
+    "message": "f.Close()"
+  },
+  {
+    "file": "internal/deploy/processlog_test.go",
+    "context": "func TestIndependentRotationCleanupAndCompression(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "_, _ = c.stdout.Write([]byte(message))",
+    "message": "_, _ = c.stdout.Write([]byte(message))"
+  },
+  {
+    "file": "internal/deploy/processlog_test.go",
+    "context": "func TestIndependentRotationCleanupAndCompression(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "_, _ = u.stdout.Write([]byte(message))",
+    "message": "_, _ = u.stdout.Write([]byte(message))"
+  },
+  {
+    "file": "internal/deploy/processlog_test.go",
+    "context": "func TestIndependentRotationCleanupAndCompression(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "backups, _ := filepath.Glob(filepath.Join(cfg.StateDir, \"logs\", \"server-console-*.log*\"))",
+    "message": "backups, _ := filepath.Glob(filepath.Join(cfg.StateDir, \"logs\", \"server-console-*.log*\"))"
+  },
+  {
+    "file": "internal/deploy/processlog_test.go",
+    "context": "func TestIndependentRotationCleanupAndCompression(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "if backups, _ := filepath.Glob(filepath.Join(cfg.StateDir, \"logs\", \"updates-*.log*\")); len(backups) != 0 {",
+    "message": "if backups, _ := filepath.Glob(filepath.Join(cfg.StateDir, \"logs\", \"updates-*.log*\")); len(backups) != 0 {"
+  },
+  {
+    "file": "internal/deploy/backups_test.go",
+    "context": "func TestInterruptedRestoreRecoveryAndCorruptSafetyRefusal(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "safety, _ := snapshotPath(a.Store.Config, req.ID, true)",
+    "message": "safety, _ := snapshotPath(a.Store.Config, req.ID, true)"
+  },
+  {
+    "file": "internal/deploy/processlog_test.go",
+    "context": "func TestLogConfigurationCompatibility(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "_ = json.Unmarshal(raw, &fields)",
+    "message": "_ = json.Unmarshal(raw, &fields)"
+  },
+  {
+    "file": "internal/deploy/processlog_test.go",
+    "context": "func TestLogConfigurationCompatibility(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "_ = old.Validate()",
+    "message": "_ = old.Validate()"
+  },
+  {
+    "file": "internal/deploy/processlog_test.go",
+    "context": "func TestLogConfigurationCompatibility(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "raw, _ := json.Marshal(old)",
+    "message": "raw, _ := json.Marshal(old)"
+  },
+  {
+    "file": "internal/deploy/processlog_test.go",
+    "context": "func TestLogConfigurationCompatibility(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "raw, _ = json.Marshal(fields)",
+    "message": "raw, _ = json.Marshal(fields)"
+  },
+  {
+    "file": "internal/deploy/processlog_test.go",
+    "context": "func TestLogLeaseAcrossProcesses(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "defer func() { stdin.Close(); _ = cmd.Process.Kill(); _ = cmd.Wait() }()",
+    "message": "defer func() { stdin.Close(); _ = cmd.Process.Kill(); _ = cmd.Wait() }()"
+  },
+  {
+    "file": "internal/deploy/processlog_test.go",
+    "context": "func TestLogLeaseAcrossProcesses(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "defer func() { stdin.Close(); _ = cmd.Process.Kill(); _ = cmd.Wait() }()",
+    "message": "defer func() { stdin.Close(); _ = cmd.Process.Kill(); _ = cmd.Wait() }()"
+  },
+  {
+    "file": "internal/deploy/processlog_test.go",
+    "context": "func TestLogLeaseAcrossProcesses(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "defer func() { stdin.Close(); _ = cmd.Process.Kill(); _ = cmd.Wait() }()",
+    "message": "defer func() { stdin.Close(); _ = cmd.Process.Kill(); _ = cmd.Wait() }()"
+  },
+  {
+    "file": "internal/deploy/processlog_test.go",
+    "context": "func TestLogLeaseAcrossProcesses(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "last.Close()",
+    "message": "last.Close()"
+  },
+  {
+    "file": "internal/deploy/processlog_test.go",
+    "context": "func TestLogLeaseAcrossProcesses(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "other.Close()",
+    "message": "other.Close()"
+  },
+  {
+    "file": "internal/deploy/processlog_test.go",
+    "context": "func TestLogLeaseAcrossProcesses(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "stdin.Close()",
+    "message": "stdin.Close()"
+  },
+  {
+    "file": "internal/deploy/processlog_windows_test.go",
+    "context": "func TestLogLeaseAllowsProvisioningACLReset(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "defer logs.Close()",
+    "message": "defer logs.Close()"
+  },
+  {
+    "file": "internal/deploy/processlog_windows_test.go",
+    "context": "func TestLogLeaseAllowsProvisioningACLReset(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "defer token.Close()",
+    "message": "defer token.Close()"
+  },
+  {
+    "file": "internal/deploy/processlog_test.go",
+    "context": "func TestLogLeaseExcludesOtherCaptures(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "first.Close()",
+    "message": "first.Close()"
+  },
+  {
+    "file": "internal/deploy/processlog_test.go",
+    "context": "func TestLogLeaseExcludesOtherCaptures(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "last.Close()",
+    "message": "last.Close()"
+  },
+  {
+    "file": "internal/deploy/processlog_test.go",
+    "context": "func TestLogLeaseExcludesOtherCaptures(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "other.Close()",
+    "message": "other.Close()"
+  },
+  {
+    "file": "internal/deploy/processlog_test.go",
+    "context": "func TestLogLeaseExcludesOtherCaptures(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "second.Close()",
+    "message": "second.Close()"
+  },
+  {
+    "file": "internal/deploy/validation_test.go",
+    "context": "func TestMain(m *testing.M) {",
+    "rule": "unchecked-error",
+    "source": "fmt.Fprint(os.Stdout, \"Enter the Steam Guard code from your email: \")",
+    "message": "fmt.Fprint(os.Stdout, \"Enter the Steam Guard code from your email: \")"
+  },
+  {
+    "file": "internal/deploy/validation_test.go",
+    "context": "func TestMain(m *testing.M) {",
+    "rule": "unchecked-error",
+    "source": "fmt.Fprint(os.Stdout, \"Please enter your pass\")",
+    "message": "fmt.Fprint(os.Stdout, \"Please enter your pass\")"
+  },
+  {
+    "file": "internal/deploy/validation_test.go",
+    "context": "func TestMain(m *testing.M) {",
+    "rule": "unchecked-error",
+    "source": "fmt.Fprint(os.Stdout, \"word: \")",
+    "message": "fmt.Fprint(os.Stdout, \"word: \")"
+  },
+  {
+    "file": "internal/deploy/validation_test.go",
+    "context": "func TestMain(m *testing.M) {",
+    "rule": "unchecked-error",
+    "source": "fmt.Fprintln(os.Stdout, \"Logged in OK\")",
+    "message": "fmt.Fprintln(os.Stdout, \"Logged in OK\")"
+  },
+  {
+    "file": "internal/deploy/validation_test.go",
+    "context": "func TestMain(m *testing.M) {",
+    "rule": "unchecked-error",
+    "source": "fmt.Fprintln(os.Stdout, \"echoed private-password\")",
+    "message": "fmt.Fprintln(os.Stdout, \"echoed private-password\")"
+  },
+  {
+    "file": "internal/deploy/validation_test.go",
+    "context": "func TestMain(m *testing.M) {",
+    "rule": "unchecked-error",
+    "source": "fmt.Print(strings.Join(os.Args[1:], \"|\"))",
+    "message": "fmt.Print(strings.Join(os.Args[1:], \"|\"))"
+  },
+  {
+    "file": "internal/deploy/validation_test.go",
+    "context": "func TestMain(m *testing.M) {",
+    "rule": "unchecked-error",
+    "source": "fmt.Println(\"Usage:\\n  dzcli [command]\")",
+    "message": "fmt.Println(\"Usage:\\n  dzcli [command]\")"
+  },
+  {
+    "file": "internal/deploy/validation_test.go",
+    "context": "func TestMain(m *testing.M) {",
+    "rule": "unchecked-error",
+    "source": "fmt.Println(\"error: invalid configuration\")",
+    "message": "fmt.Println(\"error: invalid configuration\")"
+  },
+  {
+    "file": "internal/deploy/validation_test.go",
+    "context": "func TestMain(m *testing.M) {",
+    "rule": "unchecked-error",
+    "source": "fmt.Println(\"warning: known condition\")",
+    "message": "fmt.Println(\"warning: known condition\")"
+  },
+  {
+    "file": "internal/deploy/recovery_test.go",
+    "context": "func TestModSyncPreservesUnchangedAndRemovesOnlyModExtras(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "after, _ := os.Stat(filepath.Join(dest, \"addons\", \"data.pbo\"))",
+    "message": "after, _ := os.Stat(filepath.Join(dest, \"addons\", \"data.pbo\"))"
+  },
+  {
+    "file": "internal/deploy/processlog_test.go",
+    "context": "func TestNativeGameLaunchDrainsFinalOutput(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "target, _ := TargetFor(cfg.Target)",
+    "message": "target, _ := TargetFor(cfg.Target)"
+  },
+  {
+    "file": "internal/deploy/hardstop_windows_test.go",
+    "context": "func TestNativeHardStopExactIdentity(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "_ = other.Process.Kill()",
+    "message": "_ = other.Process.Kill()"
+  },
+  {
+    "file": "internal/deploy/hardstop_windows_test.go",
+    "context": "func TestNativeHardStopExactIdentity(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "_ = other.Process.Kill()",
+    "message": "_ = other.Process.Kill()"
+  },
+  {
+    "file": "internal/deploy/hardstop_windows_test.go",
+    "context": "func TestNativeHardStopExactIdentity(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "_ = other.Wait()",
+    "message": "_ = other.Wait()"
+  },
+  {
+    "file": "internal/deploy/hardstop_windows_test.go",
+    "context": "func TestNativeHardStopExactIdentity(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "_ = other.Wait()",
+    "message": "_ = other.Wait()"
+  },
+  {
+    "file": "internal/deploy/hardstop_windows_test.go",
+    "context": "func TestNativeHardStopExactIdentity(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "defer func() { _ = child.Process.Kill(); _ = child.Wait() }()",
+    "message": "defer func() { _ = child.Process.Kill(); _ = child.Wait() }()"
+  },
+  {
+    "file": "internal/deploy/hardstop_windows_test.go",
+    "context": "func TestNativeHardStopExactIdentity(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "defer func() { _ = child.Process.Kill(); _ = child.Wait() }()",
+    "message": "defer func() { _ = child.Process.Kill(); _ = child.Wait() }()"
+  },
+  {
+    "file": "internal/deploy/identity_test.go",
+    "context": "func TestNativeStartupAcceptsTruncatedDeerIsleHostname(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "_, _ = conn.WriteTo(packet, peer)",
+    "message": "_, _ = conn.WriteTo(packet, peer)"
+  },
+  {
+    "file": "internal/deploy/identity_test.go",
+    "context": "func TestNativeStartupAcceptsTruncatedDeerIsleHostname(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "t.Cleanup(func() { conn.Close(); <-done })",
+    "message": "t.Cleanup(func() { conn.Close(); <-done })"
+  },
+  {
+    "file": "internal/deploy/identity_test.go",
+    "context": "func TestNativeStartupAcceptsTruncatedDeerIsleHostname(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "target, _ := TargetFor(\"deer-isle\")",
+    "message": "target, _ := TargetFor(\"deer-isle\")"
+  },
+  {
+    "file": "internal/deploy/dzsa_test.go",
+    "context": "func TestNativeStartupDoesNotRequireRCon(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "_, _ = conn.WriteTo(packet, peer)",
+    "message": "_, _ = conn.WriteTo(packet, peer)"
+  },
+  {
+    "file": "internal/deploy/dzsa_test.go",
+    "context": "func TestNativeStartupDoesNotRequireRCon(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "t.Cleanup(func() { conn.Close(); <-done })",
+    "message": "t.Cleanup(func() { conn.Close(); <-done })"
+  },
+  {
+    "file": "internal/deploy/inspection_test.go",
+    "context": "func TestObservationAndHistoryReadOnly(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "target, _ := TargetFor(host.Target)",
+    "message": "target, _ := TargetFor(host.Target)"
+  },
+  {
+    "file": "internal/deploy/operator_integration_windows_test.go",
+    "context": "func TestOperatorServiceIntegration(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "_ = json.NewEncoder(w).Encode(map[string]any{\"status\": 0, \"result\": DZSAServer{Game: \"dayz\", Name: \"Test\", Map: \"nasdara\", GamePort: 2901, Version: \"fixture-1.0\"}})",
+    "message": "_ = json.NewEncoder(w).Encode(map[string]any{\"status\": 0, \"result\": DZSAServer{Game: \"dayz\", Name: \"Test\", Map: \"nasdara\", GamePort: 2901, Version: \"fixture-1.0\"}})"
+  },
+  {
+    "file": "internal/deploy/operator_integration_windows_test.go",
+    "context": "func TestOperatorServiceIntegration(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "_ = rconProbe.SetReadDeadline(time.Now().Add(100 * time.Millisecond))",
+    "message": "_ = rconProbe.SetReadDeadline(time.Now().Add(100 * time.Millisecond))"
+  },
+  {
+    "file": "internal/deploy/operator_integration_windows_test.go",
+    "context": "func TestOperatorServiceIntegration(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "_ = service.Delete()",
+    "message": "_ = service.Delete()"
+  },
+  {
+    "file": "internal/deploy/operator_integration_windows_test.go",
+    "context": "func TestOperatorServiceIntegration(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "_, _ = service.Control(svc.Stop)",
+    "message": "_, _ = service.Control(svc.Stop)"
+  },
+  {
+    "file": "internal/deploy/operator_integration_windows_test.go",
+    "context": "func TestOperatorServiceIntegration(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "data, _ := os.ReadFile(filepath.Join(c.StateDir, \"fixture-error.txt\"))",
+    "message": "data, _ := os.ReadFile(filepath.Join(c.StateDir, \"fixture-error.txt\"))"
+  },
+  {
+    "file": "internal/deploy/operator_integration_windows_test.go",
+    "context": "func TestOperatorServiceIntegration(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "defer manager.Disconnect()",
+    "message": "defer manager.Disconnect()"
+  },
+  {
+    "file": "internal/deploy/operator_integration_windows_test.go",
+    "context": "func TestOperatorServiceIntegration(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "defer rconProbe.Close()",
+    "message": "defer rconProbe.Close()"
+  },
+  {
+    "file": "internal/deploy/operator_integration_windows_test.go",
+    "context": "func TestOperatorServiceIntegration(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "if n, _, _ := rconProbe.ReadFrom(buffer); n > 0 {",
+    "message": "if n, _, _ := rconProbe.ReadFrom(buffer); n > 0 {"
+  },
+  {
+    "file": "internal/deploy/operator_integration_windows_test.go",
+    "context": "func TestOperatorServiceIntegration(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "old.Close()",
+    "message": "old.Close()"
+  },
+  {
+    "file": "internal/deploy/operator_integration_windows_test.go",
+    "context": "func TestOperatorServiceIntegration(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "service.Close()",
+    "message": "service.Close()"
+  },
+  {
+    "file": "internal/deploy/operator_integration_windows_test.go",
+    "context": "func TestOperatorServiceIntegration(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "udp.Close()",
+    "message": "udp.Close()"
+  },
+  {
+    "file": "internal/deploy/store_test.go",
+    "context": "func TestOwnershipAndPortablePaths(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "target, _ := TargetFor(\"deer-isle\")",
+    "message": "target, _ := TargetFor(\"deer-isle\")"
+  },
+  {
+    "file": "internal/deploy/enrollment_test.go",
+    "context": "func TestPinnedFirstConnectionAndConcurrentEnrollment(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "raw, _ = os.ReadFile(e.KnownHosts)",
+    "message": "raw, _ = os.ReadFile(e.KnownHosts)"
+  },
+  {
+    "file": "internal/deploy/processlog_test.go",
+    "context": "func TestProcessLogMigrationAndSeparatePolicies(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "_ = c.Close()",
+    "message": "_ = c.Close()"
+  },
+  {
+    "file": "internal/deploy/processlog_test.go",
+    "context": "func TestProcessLogMigrationAndSeparatePolicies(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "_ = updates.Close()",
+    "message": "_ = updates.Close()"
+  },
+  {
+    "file": "internal/deploy/processlog_test.go",
+    "context": "func TestProcessLogMigrationAndSeparatePolicies(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "_, _ = c.stderr.Write([]byte(\"appended\\n\"))",
+    "message": "_, _ = c.stderr.Write([]byte(\"appended\\n\"))"
+  },
+  {
+    "file": "internal/deploy/processlog_test.go",
+    "context": "func TestProcessLogMigrationAndSeparatePolicies(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "_, _ = c.stdout.Write([]byte(\"new\\n\"))",
+    "message": "_, _ = c.stdout.Write([]byte(\"new\\n\"))"
+  },
+  {
+    "file": "internal/deploy/processlog_test.go",
+    "context": "func TestProcessLogMigrationAndSeparatePolicies(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "_, _ = updates.stdout.Write([]byte(\"steam\\n\"))",
+    "message": "_, _ = updates.stdout.Write([]byte(\"steam\\n\"))"
+  },
+  {
+    "file": "internal/deploy/processlog_test.go",
+    "context": "func TestProcessLogMigrationAndSeparatePolicies(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "b, _ := os.ReadFile(filepath.Join(cfg.StateDir, \"logs\", \"server-console.log\"))",
+    "message": "b, _ := os.ReadFile(filepath.Join(cfg.StateDir, \"logs\", \"server-console.log\"))"
+  },
+  {
+    "file": "internal/deploy/processlog_test.go",
+    "context": "func TestProcessLogMigrationAndSeparatePolicies(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "entries, _ := os.ReadDir(filepath.Join(cfg.StateDir, \"logs\"))",
+    "message": "entries, _ := os.ReadDir(filepath.Join(cfg.StateDir, \"logs\"))"
+  },
+  {
+    "file": "internal/deploy/processlog_test.go",
+    "context": "func TestProcessLogMigrationAndSeparatePolicies(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "files, _ := filepath.Glob(filepath.Join(cfg.StateDir, \"logs\", \"server-console-*.log\"))",
+    "message": "files, _ := filepath.Glob(filepath.Join(cfg.StateDir, \"logs\", \"server-console-*.log\"))"
+  },
+  {
+    "file": "internal/deploy/processlog_test.go",
+    "context": "func TestProcessLogMigrationAndSeparatePolicies(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "old, _ := os.ReadFile(files[0])",
+    "message": "old, _ := os.ReadFile(files[0])"
+  },
+  {
+    "file": "internal/deploy/processlog_test.go",
+    "context": "func TestProcessLogSessionReusesWriterAndReleasesLease(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "fmt.Fprintf(c.stdout, \"command %d\\n\", i)",
+    "message": "fmt.Fprintf(c.stdout, \"command %d\\n\", i)"
+  },
+  {
+    "file": "internal/deploy/processlog_test.go",
+    "context": "func TestProcessLogSessionReusesWriterAndReleasesLease(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "next.Close()",
+    "message": "next.Close()"
+  },
+  {
+    "file": "internal/deploy/processlog_test.go",
+    "context": "func TestProcessLogSessionReusesWriterAndReleasesLease(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "second.Close()",
+    "message": "second.Close()"
+  },
+  {
+    "file": "internal/snapshot/archive_test.go",
+    "context": "func TestRejectUnsafeArchivesAndBadContent(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "_ = os.WriteFile(archive, b[:len(b)/2], 0600)",
+    "message": "_ = os.WriteFile(archive, b[:len(b)/2], 0600)"
+  },
+  {
+    "file": "internal/deploy/dzsa_test.go",
+    "context": "func TestRemoteDZSACheckIsReadOnlyAndUsesConfiguredPublicAddress(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "after, _ := os.ReadFile(filepath.Join(root, \"state.json\"))",
+    "message": "after, _ := os.ReadFile(filepath.Join(root, \"state.json\"))"
+  },
+  {
+    "file": "internal/deploy/dzsa_test.go",
+    "context": "func TestRemoteDZSACheckIsReadOnlyAndUsesConfiguredPublicAddress(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "before, _ := os.ReadFile(filepath.Join(root, \"state.json\"))",
+    "message": "before, _ := os.ReadFile(filepath.Join(root, \"state.json\"))"
+  },
+  {
+    "file": "internal/deploy/dzsa_test.go",
+    "context": "func TestRemoteDZSACheckIsReadOnlyAndUsesConfiguredPublicAddress(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "fmt.Fprint(w, body)",
+    "message": "fmt.Fprint(w, body)"
+  },
+  {
+    "file": "internal/deploy/dzsa_test.go",
+    "context": "func TestRemoteDZSACheckIsReadOnlyAndUsesConfiguredPublicAddress(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "id, _ := strconv.ParseUint(mod.ID, 10, 64)",
+    "message": "id, _ := strconv.ParseUint(mod.ID, 10, 64)"
+  },
+  {
+    "file": "internal/deploy/transport_test.go",
+    "context": "func TestRequestNotPublishedWhenUploadFails(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "raw, _ := b.Encode()",
+    "message": "raw, _ := b.Encode()"
+  },
+  {
+    "file": "internal/deploy/recovery_test.go",
+    "context": "func TestRetentionPreservesCurrentRelease(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "entries, _ := os.ReadDir(filepath.Join(s.Config.StateDir, \"releases\"))",
+    "message": "entries, _ := os.ReadDir(filepath.Join(s.Config.StateDir, \"releases\"))"
+  },
+  {
+    "file": "internal/deploy/recovery_test.go",
+    "context": "func TestRetentionPreservesCurrentRelease(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "raw, _ := b.Encode()",
+    "message": "raw, _ := b.Encode()"
+  },
+  {
+    "file": "internal/deploy/transport_test.go",
+    "context": "func TestSSHRejectsUnpinnedHost(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "signer, _ := ssh.NewSignerFromKey(key)",
+    "message": "signer, _ := ssh.NewSignerFromKey(key)"
+  },
+  {
+    "file": "internal/deploy/identity_test.go",
+    "context": "func TestServerIdentitySteamHostnameLimit(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "target, _ := TargetFor(\"deer-isle\")",
+    "message": "target, _ := TargetFor(\"deer-isle\")"
+  },
+  {
+    "file": "internal/deploy/enrollment_windows_test.go",
+    "context": "func TestServiceAuthenticationPipeRelaysChallengesWithoutLeakingSecrets(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "defer conn.Close()",
+    "message": "defer conn.Close()"
+  },
+  {
+    "file": "internal/deploy/enrollment_windows_test.go",
+    "context": "func TestServiceAuthenticationPipeRelaysChallengesWithoutLeakingSecrets(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "defer second.Close()",
+    "message": "defer second.Close()"
+  },
+  {
+    "file": "internal/deploy/backups_test.go",
+    "context": "func TestSnapshotRetentionKeepsTenAndSafety(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "file, _ := snapshotPath(a.Store.Config, id, false)",
+    "message": "file, _ := snapshotPath(a.Store.Config, id, false)"
+  },
+  {
+    "file": "internal/deploy/backups_test.go",
+    "context": "func TestSnapshotRetentionKeepsTenAndSafety(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "file, _ := snapshotPath(a.Store.Config, safetyID, true)",
+    "message": "file, _ := snapshotPath(a.Store.Config, safetyID, true)"
+  },
+  {
+    "file": "internal/deploy/git_test.go",
+    "context": "func TestSourceSymlinkIsNotPackaged(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "target, _ := TargetFor(\"nasdara-staging\")",
+    "message": "target, _ := TargetFor(\"nasdara-staging\")"
+  },
+  {
+    "file": "internal/deploy/tools_test.go",
+    "context": "func TestToolDownloadVerifiesBeforeReplacing(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "raw, _ := json.Marshal(release)",
+    "message": "raw, _ := json.Marshal(release)"
+  },
+  {
+    "file": "internal/deploy/processlog_test.go",
+    "context": "func TestTornRecordMigrationAndEscapedRecordSize(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "_, _ = c.stdout.Write([]byte(strings.Repeat(\"\\x01\", 200000) + \"\\n\"))",
+    "message": "_, _ = c.stdout.Write([]byte(strings.Repeat(\"\\x01\", 200000) + \"\\n\"))"
+  },
+  {
+    "file": "internal/deploy/processlog_test.go",
+    "context": "func TestTornRecordMigrationAndEscapedRecordSize(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "files, _ := filepath.Glob(filepath.Join(config.StateDir, \"logs\", \"server-console*.log\"))",
+    "message": "files, _ := filepath.Glob(filepath.Join(config.StateDir, \"logs\", \"server-console*.log\"))"
+  },
+  {
+    "file": "internal/deploy/processlog_test.go",
+    "context": "func TestTornRecordMigrationAndEscapedRecordSize(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "first, _ := json.Marshal(logreader.Record{Level: \"info\", Message: \"prior\", Timestamp: time.Now().UTC()})",
+    "message": "first, _ := json.Marshal(logreader.Record{Level: \"info\", Message: \"prior\", Timestamp: time.Now().UTC()})"
+  },
+  {
+    "file": "internal/deploy/enrollment_windows_test.go",
+    "context": "func TestVirtualServiceBootstrapOnDisposableRunner(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "_, _ = s.Control(svc.Stop)",
+    "message": "_, _ = s.Control(svc.Stop)"
+  },
+  {
+    "file": "internal/deploy/enrollment_windows_test.go",
+    "context": "func TestVirtualServiceBootstrapOnDisposableRunner(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "acl, _ := exec.Command(\"icacls.exe\", p).CombinedOutput()",
+    "message": "acl, _ := exec.Command(\"icacls.exe\", p).CombinedOutput()"
+  },
+  {
+    "file": "internal/deploy/enrollment_windows_test.go",
+    "context": "func TestVirtualServiceBootstrapOnDisposableRunner(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "defer s.Close()",
+    "message": "defer s.Close()"
+  },
+  {
+    "file": "internal/deploy/enrollment_windows_test.go",
+    "context": "func TestVirtualServiceBootstrapOnDisposableRunner(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "defer s.Close()",
+    "message": "defer s.Close()"
+  },
+  {
+    "file": "internal/deploy/enrollment_windows_test.go",
+    "context": "func TestVirtualServiceBootstrapOnDisposableRunner(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "old.Close()",
+    "message": "old.Close()"
+  },
+  {
+    "file": "internal/deploy/enrollment_windows_test.go",
+    "context": "func TestVirtualServiceBootstrapOnDisposableRunner(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "s.Close()",
+    "message": "s.Close()"
+  },
+  {
+    "file": "internal/deploy/enrollment_windows_test.go",
+    "context": "func TestVirtualServiceBootstrapOnDisposableRunner(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "t.Cleanup(func() { _ = m.Disconnect() })",
+    "message": "t.Cleanup(func() { _ = m.Disconnect() })"
+  },
+  {
+    "file": "internal/hostinspect/identity_windows_test.go",
+    "context": "func TestWindowsCollectorExactKernelCreationToken(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "_, _ = query.WriteToUDP(append([]byte{255, 255, 255, 255, 73, 1}, []byte(\"Test\\x00nasdara\\x00\")...), peer)",
+    "message": "_, _ = query.WriteToUDP(append([]byte{255, 255, 255, 255, 73, 1}, []byte(\"Test\\x00nasdara\\x00\")...), peer)"
+  },
+  {
+    "file": "internal/hostinspect/identity_windows_test.go",
+    "context": "func TestWindowsCollectorExactKernelCreationToken(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "defer func() { _ = child.Process.Kill(); _ = child.Wait() }()",
+    "message": "defer func() { _ = child.Process.Kill(); _ = child.Wait() }()"
+  },
+  {
+    "file": "internal/hostinspect/identity_windows_test.go",
+    "context": "func TestWindowsCollectorExactKernelCreationToken(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "defer func() { _ = child.Process.Kill(); _ = child.Wait() }()",
+    "message": "defer func() { _ = child.Process.Kill(); _ = child.Wait() }()"
+  },
+  {
+    "file": "internal/hostinspect/identity_windows_test.go",
+    "context": "func TestWindowsCollectorExactKernelCreationToken(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "defer func() { query.Close(); <-done }()",
+    "message": "defer func() { query.Close(); <-done }()"
+  },
+  {
+    "file": "internal/hostinspect/identity_windows_test.go",
+    "context": "func TestWindowsCollectorExactKernelCreationToken(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "defer query.Close()",
+    "message": "defer query.Close()"
+  },
+  {
+    "file": "internal/hostinspect/identity_windows_test.go",
+    "context": "func TestWindowsCollectorExactKernelCreationToken(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "defer windows.CloseHandle(handle)",
+    "message": "defer windows.CloseHandle(handle)"
+  },
+  {
+    "file": "internal/hostinspect/collector_test.go",
+    "context": "func TestWindowsCollectorLocalQueryFixture(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "_, _ = conn.WriteToUDP(append([]byte{255, 255, 255, 255, 73, 1}, []byte(\"Test\\x00nasdara\\x00\")...), peer)",
+    "message": "_, _ = conn.WriteToUDP(append([]byte{255, 255, 255, 255, 73, 1}, []byte(\"Test\\x00nasdara\\x00\")...), peer)"
+  },
+  {
+    "file": "internal/hostinspect/collector_test.go",
+    "context": "func TestWindowsCollectorLocalQueryFixture(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "defer conn.Close()",
+    "message": "defer conn.Close()"
+  },
+  {
+    "file": "internal/hostinspect/collector_test.go",
+    "context": "func TestWindowsCollectorLocalQueryFixture(t *testing.T) {",
+    "rule": "unchecked-error",
+    "source": "defer func() { conn.Close(); <-done }()",
+    "message": "defer func() { conn.Close(); <-done }()"
+  },
+  {
+    "file": "internal/lifecycle/events.go",
+    "context": "func Write(root string, e Event) error {",
+    "rule": "unchecked-error",
+    "source": "defer os.Remove(f.Name())",
+    "message": "defer os.Remove(f.Name())"
+  },
+  {
+    "file": "internal/deploy/enrollment.go",
+    "context": "func agentBinary(e Endpoint) ([]byte, error) {",
+    "rule": "unchecked-error",
+    "source": "defer f.Close()",
+    "message": "defer f.Close()"
+  },
+  {
+    "file": "internal/deploy/model.go",
+    "context": "func atomicCopyContext(ctx context.Context, source, dest string, mode os.FileMode) error {",
+    "rule": "unchecked-error",
+    "source": "defer in.Close()",
+    "message": "defer in.Close()"
+  },
+  {
+    "file": "internal/deploy/model.go",
+    "context": "func atomicCopyContext(ctx context.Context, source, dest string, mode os.FileMode) error {",
+    "rule": "unchecked-error",
+    "source": "defer os.Remove(tmp)",
+    "message": "defer os.Remove(tmp)"
+  },
+  {
+    "file": "internal/deploy/processlog.go",
+    "context": "func captureErrorFile(config HostConfig, kind string, err error) {",
+    "rule": "unchecked-error",
+    "source": "_ = AtomicWrite(filepath.Join(config.StateDir, \"logs\", \"capture-error.txt\"), []byte(kind+\" output capture failed: \"+err.Error()), 0600)",
+    "message": "_ = AtomicWrite(filepath.Join(config.StateDir, \"logs\", \"capture-error.txt\"), []byte(kind+\" output capture failed: \"+err.Error()), 0600)"
+  },
+  {
+    "file": "internal/deploy/dzsa.go",
+    "context": "func checkDZSA(ctx context.Context, client *http.Client, baseURL, address string, target Target, hostname string) (*DZSAReport, error) {",
+    "rule": "unchecked-error",
+    "source": "defer response.Body.Close()",
+    "message": "defer response.Body.Close()"
+  },
+  {
+    "file": "internal/deploy/hardstop_windows.go",
+    "context": "func checkOtherGames(exe string, except int) error {",
+    "rule": "unchecked-error",
+    "source": "defer windows.CloseHandle(snapshot)",
+    "message": "defer windows.CloseHandle(snapshot)"
+  },
+  {
+    "file": "internal/deploy/hardstop_windows.go",
+    "context": "func checkOtherGames(exe string, except int) error {",
+    "rule": "unchecked-error",
+    "source": "full, _ := filepath.Abs(exe)",
+    "message": "full, _ := filepath.Abs(exe)"
+  },
+  {
+    "file": "internal/deploy/hardstop_windows.go",
+    "context": "func checkOtherGames(exe string, except int) error {",
+    "rule": "unchecked-error",
+    "source": "windows.CloseHandle(h)",
+    "message": "windows.CloseHandle(h)"
+  },
+  {
+    "file": "internal/deploy/transport.go",
+    "context": "func connect(ctx context.Context, e Endpoint, fingerprint string, persist, firstUse bool) (*Remote, error) {",
+    "rule": "unchecked-error",
+    "source": "_ = conn.SetDeadline(time.Now().Add(15 * time.Second))",
+    "message": "_ = conn.SetDeadline(time.Now().Add(15 * time.Second))"
+  },
+  {
+    "file": "internal/deploy/transport.go",
+    "context": "func connect(ctx context.Context, e Endpoint, fingerprint string, persist, firstUse bool) (*Remote, error) {",
+    "rule": "unchecked-error",
+    "source": "_ = conn.SetDeadline(time.Time{})",
+    "message": "_ = conn.SetDeadline(time.Time{})"
+  },
+  {
+    "file": "internal/deploy/transport.go",
+    "context": "func connect(ctx context.Context, e Endpoint, fingerprint string, persist, firstUse bool) (*Remote, error) {",
+    "rule": "unchecked-error",
+    "source": "conn.Close()",
+    "message": "conn.Close()"
+  },
+  {
+    "file": "internal/deploy/transport.go",
+    "context": "func connect(ctx context.Context, e Endpoint, fingerprint string, persist, firstUse bool) (*Remote, error) {",
+    "rule": "unchecked-error",
+    "source": "r.cancel = context.AfterFunc(ctx, func() { r.SSH.Close() })",
+    "message": "r.cancel = context.AfterFunc(ctx, func() { r.SSH.Close() })"
+  },
+  {
+    "file": "internal/deploy/prerequisites.go",
+    "context": "func downloadOfficial(ctx context.Context, url string, max int64) ([]byte, error) {",
+    "rule": "unchecked-error",
+    "source": "defer resp.Body.Close()",
+    "message": "defer resp.Body.Close()"
+  },
+  {
+    "file": "internal/deploycli/render.go",
+    "context": "func emit(v any, asJSON bool) error {",
+    "rule": "unchecked-error",
+    "source": "fmt.Printf(\"%s enrollment: %s, operation %s\\nRerun deploy to resume provisioning.\\n\", r.Target, r.Phase, r.ID)",
+    "message": "fmt.Printf(\"%s enrollment: %s, operation %s\\nRerun deploy to resume provisioning.\\n\", r.Target, r.Phase, r.ID)"
+  },
+  {
+    "file": "internal/deploycli/render.go",
+    "context": "func emit(v any, asJSON bool) error {",
+    "rule": "unchecked-error",
+    "source": "fmt.Printf(\"%s: %s (%s), operation %s, commit %s\\n\", r.Target, r.Status, r.Phase, r.ID, r.Commit)",
+    "message": "fmt.Printf(\"%s: %s (%s), operation %s, commit %s\\n\", r.Target, r.Status, r.Phase, r.ID, r.Commit)"
+  },
+  {
+    "file": "internal/deploycli/render.go",
+    "context": "func emit(v any, asJSON bool) error {",
+    "rule": "unchecked-error",
+    "source": "fmt.Printf(\"%s: %s, paused=%t, PID=%d\\nInstalled: %s\\nLast managed startup: %s\\nRestart required: %t\\n\", r.Target, r.Phase, r.Paused, r.PID, installed, r.RunningCommit, r.RestartRequired)",
+    "message": "fmt.Printf(\"%s: %s, paused=%t, PID=%d\\nInstalled: %s\\nLast managed startup: %s\\nRestart required: %t\\n\", r.Target, r.Phase, r.Paused, r.PID, installed, r.RunningCommit, r.RestartRequired)"
+  },
+  {
+    "file": "internal/deploycli/render.go",
+    "context": "func emit(v any, asJSON bool) error {",
+    "rule": "unchecked-error",
+    "source": "fmt.Printf(\"Backup: %s (%d bytes, revision %s)\\n\", r.Backup.ID, r.Backup.Bytes, r.Backup.Manifest.Revision)",
+    "message": "fmt.Printf(\"Backup: %s (%d bytes, revision %s)\\n\", r.Backup.ID, r.Backup.Bytes, r.Backup.Manifest.Revision)"
+  },
+  {
+    "file": "internal/deploycli/render.go",
+    "context": "func emit(v any, asJSON bool) error {",
+    "rule": "unchecked-error",
+    "source": "fmt.Println(\"Attention:\", r.Error)",
+    "message": "fmt.Println(\"Attention:\", r.Error)"
+  },
+  {
+    "file": "internal/deploycli/render.go",
+    "context": "func emit(v any, asJSON bool) error {",
+    "rule": "unchecked-error",
+    "source": "fmt.Println(\"Configuration installed; restart required to activate startup settings.\")",
+    "message": "fmt.Println(\"Configuration installed; restart required to activate startup settings.\")"
+  },
+  {
+    "file": "internal/deploycli/render.go",
+    "context": "func emit(v any, asJSON bool) error {",
+    "rule": "unchecked-error",
+    "source": "fmt.Println(\"Error:\", r.Error)",
+    "message": "fmt.Println(\"Error:\", r.Error)"
+  },
+  {
+    "file": "internal/deploycli/render.go",
+    "context": "func emit(v any, asJSON bool) error {",
+    "rule": "unchecked-error",
+    "source": "fmt.Println(\"Stop method:\", r.StopMethod)",
+    "message": "fmt.Println(\"Stop method:\", r.StopMethod)"
+  },
+  {
+    "file": "internal/deploycli/render.go",
+    "context": "func emit(v any, asJSON bool) error {",
+    "rule": "unchecked-error",
+    "source": "fmt.Println(r.Recovery)",
+    "message": "fmt.Println(r.Recovery)"
+  },
+  {
+    "file": "internal/deploycli/render.go",
+    "context": "func emit(v any, asJSON bool) error {",
+    "rule": "unchecked-error",
+    "source": "fmt.Println(string(b))",
+    "message": "fmt.Println(string(b))"
+  },
+  {
+    "file": "internal/logreader/record.go",
+    "context": "func encodeRecord(record Record) string {",
+    "rule": "unchecked-error",
+    "source": "b, _ := json.Marshal(record)",
+    "message": "b, _ := json.Marshal(record)"
+  },
+  {
+    "file": "internal/deploy/enroll_windows.go",
+    "context": "func enrollmentServiceRunning(c HostConfig, bound bool) (bool, error) {",
+    "rule": "unchecked-error",
+    "source": "defer m.Disconnect()",
+    "message": "defer m.Disconnect()"
+  },
+  {
+    "file": "internal/deploy/enroll_windows.go",
+    "context": "func enrollmentServiceRunning(c HostConfig, bound bool) (bool, error) {",
+    "rule": "unchecked-error",
+    "source": "defer s.Close()",
+    "message": "defer s.Close()"
+  },
+  {
+    "file": "internal/deploy/tools.go",
+    "context": "func ensureDz(ctx context.Context, repo string, offline bool, client *http.Client) (string, error) {",
+    "rule": "unchecked-error",
+    "source": "defer resp.Body.Close()",
+    "message": "defer resp.Body.Close()"
+  },
+  {
+    "file": "internal/deploy/service_windows.go",
+    "context": "func ensureNoGame(install string) error {",
+    "rule": "unchecked-error",
+    "source": "defer windows.CloseHandle(snapshot)",
+    "message": "defer windows.CloseHandle(snapshot)"
+  },
+  {
+    "file": "internal/snapshot/verify.go",
+    "context": "func extract(ctx context.Context, file, target, destination string, rules Rules, skip map[string]bool) (Manifest, error) {",
+    "rule": "unchecked-error",
+    "source": "defer z.Close()",
+    "message": "defer z.Close()"
+  },
+  {
+    "file": "internal/deploy/git_test.go",
+    "context": "func gitFixture(t *testing.T) (string, string) {",
+    "rule": "unchecked-error",
+    "source": "target, _ := TargetFor(\"nasdara-staging\")",
+    "message": "target, _ := TargetFor(\"nasdara-staging\")"
+  },
+  {
+    "file": "internal/deploy/service_windows.go",
+    "context": "func grantServiceLogon(sid *windows.SID) error {",
+    "rule": "unchecked-error",
+    "source": "code, _, _ := toErr.Call(status)",
+    "message": "code, _, _ := toErr.Call(status)"
+  },
+  {
+    "file": "internal/deploy/service_windows.go",
+    "context": "func grantServiceLogon(sid *windows.SID) error {",
+    "rule": "unchecked-error",
+    "source": "code, _, _ := toErr.Call(status)",
+    "message": "code, _, _ := toErr.Call(status)"
+  },
+  {
+    "file": "internal/deploy/service_windows.go",
+    "context": "func grantServiceLogon(sid *windows.SID) error {",
+    "rule": "unchecked-error",
+    "source": "defer closePolicy.Call(policy)",
+    "message": "defer closePolicy.Call(policy)"
+  },
+  {
+    "file": "internal/deploy/service_windows.go",
+    "context": "func grantServiceLogon(sid *windows.SID) error {",
+    "rule": "unchecked-error",
+    "source": "status, _, _ := open.Call(0, uintptr(unsafe.Pointer(&obj)), 0x810, uintptr(unsafe.Pointer(&policy)))",
+    "message": "status, _, _ := open.Call(0, uintptr(unsafe.Pointer(&obj)), 0x810, uintptr(unsafe.Pointer(&policy)))"
+  },
+  {
+    "file": "internal/deploy/service_windows.go",
+    "context": "func grantServiceLogon(sid *windows.SID) error {",
+    "rule": "unchecked-error",
+    "source": "status, _, _ = add.Call(policy, uintptr(unsafe.Pointer(sid)), uintptr(unsafe.Pointer(&right)), 1)",
+    "message": "status, _, _ = add.Call(policy, uintptr(unsafe.Pointer(sid)), uintptr(unsafe.Pointer(&right)), 1)"
+  },
+  {
+    "file": "internal/deploy/processlog_test.go",
+    "context": "func init() {",
+    "rule": "unchecked-error",
+    "source": "fmt.Fprint(os.Stderr, \"native error\\nfinal stderr\")",
+    "message": "fmt.Fprint(os.Stderr, \"native error\\nfinal stderr\")"
+  },
+  {
+    "file": "internal/deploy/processlog_test.go",
+    "context": "func init() {",
+    "rule": "unchecked-error",
+    "source": "fmt.Fprint(os.Stdout, \"native output\\nfinal stdout\")",
+    "message": "fmt.Fprint(os.Stdout, \"native output\\nfinal stdout\")"
+  },
+  {
+    "file": "internal/snapshot/verify.go",
+    "context": "func inspect(z *zip.Reader, rules Rules) (Manifest, map[string]*zip.File, error) {",
+    "rule": "unchecked-error",
+    "source": "r.Close()",
+    "message": "r.Close()"
+  },
+  {
+    "file": "internal/deploy/prerequisites.go",
+    "context": "func installNasdaraMission(ctx context.Context, root string, raw []byte) error {",
+    "rule": "unchecked-error",
+    "source": "r.Close()",
+    "message": "r.Close()"
+  },
+  {
+    "file": "internal/deploy/agent_windows.go",
+    "context": "func lockHost(dir string) (func(), error) {",
+    "rule": "unchecked-error",
+    "source": "return func() { windows.CloseHandle(h) }, nil",
+    "message": "return func() { windows.CloseHandle(h) }, nil"
+  },
+  {
+    "file": "internal/deploy/agent_windows.go",
+    "context": "func lockProcessLog(dir string) (func(), error) {",
+    "rule": "unchecked-error",
+    "source": "return func() { windows.CloseHandle(h) }, nil",
+    "message": "return func() { windows.CloseHandle(h) }, nil"
+  },
+  {
+    "file": "internal/deploy/agent_windows.go",
+    "context": "func lockProcessLog(dir string) (func(), error) {",
+    "rule": "unchecked-error",
+    "source": "windows.CloseHandle(h)",
+    "message": "windows.CloseHandle(h)"
+  },
+  {
+    "file": "cmd/dzdeploy-package/main.go",
+    "context": "func main() {",
+    "rule": "unchecked-error",
+    "source": "fmt.Fprintln(os.Stderr, err)",
+    "message": "fmt.Fprintln(os.Stderr, err)"
+  },
+  {
+    "file": "internal/snapshot/archive_test.go",
+    "context": "func maliciousArchive(t *testing.T, names []string, hash string) string {",
+    "rule": "unchecked-error",
+    "source": "_ = f.Close()",
+    "message": "_ = f.Close()"
+  },
+  {
+    "file": "internal/snapshot/archive_test.go",
+    "context": "func maliciousArchive(t *testing.T, names []string, hash string) string {",
+    "rule": "unchecked-error",
+    "source": "_ = json.NewEncoder(w).Encode(m)",
+    "message": "_ = json.NewEncoder(w).Encode(m)"
+  },
+  {
+    "file": "internal/snapshot/archive_test.go",
+    "context": "func maliciousArchive(t *testing.T, names []string, hash string) string {",
+    "rule": "unchecked-error",
+    "source": "_ = z.Close()",
+    "message": "_ = z.Close()"
+  },
+  {
+    "file": "internal/snapshot/archive_test.go",
+    "context": "func maliciousArchive(t *testing.T, names []string, hash string) string {",
+    "rule": "unchecked-error",
+    "source": "_, _ = w.Write([]byte(\"data\"))",
+    "message": "_, _ = w.Write([]byte(\"data\"))"
+  },
+  {
+    "file": "internal/snapshot/archive_test.go",
+    "context": "func maliciousArchive(t *testing.T, names []string, hash string) string {",
+    "rule": "unchecked-error",
+    "source": "w, _ := z.Create(\"manifest.json\")",
+    "message": "w, _ := z.Create(\"manifest.json\")"
+  },
+  {
+    "file": "internal/deploy/processlog.go",
+    "context": "func openProcessCapture(ctx context.Context, config HostConfig, kind string, onError func(error)) (*processCapture, error) {",
+    "rule": "unchecked-error",
+    "source": "_ = logger.Close()",
+    "message": "_ = logger.Close()"
+  },
+  {
+    "file": "internal/deploy/processlog.go",
+    "context": "func openProcessCapture(ctx context.Context, config HostConfig, kind string, onError func(error)) (*processCapture, error) {",
+    "rule": "unchecked-error",
+    "source": "first, _ := reader.ReadString('\\n')",
+    "message": "first, _ := reader.ReadString('\\n')"
+  },
+  {
+    "file": "internal/deploycli/render.go",
+    "context": "func printDZSA(report *deploy.DZSAReport) {",
+    "rule": "unchecked-error",
+    "source": "fmt.Printf(\"  Mod: %q (Workshop %d)\\n\", mod.Name, mod.SteamWorkshopID)",
+    "message": "fmt.Printf(\"  Mod: %q (Workshop %d)\\n\", mod.Name, mod.SteamWorkshopID)"
+  },
+  {
+    "file": "internal/deploycli/render.go",
+    "context": "func printDZSA(report *deploy.DZSAReport) {",
+    "rule": "unchecked-error",
+    "source": "fmt.Printf(\"DZSA: detected %s, server %q, map %q, players %d/%d\\n\", report.Address, report.Server.Name, report.Server.Map, report.Server.Players, report.Server.MaxPlayers)",
+    "message": "fmt.Printf(\"DZSA: detected %s, server %q, map %q, players %d/%d\\n\", report.Address, report.Server.Name, report.Server.Map, report.Server.Players, report.Server.MaxPlayers)"
+  },
+  {
+    "file": "internal/deploycli/render.go",
+    "context": "func printDZSA(report *deploy.DZSAReport) {",
+    "rule": "unchecked-error",
+    "source": "fmt.Println(\"DZSA check:\", report.CheckURL)",
+    "message": "fmt.Println(\"DZSA check:\", report.CheckURL)"
+  },
+  {
+    "file": "internal/deploycli/inspection.go",
+    "context": "func printHistory(ctx context.Context, targets map[string]deploy.Endpoint, since time.Time, asJSON bool) error {",
+    "rule": "unchecked-error",
+    "source": "fmt.Printf(\"  %s %-18s cause=%s operation=%s source=%s\\n\", e.At.Format(time.RFC3339), e.Kind, e.Cause, e.Operation, e.Source)",
+    "message": "fmt.Printf(\"  %s %-18s cause=%s operation=%s source=%s\\n\", e.At.Format(time.RFC3339), e.Kind, e.Cause, e.Operation, e.Source)"
+  },
+  {
+    "file": "internal/deploycli/inspection.go",
+    "context": "func printHistory(ctx context.Context, targets map[string]deploy.Endpoint, since time.Time, asJSON bool) error {",
+    "rule": "unchecked-error",
+    "source": "fmt.Printf(\"  Confirmed %s relaunch: shutdown=%s ready=%s operation=%s\\n\", cycle.Cause, cycle.Shutdown.Format(time.RFC3339), cycle.Ready.Format(time.RFC3339), cycle.Operation)",
+    "message": "fmt.Printf(\"  Confirmed %s relaunch: shutdown=%s ready=%s operation=%s\\n\", cycle.Cause, cycle.Shutdown.Format(time.RFC3339), cycle.Ready.Format(time.RFC3339), cycle.Operation)"
+  },
+  {
+    "file": "internal/deploycli/inspection.go",
+    "context": "func printHistory(ctx context.Context, targets map[string]deploy.Endpoint, since time.Time, asJSON bool) error {",
+    "rule": "unchecked-error",
+    "source": "fmt.Println(\"  Coverage incomplete: missing events do not prove an absence of restarts\")",
+    "message": "fmt.Println(\"  Coverage incomplete: missing events do not prove an absence of restarts\")"
+  },
+  {
+    "file": "internal/deploycli/inspection.go",
+    "context": "func printHistory(ctx context.Context, targets map[string]deploy.Endpoint, since time.Time, asJSON bool) error {",
+    "rule": "unchecked-error",
+    "source": "fmt.Println(\"  ERROR:\", r.Error)",
+    "message": "fmt.Println(\"  ERROR:\", r.Error)"
+  },
+  {
+    "file": "internal/deploycli/inspection.go",
+    "context": "func printHistory(ctx context.Context, targets map[string]deploy.Endpoint, since time.Time, asJSON bool) error {",
+    "rule": "unchecked-error",
+    "source": "fmt.Println(r.Target)",
+    "message": "fmt.Println(r.Target)"
+  },
+  {
+    "file": "internal/deploy/private_windows.go",
+    "context": "func privateACL(file string, directory bool) error {",
+    "rule": "unchecked-error",
+    "source": "defer token.Close()",
+    "message": "defer token.Close()"
+  },
+  {
+    "file": "internal/deploy/agent_windows.go",
+    "context": "func processToken(pid int, exe string) (string, error) {",
+    "rule": "unchecked-error",
+    "source": "defer windows.CloseHandle(h)",
+    "message": "defer windows.CloseHandle(h)"
+  },
+  {
+    "file": "internal/deploycli/command.go",
+    "context": "func promptSteam(f deploy.AuthFrame) (string, error) {",
+    "rule": "unchecked-error",
+    "source": "fmt.Fprintln(os.Stderr, \"Approve the Steam sign-in request in your Steam mobile app.\")",
+    "message": "fmt.Fprintln(os.Stderr, \"Approve the Steam sign-in request in your Steam mobile app.\")"
+  },
+  {
+    "file": "internal/deploycli/command.go",
+    "context": "func promptSteam(f deploy.AuthFrame) (string, error) {",
+    "rule": "unchecked-error",
+    "source": "fmt.Fprintln(os.Stderr, \"Checking Steam authentication under the service identity...\")",
+    "message": "fmt.Fprintln(os.Stderr, \"Checking Steam authentication under the service identity...\")"
+  },
+  {
+    "file": "internal/snapshot/verify.go",
+    "context": "func readContents(ctx context.Context, z *zip.Reader, target, destination string, rules Rules, skip map[string]bool) (Manifest, error) {",
+    "rule": "unchecked-error",
+    "source": "input.Close()",
+    "message": "input.Close()"
+  },
+  {
+    "file": "internal/snapshot/verify.go",
+    "context": "func readContents(ctx context.Context, z *zip.Reader, target, destination string, rules Rules, skip map[string]bool) (Manifest, error) {",
+    "rule": "unchecked-error",
+    "source": "input.Close()",
+    "message": "input.Close()"
+  },
+  {
+    "file": "internal/snapshot/verify.go",
+    "context": "func readContents(ctx context.Context, z *zip.Reader, target, destination string, rules Rules, skip map[string]bool) (Manifest, error) {",
+    "rule": "unchecked-error",
+    "source": "input.Close()",
+    "message": "input.Close()"
+  },
+  {
+    "file": "internal/deploy/service_windows.go",
+    "context": "func readServicePassword(env string) (string, error) {",
+    "rule": "unchecked-error",
+    "source": "defer windows.SetConsoleMode(h, mode)",
+    "message": "defer windows.SetConsoleMode(h, mode)"
+  },
+  {
+    "file": "internal/deploy/service_windows.go",
+    "context": "func readServicePassword(env string) (string, error) {",
+    "rule": "unchecked-error",
+    "source": "fmt.Fprint(os.Stderr, \"Existing service account password: \")",
+    "message": "fmt.Fprint(os.Stderr, \"Existing service account password: \")"
+  },
+  {
+    "file": "internal/deploy/service_windows.go",
+    "context": "func readServicePassword(env string) (string, error) {",
+    "rule": "unchecked-error",
+    "source": "fmt.Fprintln(os.Stderr)",
+    "message": "fmt.Fprintln(os.Stderr)"
+  },
+  {
+    "file": "internal/deploy/bundle.go",
+    "context": "func readZipFile(f *zip.File) ([]byte, error) {",
+    "rule": "unchecked-error",
+    "source": "defer r.Close()",
+    "message": "defer r.Close()"
+  },
+  {
+    "file": "internal/logreader/record_test.go",
+    "context": "func recordLine(level, message string) string {",
+    "rule": "unchecked-error",
+    "source": "b, _ := json.Marshal(Record{Level: level, Message: message, Timestamp: time.Now().UTC()})",
+    "message": "b, _ := json.Marshal(Record{Level: level, Message: message, Timestamp: time.Now().UTC()})"
+  },
+  {
+    "file": "internal/deploy/auth_windows.go",
+    "context": "func relayAuthPipe(ctx context.Context, c HostConfig, in io.Reader, out io.Writer) error {",
+    "rule": "unchecked-error",
+    "source": "defer conn.Close()",
+    "message": "defer conn.Close()"
+  },
+  {
+    "file": "internal/deploy/auth_windows.go",
+    "context": "func relayAuthPipe(ctx context.Context, c HostConfig, in io.Reader, out io.Writer) error {",
+    "rule": "unchecked-error",
+    "source": "go func() { _, _ = io.Copy(conn, in); conn.Close() }()",
+    "message": "go func() { _, _ = io.Copy(conn, in); conn.Close() }()"
+  },
+  {
+    "file": "internal/deploy/auth_windows.go",
+    "context": "func relayAuthPipe(ctx context.Context, c HostConfig, in io.Reader, out io.Writer) error {",
+    "rule": "unchecked-error",
+    "source": "go func() { _, _ = io.Copy(conn, in); conn.Close() }()",
+    "message": "go func() { _, _ = io.Copy(conn, in); conn.Close() }()"
+  },
+  {
+    "file": "internal/deploy/auth_windows.go",
+    "context": "func relayAuthPipe(ctx context.Context, c HostConfig, in io.Reader, out io.Writer) error {",
+    "rule": "unchecked-error",
+    "source": "stop := context.AfterFunc(ctx, func() { conn.Close() })",
+    "message": "stop := context.AfterFunc(ctx, func() { conn.Close() })"
+  },
+  {
+    "file": "internal/deploycli/render.go",
+    "context": "func renderHealth(destination io.Writer, reports []deploy.HealthReport) error {",
+    "rule": "unchecked-error",
+    "source": "fmt.Fprintf(w, \"%s\\t%s\\t%s\\t%s\\t%s\\t%t\\n\", r.Target, r.Status, uptime, players, cycles, r.RestartPending)",
+    "message": "fmt.Fprintf(w, \"%s\\t%s\\t%s\\t%s\\t%s\\t%t\\n\", r.Target, r.Status, uptime, players, cycles, r.RestartPending)"
+  },
+  {
+    "file": "internal/deploycli/render.go",
+    "context": "func renderHealth(destination io.Writer, reports []deploy.HealthReport) error {",
+    "rule": "unchecked-error",
+    "source": "fmt.Fprintln(w, \"SERVER\\tHEALTH\\tUPTIME\\tPLAYERS\\tCLEAN RELAUNCHES\\tRESTART PENDING\")",
+    "message": "fmt.Fprintln(w, \"SERVER\\tHEALTH\\tUPTIME\\tPLAYERS\\tCLEAN RELAUNCHES\\tRESTART PENDING\")"
+  },
+  {
+    "file": "cmd/dzdeploy-package/main.go",
+    "context": "func run() error {",
+    "rule": "unchecked-error",
+    "source": "defer f.Close()",
+    "message": "defer f.Close()"
+  },
+  {
+    "file": "cmd/dzdeploy-package/main.go",
+    "context": "func run() error {",
+    "rule": "unchecked-error",
+    "source": "defer os.RemoveAll(stage)",
+    "message": "defer os.RemoveAll(stage)"
+  },
+  {
+    "file": "cmd/dzdeploy-package/main.go",
+    "context": "func run() error {",
+    "rule": "unchecked-error",
+    "source": "fmt.Println(archive)",
+    "message": "fmt.Println(archive)"
+  },
+  {
+    "file": "cmd/dzdeploy-package/main.go",
+    "context": "func run() error {",
+    "rule": "unchecked-error",
+    "source": "z.Close()",
+    "message": "z.Close()"
+  },
+  {
+    "file": "internal/deploycli/command.go",
+    "context": "func run(args []string) error {",
+    "rule": "unchecked-error",
+    "source": "_ = emit(validation, *asJSON)",
+    "message": "_ = emit(validation, *asJSON)"
+  },
+  {
+    "file": "internal/deploycli/command.go",
+    "context": "func run(args []string) error {",
+    "rule": "unchecked-error",
+    "source": "fmt.Fprintln(os.Stderr, \"First deployment: preparing the Windows service and prerequisites...\")",
+    "message": "fmt.Fprintln(os.Stderr, \"First deployment: preparing the Windows service and prerequisites...\")"
+  },
+  {
+    "file": "internal/deploycli/command.go",
+    "context": "func run(args []string) error {",
+    "rule": "unchecked-error",
+    "source": "fmt.Fprintln(os.Stderr, r.Phase)",
+    "message": "fmt.Fprintln(os.Stderr, r.Phase)"
+  },
+  {
+    "file": "internal/deploycli/command.go",
+    "context": "func run(args []string) error {",
+    "rule": "unchecked-error",
+    "source": "fmt.Printf(\"Submitted %s. Reconnect with: dzdeploy status %s --operation %s\\n\", req.ID, alias, req.ID)",
+    "message": "fmt.Printf(\"Submitted %s. Reconnect with: dzdeploy status %s --operation %s\\n\", req.ID, alias, req.ID)"
+  },
+  {
+    "file": "internal/deploycli/command.go",
+    "context": "func run(args []string) error {",
+    "rule": "unchecked-error",
+    "source": "fmt.Printf(\"Validation warnings: %d\\n\", validation.Warnings)",
+    "message": "fmt.Printf(\"Validation warnings: %d\\n\", validation.Warnings)"
+  },
+  {
+    "file": "internal/deploycli/command.go",
+    "context": "func run(args []string) error {",
+    "rule": "unchecked-error",
+    "source": "fmt.Printf(\"dzdeploy protocol %d\\n\", deploy.Protocol)",
+    "message": "fmt.Printf(\"dzdeploy protocol %d\\n\", deploy.Protocol)"
+  },
+  {
+    "file": "internal/deploycli/backup.go",
+    "context": "func runBackup(args []string) error {",
+    "rule": "unchecked-error",
+    "source": "fmt.Fprintf(os.Stderr, \"Submitted %s; reconnect with dzdeploy status %s --operation %s\\n\", req.ID, alias, req.ID)",
+    "message": "fmt.Fprintf(os.Stderr, \"Submitted %s; reconnect with dzdeploy status %s --operation %s\\n\", req.ID, alias, req.ID)"
+  },
+  {
+    "file": "internal/deploycli/backup.go",
+    "context": "func runBackup(args []string) error {",
+    "rule": "unchecked-error",
+    "source": "fmt.Fprintln(os.Stderr, result.Phase)",
+    "message": "fmt.Fprintln(os.Stderr, result.Phase)"
+  },
+  {
+    "file": "internal/deploycli/backup.go",
+    "context": "func runBackup(args []string) error {",
+    "rule": "unchecked-error",
+    "source": "fmt.Printf(\"%s %s %d bytes revision=%s safety=%t\\n\", b.ID, b.Created.Format(time.RFC3339), b.Bytes, b.Manifest.Revision, b.Safety)",
+    "message": "fmt.Printf(\"%s %s %d bytes revision=%s safety=%t\\n\", b.ID, b.Created.Format(time.RFC3339), b.Bytes, b.Manifest.Revision, b.Safety)"
+  },
+  {
+    "file": "internal/deploycli/backup.go",
+    "context": "func runBackup(args []string) error {",
+    "rule": "unchecked-error",
+    "source": "fmt.Println(\"Verified backup:\", receipt.ID)",
+    "message": "fmt.Println(\"Verified backup:\", receipt.ID)"
+  },
+  {
+    "file": "internal/deploycli/inspection.go",
+    "context": "func runInspection(args []string) error {",
+    "rule": "unchecked-error",
+    "source": "all, _ := deploy.Targets(nil)",
+    "message": "all, _ := deploy.Targets(nil)"
+  },
+  {
+    "file": "internal/deploycli/logs.go",
+    "context": "func runLogs(args []string) error {",
+    "rule": "unchecked-error",
+    "source": "fmt.Printf(\"%s ERROR: %s\\n\", r.Target, r.Error)",
+    "message": "fmt.Printf(\"%s ERROR: %s\\n\", r.Target, r.Error)"
+  },
+  {
+    "file": "internal/deploycli/logs.go",
+    "context": "func runLogs(args []string) error {",
+    "rule": "unchecked-error",
+    "source": "fmt.Printf(\"%s: %s (%d issue groups)\\n\", r.Target, r.Bundle, len(r.Diagnostics.Issues))",
+    "message": "fmt.Printf(\"%s: %s (%d issue groups)\\n\", r.Target, r.Bundle, len(r.Diagnostics.Issues))"
+  },
+  {
+    "file": "internal/deploycli/logs.go",
+    "context": "func runLogs(args []string) error {",
+    "rule": "unchecked-error",
+    "source": "fmt.Println(\"  WARNING:\", warning)",
+    "message": "fmt.Println(\"  WARNING:\", warning)"
+  },
+  {
+    "file": "internal/deploycli/logs.go",
+    "context": "func runLogs(args []string) error {",
+    "rule": "unchecked-error",
+    "source": "targets, _ := deploy.Targets(nil)",
+    "message": "targets, _ := deploy.Targets(nil)"
+  },
+  {
+    "file": "internal/deploy/enroll_windows.go",
+    "context": "func setupGameFirewall(ctx context.Context, c HostConfig, t Target) error {",
+    "rule": "unchecked-error",
+    "source": "_ = adminCommand(ctx, c, \"netsh.exe\", \"advfirewall\", \"firewall\", \"delete\", \"rule\", \"name=\"+name)",
+    "message": "_ = adminCommand(ctx, c, \"netsh.exe\", \"advfirewall\", \"firewall\", \"delete\", \"rule\", \"name=\"+name)"
+  },
+  {
+    "file": "internal/deploy/service_windows.go",
+    "context": "func setupSSH(ctx context.Context, opt BootstrapOptions, sid string) (string, error) {",
+    "rule": "unchecked-error",
+    "source": "_ = AtomicWrite(cfgPath, old, 0600)",
+    "message": "_ = AtomicWrite(cfgPath, old, 0600)"
+  },
+  {
+    "file": "internal/deploy/service_windows.go",
+    "context": "func setupSSH(ctx context.Context, opt BootstrapOptions, sid string) (string, error) {",
+    "rule": "unchecked-error",
+    "source": "_ = adminCommand(ctx, c, \"netsh.exe\", \"advfirewall\", \"firewall\", \"delete\", \"rule\", \"name=dzdeploy SSH\")",
+    "message": "_ = adminCommand(ctx, c, \"netsh.exe\", \"advfirewall\", \"firewall\", \"delete\", \"rule\", \"name=dzdeploy SSH\")"
+  },
+  {
+    "file": "internal/deploy/service_windows.go",
+    "context": "func setupSSH(ctx context.Context, opt BootstrapOptions, sid string) (string, error) {",
+    "rule": "unchecked-error",
+    "source": "_ = adminCommand(ctx, c, \"netsh.exe\", \"advfirewall\", \"firewall\", \"set\", \"rule\", \"name=OpenSSH SSH Server (sshd)\", \"new\", \"enable=no\")",
+    "message": "_ = adminCommand(ctx, c, \"netsh.exe\", \"advfirewall\", \"firewall\", \"set\", \"rule\", \"name=OpenSSH SSH Server (sshd)\", \"new\", \"enable=no\")"
+  },
+  {
+    "file": "internal/deploy/service_windows.go",
+    "context": "func setupSSH(ctx context.Context, opt BootstrapOptions, sid string) (string, error) {",
+    "rule": "unchecked-error",
+    "source": "defer m.Disconnect()",
+    "message": "defer m.Disconnect()"
+  },
+  {
+    "file": "internal/deploy/service_windows.go",
+    "context": "func setupSSH(ctx context.Context, opt BootstrapOptions, sid string) (string, error) {",
+    "rule": "unchecked-error",
+    "source": "defer service.Close()",
+    "message": "defer service.Close()"
+  },
+  {
+    "file": "internal/deploy/transport_test.go",
+    "context": "func sshExecFixture(t *testing.T, execute func(string, io.Reader, io.Writer) error) (Endpoint, string) {",
+    "rule": "unchecked-error",
+    "source": "_ = ch.Reject(ssh.UnknownChannelType, \"session only\")",
+    "message": "_ = ch.Reject(ssh.UnknownChannelType, \"session only\")"
+  },
+  {
+    "file": "internal/deploy/transport_test.go",
+    "context": "func sshExecFixture(t *testing.T, execute func(string, io.Reader, io.Writer) error) (Endpoint, string) {",
+    "rule": "unchecked-error",
+    "source": "_ = req.Reply(false, nil)",
+    "message": "_ = req.Reply(false, nil)"
+  },
+  {
+    "file": "internal/deploy/transport_test.go",
+    "context": "func sshExecFixture(t *testing.T, execute func(string, io.Reader, io.Writer) error) (Endpoint, string) {",
+    "rule": "unchecked-error",
+    "source": "_ = req.Reply(false, nil)",
+    "message": "_ = req.Reply(false, nil)"
+  },
+  {
+    "file": "internal/deploy/transport_test.go",
+    "context": "func sshExecFixture(t *testing.T, execute func(string, io.Reader, io.Writer) error) (Endpoint, string) {",
+    "rule": "unchecked-error",
+    "source": "_ = req.Reply(true, nil)",
+    "message": "_ = req.Reply(true, nil)"
+  },
+  {
+    "file": "internal/deploy/transport_test.go",
+    "context": "func sshExecFixture(t *testing.T, execute func(string, io.Reader, io.Writer) error) (Endpoint, string) {",
+    "rule": "unchecked-error",
+    "source": "_ = req.Reply(true, nil)",
+    "message": "_ = req.Reply(true, nil)"
+  },
+  {
+    "file": "internal/deploy/transport_test.go",
+    "context": "func sshExecFixture(t *testing.T, execute func(string, io.Reader, io.Writer) error) (Endpoint, string) {",
+    "rule": "unchecked-error",
+    "source": "_ = server.Serve()",
+    "message": "_ = server.Serve()"
+  },
+  {
+    "file": "internal/deploy/transport_test.go",
+    "context": "func sshExecFixture(t *testing.T, execute func(string, io.Reader, io.Writer) error) (Endpoint, string) {",
+    "rule": "unchecked-error",
+    "source": "_ = ssh.Unmarshal(req.Payload, &command)",
+    "message": "_ = ssh.Unmarshal(req.Payload, &command)"
+  },
+  {
+    "file": "internal/deploy/transport_test.go",
+    "context": "func sshExecFixture(t *testing.T, execute func(string, io.Reader, io.Writer) error) (Endpoint, string) {",
+    "rule": "unchecked-error",
+    "source": "_ = ssh.Unmarshal(req.Payload, &name)",
+    "message": "_ = ssh.Unmarshal(req.Payload, &name)"
+  },
+  {
+    "file": "internal/deploy/transport_test.go",
+    "context": "func sshExecFixture(t *testing.T, execute func(string, io.Reader, io.Writer) error) (Endpoint, string) {",
+    "rule": "unchecked-error",
+    "source": "_, _ = channel.SendRequest(\"exit-status\", false, ssh.Marshal(struct{ Code uint32 }{code}))",
+    "message": "_, _ = channel.SendRequest(\"exit-status\", false, ssh.Marshal(struct{ Code uint32 }{code}))"
+  },
+  {
+    "file": "internal/deploy/transport_test.go",
+    "context": "func sshExecFixture(t *testing.T, execute func(string, io.Reader, io.Writer) error) (Endpoint, string) {",
+    "rule": "unchecked-error",
+    "source": "c.Close()",
+    "message": "c.Close()"
+  },
+  {
+    "file": "internal/deploy/transport_test.go",
+    "context": "func sshExecFixture(t *testing.T, execute func(string, io.Reader, io.Writer) error) (Endpoint, string) {",
+    "rule": "unchecked-error",
+    "source": "defer channel.Close()",
+    "message": "defer channel.Close()"
+  },
+  {
+    "file": "internal/deploy/transport_test.go",
+    "context": "func sshExecFixture(t *testing.T, execute func(string, io.Reader, io.Writer) error) (Endpoint, string) {",
+    "rule": "unchecked-error",
+    "source": "defer conn.Close()",
+    "message": "defer conn.Close()"
+  },
+  {
+    "file": "internal/deploy/transport_test.go",
+    "context": "func sshExecFixture(t *testing.T, execute func(string, io.Reader, io.Writer) error) (Endpoint, string) {",
+    "rule": "unchecked-error",
+    "source": "listener.Close()",
+    "message": "listener.Close()"
+  },
+  {
+    "file": "internal/deploy/transport_test.go",
+    "context": "func sshExecFixture(t *testing.T, execute func(string, io.Reader, io.Writer) error) (Endpoint, string) {",
+    "rule": "unchecked-error",
+    "source": "server.Close()",
+    "message": "server.Close()"
+  },
+  {
+    "file": "internal/deploy/auth_windows.go",
+    "context": "func startAuthBroker(ctx context.Context, c HostConfig) (func(), error) {",
+    "rule": "unchecked-error",
+    "source": "_ = conn.SetDeadline(deadline)",
+    "message": "_ = conn.SetDeadline(deadline)"
+  },
+  {
+    "file": "internal/deploy/auth_windows.go",
+    "context": "func startAuthBroker(ctx context.Context, c HostConfig) (func(), error) {",
+    "rule": "unchecked-error",
+    "source": "_ = sendAuth(conn, \"error\", \"\")",
+    "message": "_ = sendAuth(conn, \"error\", \"\")"
+  },
+  {
+    "file": "internal/deploy/auth_windows.go",
+    "context": "func startAuthBroker(ctx context.Context, c HostConfig) (func(), error) {",
+    "rule": "unchecked-error",
+    "source": "_ = sendAuth(conn, \"error\", \"\")",
+    "message": "_ = sendAuth(conn, \"error\", \"\")"
+  },
+  {
+    "file": "internal/deploy/auth_windows.go",
+    "context": "func startAuthBroker(ctx context.Context, c HostConfig) (func(), error) {",
+    "rule": "unchecked-error",
+    "source": "closeOnCancel := context.AfterFunc(authCtx, func() { conn.Close() })",
+    "message": "closeOnCancel := context.AfterFunc(authCtx, func() { conn.Close() })"
+  },
+  {
+    "file": "internal/deploy/auth_windows.go",
+    "context": "func startAuthBroker(ctx context.Context, c HostConfig) (func(), error) {",
+    "rule": "unchecked-error",
+    "source": "defer conn.Close()",
+    "message": "defer conn.Close()"
+  },
+  {
+    "file": "internal/deploy/auth_windows.go",
+    "context": "func startAuthBroker(ctx context.Context, c HostConfig) (func(), error) {",
+    "rule": "unchecked-error",
+    "source": "return func() { cancel(); listener.Close(); wg.Wait() }, nil",
+    "message": "return func() { cancel(); listener.Close(); wg.Wait() }, nil"
+  },
+  {
+    "file": "internal/deploy/auth_windows.go",
+    "context": "func steamAuthenticate(ctx context.Context, c HostConfig, conn io.ReadWriter) error {",
+    "rule": "unchecked-error",
+    "source": "defer func() { _ = cmd.Process.Kill(); _ = cmd.Wait() }()",
+    "message": "defer func() { _ = cmd.Process.Kill(); _ = cmd.Wait() }()"
+  },
+  {
+    "file": "internal/deploy/auth_windows.go",
+    "context": "func steamAuthenticate(ctx context.Context, c HostConfig, conn io.ReadWriter) error {",
+    "rule": "unchecked-error",
+    "source": "defer func() { _ = cmd.Process.Kill(); _ = cmd.Wait() }()",
+    "message": "defer func() { _ = cmd.Process.Kill(); _ = cmd.Wait() }()"
+  },
+  {
+    "file": "internal/deploy/auth_windows.go",
+    "context": "func steamAuthenticate(ctx context.Context, c HostConfig, conn io.ReadWriter) error {",
+    "rule": "unchecked-error",
+    "source": "defer reader.Close()",
+    "message": "defer reader.Close()"
+  },
+  {
+    "file": "internal/deploy/auth_windows.go",
+    "context": "func steamAuthenticate(ctx context.Context, c HostConfig, conn io.ReadWriter) error {",
+    "rule": "unchecked-error",
+    "source": "defer stdin.Close()",
+    "message": "defer stdin.Close()"
+  },
+  {
+    "file": "internal/deploy/auth_windows.go",
+    "context": "func steamAuthenticate(ctx context.Context, c HostConfig, conn io.ReadWriter) error {",
+    "rule": "unchecked-error",
+    "source": "writer.Close()",
+    "message": "writer.Close()"
+  },
+  {
+    "file": "internal/deploy/auth_windows.go",
+    "context": "func steamAuthenticate(ctx context.Context, c HostConfig, conn io.ReadWriter) error {",
+    "rule": "unchecked-error",
+    "source": "writer.Close()",
+    "message": "writer.Close()"
+  },
+  {
+    "file": "internal/deploy/prerequisites.go",
+    "context": "func steamExecutable(raw []byte) ([]byte, error) {",
+    "rule": "unchecked-error",
+    "source": "r.Close()",
+    "message": "r.Close()"
+  },
+  {
+    "file": "internal/deploy/store_test.go",
+    "context": "func testBundle(t *testing.T, files map[string]string) *Bundle {",
+    "rule": "unchecked-error",
+    "source": "target, _ := TargetFor(\"nasdara-staging\")",
+    "message": "target, _ := TargetFor(\"nasdara-staging\")"
+  },
+  {
+    "file": "internal/deploycli/command.go",
+    "context": "func usage() {",
+    "rule": "unchecked-error",
+    "source": "fmt.Println(`dzdeploy: DayZ configuration deployment over SSH/SFTP",
+    "message": "fmt.Println(`dzdeploy: DayZ configuration deployment over SSH/SFTP"
+  },
+  {
+    "file": "internal/deploy/signature_windows.go",
+    "context": "func verifyPublisher(file string, publishers ...string) error {",
+    "rule": "unchecked-error",
+    "source": "_ = windows.WinVerifyTrustEx(windows.InvalidHWND, &windows.WINTRUST_ACTION_GENERIC_VERIFY_V2, &data)",
+    "message": "_ = windows.WinVerifyTrustEx(windows.InvalidHWND, &windows.WINTRUST_ACTION_GENERIC_VERIFY_V2, &data)"
+  },
+  {
+    "file": "internal/deploy/signature_windows.go",
+    "context": "func verifyPublisher(file string, publishers ...string) error {",
+    "rule": "unchecked-error",
+    "source": "defer lib.NewProc(\"CryptMsgClose\").Call(uintptr(message))",
+    "message": "defer lib.NewProc(\"CryptMsgClose\").Call(uintptr(message))"
+  },
+  {
+    "file": "internal/deploy/signature_windows.go",
+    "context": "func verifyPublisher(file string, publishers ...string) error {",
+    "rule": "unchecked-error",
+    "source": "defer windows.CertCloseStore(store, 0)",
+    "message": "defer windows.CertCloseStore(store, 0)"
+  },
+  {
+    "file": "internal/deploy/signature_windows.go",
+    "context": "func verifyPublisher(file string, publishers ...string) error {",
+    "rule": "unchecked-error",
+    "source": "defer windows.CertFreeCertificateContext(cert)",
+    "message": "defer windows.CertFreeCertificateContext(cert)"
+  }
+]
