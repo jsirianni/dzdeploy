@@ -19,6 +19,8 @@ func dialAgent(ctx context.Context) (net.Conn, error) {
 	}
 	return (&net.Dialer{}).DialContext(ctx, "unix", p)
 }
+
+// #nosec G703 -- AtomicWrite/atomicCopyContext supply a local temporary file and the caller-validated destination.
 func replaceFile(from, to string) error { return os.Rename(from, to) }
 func isReparse(string) bool             { return false }
 func lockHost(dir string) (func(), error) {
