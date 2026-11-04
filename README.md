@@ -1,56 +1,75 @@
 # dzdeploy
 
-Go tooling for deploying DayZ server configuration over SSH/SFTP from Windows and Linux clients to Windows hosts.
+`dzdeploy` deploys DayZ server configuration from a Windows or Linux client to a Windows server. It packages the tracked files from [`dayz_config`](https://github.com/jsirianni/dayz_config), transfers them over SSH/SFTP, and uses a Windows service to apply updates and manage the DayZ server.
 
-Copied from [jsirianni/dayz_config](https://github.com/jsirianni/dayz_config/tree/6424d5f79ee92c9ba745cff24862b41e0d5eb649) at commit `6424d5f79ee92c9ba745cff24862b41e0d5eb649`. The Go module and internal import paths use `github.com/jsirianni/dzdeploy`; application behavior is unchanged.
+## Architecture
 
-## Build and test
+The client and host agent are separate programs. The client runs on the operator's computer and reads the configuration checkout. The Windows agent runs as a service on each game server. SSH carries remote commands and status; SFTP transfers packages and files.
 
-Use the toolchain selected by `go.mod` (Go 1.27.3):
+```mermaid
+flowchart LR
+    subgraph Operator[Operator computer: Windows or Linux]
+        Repo["dayz_config checkout<br/>tracked server files + local deploy.yaml"]
+        Client["dzdeploy client<br/>reads config and coordinates deployment"]
+        Repo -->|"configuration and target definitions"| Client
+    end
 
-```text
-go build -o .tools/bin/ ./cmd/dzdeploy
-go test ./...
-go vet ./...
-go run ./cmd/dzdeploy-package --os windows --arch amd64
+    Bootstrap["bootstrap-windows.ps1<br/>one-time manual copy and elevated run"]
+
+    subgraph Host[Windows game server]
+        SSH["Windows OpenSSH<br/>SSH commands + SFTP"]
+        State["Protected agent state<br/>deployment inbox, packages, results"]
+        Agent["dzdeploy agent service<br/>deployment state and server operations"]
+        Game["DayZ dedicated server<br/>game files, mods, and configuration"]
+        SSH -->|"first enrollment and host commands"| Agent
+        SSH <-->|"deployment packages, requests, results"| State
+        State <-->|"queued work and recorded results"| Agent
+        Agent -->|"install files, update, start/stop"| Game
+    end
+
+    Bootstrap -.->|"prepares SSH on a fresh host"| SSH
+    Client <-->|"SSH enrollment and host commands"| SSH
+    Client <-->|"SFTP package, request, and status files"| SSH
 ```
 
-The root Makefile provides `build`, `check`, `test`, and `tidy` targets. [GitHub Actions](https://github.com/jsirianni/dzdeploy/actions/workflows/dzdeploy.yml) runs the existing Windows/Linux build and test jobs, portable package artifacts, Windows SSH and operator integration, race tests, and vulnerability checks on pushes to `main` and pull requests.
+### What happens during deployment
 
-The configuration-repository baseline test is omitted because its server configuration tree is not part of this tooling repository. All other existing Go tests are retained.
+1. On a fresh Windows server, copy `scripts/bootstrap-windows.ps1` to the host and run it in an elevated PowerShell window. It configures Windows OpenSSH and the restricted deployment access. This is a one-time manual step; `dzdeploy` does not copy or run this script for you.
+2. Run `dzdeploy deploy <server>` from the configuration checkout, or pass its path with `--repo`. The client reads `deploy.yaml` and the tracked target definitions and server files.
+3. The client connects to the host over SSH/SFTP. On first enrollment, it transfers the Windows amd64 agent and installs it as a Windows service. Later operations send a packaged configuration and request to the existing service.
+4. The service applies the deployment and manages the DayZ server. The client can read operation status and diagnostics over the same connection.
 
-The existing portable packager supports Windows and Linux clients on amd64 and arm64, and includes a Windows amd64 host companion, bootstrap script, example configuration, documentation, and internal checksums.
+The Linux build is a deployment client, not a Linux host service. The game host and the managed agent run on Windows. Linux packages and portable archives include the Windows amd64 agent needed when the client enrolls a host.
+
+## Install and use
+
+Download a versioned archive or Linux package from [GitHub Releases](https://github.com/jsirianni/dzdeploy/releases), and verify it with that release's `checksums.txt` before installing or extracting it. Linux DEB/RPM packages are available in releases after `v0.1.0`; see [Linux package installation](docs/linux-packages.md).
+
+Keep the client beside its `agents/windows-amd64/dzdeploy.exe` companion when using an archive. Windows amd64 clients use their own executable as the companion. Linux package installs place the client on `PATH` and the companion beside its installed executable.
+
+Keep server definitions and tracked configuration in [`dayz_config`](https://github.com/jsirianni/dayz_config). Run the client from that checkout, or provide its path with `--repo`:
+
+```text
+dzdeploy validate all --repo /path/to/dayz_config
+dzdeploy deploy nasdara-staging --repo /path/to/dayz_config
+```
+
+The configuration checkout supplies `deploy.yaml` locally (ignored by Git), tracked target definitions, and the server files to deploy. Review the target and use `--dry-run` to preview changes. Add `--restart` only when you intend to restart the game server.
+
+See [deployment](docs/deployment.md) for first-time setup, configuration, and operational safeguards, and [operator workflows](docs/operator-workflows.md) for backups, diagnostics, and recovery.
 
 ## Releases
 
-Pushing a stable `vMAJOR.MINOR.PATCH` tag (for example, `v1.0.0`) runs the [release workflow](https://github.com/jsirianni/dzdeploy/actions/workflows/release.yml). After tests, vet, GoReleaser configuration checks, and a snapshot build pass for that commit, pinned GoReleaser OSS publishes a [GitHub Release](https://github.com/jsirianni/dzdeploy/releases) using the repository's `GITHUB_TOKEN`. Tags with prerelease suffixes or leading zeros are rejected. Tag a reviewed commit from `main` after its CI passes.
+Pushing a stable `vMAJOR.MINOR.PATCH` tag on a commit from `main` triggers the [release workflow](.github/workflows/release.yml). GoReleaser builds Windows and Linux clients for amd64 and arm64, plus the Windows amd64 host companion, then publishes archives, Linux packages, and SHA-256 checksums. Pull requests build and test release snapshots without publishing.
 
-To publish a reviewed `main` commit after its CI passes, choose an unused version and push its tag (replace `v1.0.0` below):
+## Development
 
-```text
-git switch main
-git pull --ff-only
-git tag -a v1.0.0 -m "Release v1.0.0"
-git push origin v1.0.0
-```
-
-Releases also provide Linux DEB/RPM packages for amd64 and arm64; see [Linux package installation](docs/linux-packages.md). These packages are introduced after v0.1.0, which remains ZIP-only.
-
-Each release contains four `dzdeploy_<version>_<linux|windows>_<amd64|arm64>.zip` archives and `checksums.txt` with SHA-256 hashes for the ZIPs and native packages. Extract the entire archive: it contains the client, `agents/windows-amd64/dzdeploy.exe`, bootstrap script, example YAML, and operator documentation. Keep that companion beside Linux and Windows arm64 clients; Windows amd64 clients upload their own executable. The archives contain no populated `deploy.yaml`, private keys, credentials, or game files.
-
-Pull requests and manual workflow runs build snapshots without publishing; only a tag push can publish a release. To check the same packaging locally with GoReleaser OSS 2.19.0:
+The project uses the Go version selected by `go.mod` and supports Windows and Linux clients. CI runs tests, quality checks, Windows SSH integration, and Linux package integration.
 
 ```text
-goreleaser check
-goreleaser release --snapshot --clean
+go test ./...
+go vet ./...
+go build -o .tools/bin/ ./cmd/dzdeploy
 ```
 
-Output is written to the ignored `.tools/releases/` directory. Verify a downloaded ZIP against the matching entry in `checksums.txt` before extracting it (`sha256sum --ignore-missing --check checksums.txt` with the downloaded ZIP beside the checksum file on Linux, or `Get-FileHash -Algorithm SHA256 <archive.zip>` on Windows). Release checksums cover the complete archives; the existing source packager continues to produce its own per-file `checksums.json` format.
-
-## Configuration repository
-
-Server configuration remains in `dayz_config`. Run the client from that checkout, or pass its path with the existing `--repo` option, for example `dzdeploy status nasdara --repo /path/to/dayz_config`. The client reads `deploy.yaml` from that configuration repository by default and still requires its tracked target definitions and server files.
-
-See [deployment documentation](docs/deployment.md) and [operator workflows](docs/operator-workflows.md). These documents, example configuration, and existing bootstrap/test scripts are copied from the source repository and retain its server-specific operational context. The existing dzdeploy CI workflow, root Makefile, and root scripts are also copied from that revision.
-
-Keep populated configuration, private keys, credentials, and compiled binaries out of Git.
+The root Makefile also provides `build`, `check`, `test`, and `tidy` targets. Keep populated configuration, private keys, credentials, and compiled binaries out of Git.
