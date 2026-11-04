@@ -98,5 +98,8 @@ fi
 ! command -v dzdeploy
 test ! -e "/usr/lib/dzdeploy/linux_$native/dzdeploy"
 test ! -e "/usr/lib/dzdeploy/linux_$native/agents/windows-amd64/dzdeploy.exe"
+test ! -d /usr/lib/dzdeploy
+test ! -d /usr/share/dzdeploy
+test ! -d /usr/share/doc/dzdeploy
 check_preserved
 echo "$format/$native: installation, reinstallation and removal passed without network or host access"

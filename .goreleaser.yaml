@@ -53,6 +53,19 @@ nfpms:
     # executable. /usr/bin exposes a symlink, resolved by Go's os.Executable.
     bindir: /usr/lib/dzdeploy
     contents:
+      # Claim package-specific directories so RPM removal cleans them up.
+      - dst: /usr/lib/dzdeploy
+        type: dir
+      - dst: '/usr/lib/dzdeploy/linux_{{ .Arch }}'
+        type: dir
+      - dst: '/usr/lib/dzdeploy/linux_{{ .Arch }}/agents'
+        type: dir
+      - dst: '/usr/lib/dzdeploy/linux_{{ .Arch }}/agents/windows-amd64'
+        type: dir
+      - dst: /usr/share/dzdeploy
+        type: dir
+      - dst: /usr/share/doc/dzdeploy
+        type: dir
       - src: '/usr/lib/dzdeploy/linux_{{ .Arch }}/dzdeploy'
         dst: /usr/bin/dzdeploy
         type: symlink
