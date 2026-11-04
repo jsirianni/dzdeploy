@@ -1,0 +1,345 @@
+[
+  {
+    "file": "internal/deploy/history.go",
+    "context": "",
+    "rule": "go-fix",
+    "source": "+\t\"slices\"",
+    "message": "Go modernization available"
+  },
+  {
+    "file": "internal/deploy/restore_recovery.go",
+    "context": "",
+    "rule": "go-fix",
+    "source": "+\t\"slices\"",
+    "message": "Go modernization available"
+  },
+  {
+    "file": "internal/deploy/signature_windows.go",
+    "context": "",
+    "rule": "go-fix",
+    "source": "+\t\"slices\"",
+    "message": "Go modernization available"
+  },
+  {
+    "file": "internal/deploy/restore_recovery.go",
+    "context": "func (a *Agent) recoverRestore(ctx context.Context) error {",
+    "rule": "go-fix",
+    "source": "-\t\tchange := j.Changes[i]\n+",
+    "message": "Go modernization available"
+  },
+  {
+    "file": "internal/deploy/restore_recovery.go",
+    "context": "func (a *Agent) recoverRestore(ctx context.Context) error {",
+    "rule": "go-fix",
+    "source": "-\tfor i := len(j.Changes) - 1; i >= 0; i-- {\n+\tfor _, change := range slices.Backward(j.Changes) {",
+    "message": "Go modernization available"
+  },
+  {
+    "file": "internal/deploy/history.go",
+    "context": "func (r *Remote) History(alias string, host HostConfig, since time.Time) HistoryReport {",
+    "rule": "go-fix",
+    "source": "-\t\tstart := file.Size() - 65536\n-\t\tif start < 0 {\n-\t\t\tstart = 0\n-\t\t}\n+\t\tstart := max(file.Size()-65536, 0)",
+    "message": "Go modernization available"
+  },
+  {
+    "file": "internal/deploy/history.go",
+    "context": "func (r *Remote) RequireFeature(alias, feature string) error {",
+    "rule": "go-fix",
+    "source": "-\tfor _, v := range h.Capabilities {\n-\t\tif v == feature {\n-\t\t\treturn nil\n-\t\t}\n+\tif slices.Contains(h.Capabilities, feature) {\n+\t\treturn nil",
+    "message": "Go modernization available"
+  },
+  {
+    "file": "internal/deploy/transport.go",
+    "context": "func (r *Remote) rejectRemoteLinks(root string) error {",
+    "rule": "go-fix",
+    "source": "-\tfor _, part := range strings.Split(path.Clean(root), \"/\") {\n+\tfor part := range strings.SplitSeq(path.Clean(root), \"/\") {",
+    "message": "Go modernization available"
+  },
+  {
+    "file": "internal/logreader/record.go",
+    "context": "func (r *redactor) prepareMessages(text string) {",
+    "rule": "go-fix",
+    "source": "-\tfor _, line := range strings.Split(text, \"\\n\") {\n+\tfor line := range strings.SplitSeq(text, \"\\n\") {",
+    "message": "Go modernization available"
+  },
+  {
+    "file": "internal/deploy/store.go",
+    "context": "func (s *Store) Retain() error {",
+    "rule": "go-fix",
+    "source": "-\t\tif strings.HasSuffix(e.Name(), \".success.json\") {\n-\t\t\tid := strings.TrimSuffix(e.Name(), \".success.json\")\n+\t\tif before, ok := strings.CutSuffix(e.Name(), \".success.json\"); ok {\n+\t\t\tid := before",
+    "message": "Go modernization available"
+  },
+  {
+    "file": "internal/deploy/bundle.go",
+    "context": "func Decode(data []byte, alias string) (*Bundle, error) {",
+    "rule": "go-fix",
+    "source": "-\t\t} else if strings.HasPrefix(f.Name, \"files/\") {\n-\t\t\tp := strings.TrimPrefix(f.Name, \"files/\")\n+\t\t} else if after, ok := strings.CutPrefix(f.Name, \"files/\"); ok {\n+\t\t\tp := after",
+    "message": "Go modernization available"
+  },
+  {
+    "file": "internal/deploy/paths.go",
+    "context": "func Destination(t Target, source string) (string, bool) {",
+    "rule": "go-fix",
+    "source": "-\tfor _, part := range strings.Split(lower, \"/\") {\n+\tfor part := range strings.SplitSeq(lower, \"/\") {",
+    "message": "Go modernization available"
+  },
+  {
+    "file": "internal/deploycli/command.go",
+    "context": "func Main(args []string) int {",
+    "rule": "go-fix",
+    "source": "-\tvar reject declined\n-\tif errors.As(err, &reject) {\n+\tif _, ok := errors.AsType[declined](err); ok {",
+    "message": "Go modernization available"
+  },
+  {
+    "file": "internal/deploycli/command.go",
+    "context": "func Main(args []string) int {",
+    "rule": "go-fix",
+    "source": "-\tvar shown reported\n-\tif !errors.As(err, &shown) {\n+\tif _, ok := errors.AsType[reported](err); !ok {",
+    "message": "Go modernization available"
+  },
+  {
+    "file": "internal/deploy/paths.go",
+    "context": "func SafeJoin(root, rel string) (string, error) {",
+    "rule": "go-fix",
+    "source": "-\tfor _, part := range strings.Split(rel, \"/\") {\n+\tfor part := range strings.SplitSeq(rel, \"/\") {",
+    "message": "Go modernization available"
+  },
+  {
+    "file": "internal/deploy/paths.go",
+    "context": "func SafeRelative(p string) error {",
+    "rule": "go-fix",
+    "source": "-\tfor _, s := range strings.Split(p, \"/\") {\n+\tfor s := range strings.SplitSeq(p, \"/\") {",
+    "message": "Go modernization available"
+  },
+  {
+    "file": "internal/logreader/logs.go",
+    "context": "func Summarize(text, source, session string) []Issue {",
+    "rule": "go-fix",
+    "source": "-\tfor _, line := range strings.Split(CleanText(text), \"\\n\") {\n+\tfor line := range strings.SplitSeq(CleanText(text), \"\\n\") {",
+    "message": "Go modernization available"
+  },
+  {
+    "file": "internal/logreader/logs.go",
+    "context": "func Tail(r io.ReadSeeker, size int64, lines int, completeOnly bool) (Excerpt, error) {",
+    "rule": "go-fix",
+    "source": "-\tstart := size - MaxBytes\n-\tif start < 0 {\n-\t\tstart = 0\n-\t}\n+\tstart := max(size-MaxBytes, 0)",
+    "message": "Go modernization available"
+  },
+  {
+    "file": "internal/deploy/enrollment_test.go",
+    "context": "func TestAutomaticFirstUseTrust(t *testing.T) {",
+    "rule": "go-fix",
+    "source": "-\t\t}()\n+\t\t})",
+    "message": "Go modernization available"
+  },
+  {
+    "file": "internal/deploy/enrollment_test.go",
+    "context": "func TestAutomaticFirstUseTrust(t *testing.T) {",
+    "rule": "go-fix",
+    "source": "-\tfor i := 0; i < 2; i++ {\n-\t\twg.Add(1)\n-\t\tgo func() {\n-\t\t\tdefer wg.Done()\n+\tfor range 2 {\n+\t\twg.Go(func() {",
+    "message": "Go modernization available"
+  },
+  {
+    "file": "internal/deploy/processlog_test.go",
+    "context": "func TestCaptureConcurrentStreams(t *testing.T) {",
+    "rule": "go-fix",
+    "source": "-\t\t\tfor i := 0; i < 100; i++ {\n+\t\t\tfor i := range 100 {",
+    "message": "Go modernization available"
+  },
+  {
+    "file": "internal/deploy/processlog_test.go",
+    "context": "func TestCaptureHelper(t *testing.T) {",
+    "rule": "go-fix",
+    "source": "-\t\tfor i := 0; i < 1000; i++ {\n+\t\tfor range 1000 {",
+    "message": "Go modernization available"
+  },
+  {
+    "file": "internal/lifecycle/events_test.go",
+    "context": "func TestImmutableEventFiles(t *testing.T) {",
+    "rule": "go-fix",
+    "source": "-\tfor i := 0; i < 2; i++ {\n+\tfor range 2 {",
+    "message": "Go modernization available"
+  },
+  {
+    "file": "internal/deploy/processlog_test.go",
+    "context": "func TestIndependentRotationCleanupAndCompression(t *testing.T) {",
+    "rule": "go-fix",
+    "source": "-\tfor i := 0; i < 9; i++ {\n+\tfor range 9 {",
+    "message": "Go modernization available"
+  },
+  {
+    "file": "internal/logreader/record_test.go",
+    "context": "func TestJSONFollowPartialPrivateKeyAndRotation(t *testing.T) {",
+    "rule": "go-fix",
+    "source": "-\tfor _, line := range strings.Split(strings.TrimSuffix(out.Text, \"\\n\"), \"\\n\") {\n+\tfor line := range strings.SplitSeq(strings.TrimSuffix(out.Text, \"\\n\"), \"\\n\") {",
+    "message": "Go modernization available"
+  },
+  {
+    "file": "internal/deploy/enrollment_test.go",
+    "context": "func TestPinnedFirstConnectionAndConcurrentEnrollment(t *testing.T) {",
+    "rule": "go-fix",
+    "source": "-\t\t}()\n+\t\t})",
+    "message": "Go modernization available"
+  },
+  {
+    "file": "internal/deploy/enrollment_test.go",
+    "context": "func TestPinnedFirstConnectionAndConcurrentEnrollment(t *testing.T) {",
+    "rule": "go-fix",
+    "source": "-\tfor i := 0; i < 2; i++ {\n-\t\twg.Add(1)\n-\t\tgo func() {\n-\t\t\tdefer wg.Done()\n+\tfor range 2 {\n+\t\twg.Go(func() {",
+    "message": "Go modernization available"
+  },
+  {
+    "file": "internal/deploy/processlog_test.go",
+    "context": "func TestProcessLogSessionReusesWriterAndReleasesLease(t *testing.T) {",
+    "rule": "go-fix",
+    "source": "-\tfor i := 0; i < 2; i++ {\n+\tfor i := range 2 {",
+    "message": "Go modernization available"
+  },
+  {
+    "file": "internal/deploy/recovery_test.go",
+    "context": "func TestRetentionPreservesCurrentRelease(t *testing.T) {",
+    "rule": "go-fix",
+    "source": "-\tfor i := 0; i < 12; i++ {\n+\tfor i := range 12 {",
+    "message": "Go modernization available"
+  },
+  {
+    "file": "internal/deploy/backups_test.go",
+    "context": "func TestSnapshotOperationsDoNotConsumeConfigurationRetention(t *testing.T) {",
+    "rule": "go-fix",
+    "source": "-\tfor i := 0; i < 11; i++ {\n+\tfor i := range 11 {",
+    "message": "Go modernization available"
+  },
+  {
+    "file": "internal/deploy/backups_test.go",
+    "context": "func TestSnapshotOperationsDoNotConsumeConfigurationRetention(t *testing.T) {",
+    "rule": "go-fix",
+    "source": "-\tfor i := 0; i < 20; i++ {\n+\tfor i := range 20 {",
+    "message": "Go modernization available"
+  },
+  {
+    "file": "internal/deploy/backups_test.go",
+    "context": "func TestSnapshotRetentionKeepsTenAndSafety(t *testing.T) {",
+    "rule": "go-fix",
+    "source": "-\tfor i := 0; i < 12; i++ {\n+\tfor range 12 {",
+    "message": "Go modernization available"
+  },
+  {
+    "file": "internal/deploy/snapshots.go",
+    "context": "func backupRules(t Target) snapshot.Rules {",
+    "rule": "go-fix",
+    "source": "-\t\tfor _, part := range strings.Split(strings.ToLower(rel), \"/\") {\n+\t\tfor part := range strings.SplitSeq(strings.ToLower(rel), \"/\") {",
+    "message": "Go modernization available"
+  },
+  {
+    "file": "internal/deploy/processlog_test.go",
+    "context": "func capturedRecords(t *testing.T, text string) []logreader.Record {",
+    "rule": "go-fix",
+    "source": "-\tfor _, line := range strings.Split(strings.TrimSuffix(text, \"\\n\"), \"\\n\") {\n+\tfor line := range strings.SplitSeq(strings.TrimSuffix(text, \"\\n\"), \"\\n\") {",
+    "message": "Go modernization available"
+  },
+  {
+    "file": "internal/deploy/bootstrap.go",
+    "context": "func setupRCon(c HostConfig) error {",
+    "rule": "go-fix",
+    "source": "-\tfor _, line := range strings.Split(string(raw), \"\\n\") {\n+\tfor line := range strings.SplitSeq(string(raw), \"\\n\") {",
+    "message": "Go modernization available"
+  },
+  {
+    "file": "internal/deploy/service_windows.go",
+    "context": "func setupSSH(ctx context.Context, opt BootstrapOptions, sid string) (string, error) {",
+    "rule": "go-fix",
+    "source": "-\t\tfor i := 0; i < 30; i++ {\n+\t\tfor range 30 {",
+    "message": "Go modernization available"
+  },
+  {
+    "file": "internal/deploy/service_windows.go",
+    "context": "func setupSSH(ctx context.Context, opt BootstrapOptions, sid string) (string, error) {",
+    "rule": "go-fix",
+    "source": "-\tfor _, s := range strings.Split(opt.SSHSources, \",\") {\n+\tfor s := range strings.SplitSeq(opt.SSHSources, \",\") {",
+    "message": "Go modernization available"
+  },
+  {
+    "file": "internal/deploy/service_windows.go",
+    "context": "func setupSSH(ctx context.Context, opt BootstrapOptions, sid string) (string, error) {",
+    "rule": "go-fix",
+    "source": "-\tif strings.HasPrefix(account, `.\\`) {\n-\t\taccount = strings.TrimPrefix(account, `.\\`)\n+\tif after, ok := strings.CutPrefix(account, `.\\`); ok {\n+\t\taccount = after",
+    "message": "Go modernization available"
+  },
+  {
+    "file": "internal/deploy/transport_test.go",
+    "context": "func sshExecFixture(t *testing.T, execute func(string, io.Reader, io.Writer) error) (Endpoint, string) {",
+    "rule": "go-fix",
+    "source": "-\t\t\t\t\twg.Add(1)\n-\t\t\t\t\tgo func() {\n-\t\t\t\t\t\tdefer wg.Done()\n+\t\t\t\t\twg.Go(func() {",
+    "message": "Go modernization available"
+  },
+  {
+    "file": "internal/deploy/transport_test.go",
+    "context": "func sshExecFixture(t *testing.T, execute func(string, io.Reader, io.Writer) error) (Endpoint, string) {",
+    "rule": "go-fix",
+    "source": "-\t\t\t\t\t}()\n+\t\t\t\t\t})",
+    "message": "Go modernization available"
+  },
+  {
+    "file": "internal/deploy/transport_test.go",
+    "context": "func sshExecFixture(t *testing.T, execute func(string, io.Reader, io.Writer) error) (Endpoint, string) {",
+    "rule": "go-fix",
+    "source": "-\t\t\twg.Add(1)\n-\t\t\tgo func() {\n-\t\t\t\tdefer wg.Done()\n+\t\t\twg.Go(func() {",
+    "message": "Go modernization available"
+  },
+  {
+    "file": "internal/deploy/transport_test.go",
+    "context": "func sshExecFixture(t *testing.T, execute func(string, io.Reader, io.Writer) error) (Endpoint, string) {",
+    "rule": "go-fix",
+    "source": "-\t\t\t}()\n+\t\t\t})",
+    "message": "Go modernization available"
+  },
+  {
+    "file": "internal/deploy/transport_test.go",
+    "context": "func sshExecFixture(t *testing.T, execute func(string, io.Reader, io.Writer) error) (Endpoint, string) {",
+    "rule": "go-fix",
+    "source": "-\twg.Add(1)\n-\tgo func() {\n-\t\tdefer wg.Done()\n+\twg.Go(func() {",
+    "message": "Go modernization available"
+  },
+  {
+    "file": "internal/deploy/transport_test.go",
+    "context": "func sshExecFixture(t *testing.T, execute func(string, io.Reader, io.Writer) error) (Endpoint, string) {",
+    "rule": "go-fix",
+    "source": "-\t}()\n+\t})",
+    "message": "Go modernization available"
+  },
+  {
+    "file": "internal/deploy/auth_windows.go",
+    "context": "func startAuthBroker(ctx context.Context, c HostConfig) (func(), error) {",
+    "rule": "go-fix",
+    "source": "-\twg.Add(1)\n-\tgo func() {\n-\t\tdefer wg.Done()\n+\twg.Go(func() {",
+    "message": "Go modernization available"
+  },
+  {
+    "file": "internal/deploy/auth_windows.go",
+    "context": "func startAuthBroker(ctx context.Context, c HostConfig) (func(), error) {",
+    "rule": "go-fix",
+    "source": "-\t}()\n+\t})",
+    "message": "Go modernization available"
+  },
+  {
+    "file": "internal/deploy/signature_windows.go",
+    "context": "func verifyPublisher(file string, publishers ...string) error {",
+    "rule": "go-fix",
+    "source": "-\t\tfor _, want := range publishers {\n-\t\t\tif org == want {\n-\t\t\t\treturn nil\n-\t\t\t}\n+\t\tif slices.Contains(publishers, org) {\n+\t\t\treturn nil",
+    "message": "Go modernization available"
+  },
+  {
+    "file": "internal/deploy/service_windows.go",
+    "context": "func virtualServiceSID(name string) (*windows.SID, error) {",
+    "rule": "go-fix",
+    "source": "-\treturn windows.StringToSid(s)\n+\treturn windows.StringToSid(s.String())",
+    "message": "Go modernization available"
+  },
+  {
+    "file": "internal/deploy/service_windows.go",
+    "context": "func virtualServiceSID(name string) (*windows.SID, error) {",
+    "rule": "go-fix",
+    "source": "-\ts := \"S-1-5-80\"\n-\tfor i := 0; i < 5; i++ {\n-\t\ts += fmt.Sprintf(\"-%d\", binary.LittleEndian.Uint32(hash[i*4:]))\n+\tvar s strings.Builder\n+\ts.WriteString(\"S-1-5-80\")\n+\tfor i := range 5 {\n+\t\ts.WriteString(fmt.Sprintf(\"-%d\", binary.LittleEndian.Uint32(hash[i*4:])))",
+    "message": "Go modernization available"
+  }
+]

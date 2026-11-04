@@ -1,0 +1,100 @@
+[
+  {
+    "file": "internal/deploy/model.go",
+    "context": "func (c *HostConfig) Validate() error {",
+    "rule": "ST1005",
+    "source": "return errors.New(\"Steam/workshop directories must not be volume roots\")",
+    "message": "error strings should not be capitalized"
+  },
+  {
+    "file": "internal/deploy/inspection.go",
+    "context": "func (r *Remote) observe(ctx context.Context, c HostConfig, t Target) (*hostinspect.Snapshot, error) {",
+    "rule": "ST1005",
+    "source": "return nil, errors.New(\"Windows inspection omitted observation time\")",
+    "message": "error strings should not be capitalized"
+  },
+  {
+    "file": "internal/deploy/enroll_windows.go",
+    "context": "func RelaySteamAuth(ctx context.Context, c HostConfig, in io.Reader, out io.Writer) error {",
+    "rule": "ST1005",
+    "source": "return errors.New(\"Steam enrollment relay requires an administrator SSH account\")",
+    "message": "error strings should not be capitalized"
+  },
+  {
+    "file": "internal/deploy/processlog_windows_test.go",
+    "context": "func TestLogLeaseAllowsProvisioningACLReset(t *testing.T) {",
+    "rule": "SA1019",
+    "source": "token, err := windows.OpenCurrentProcessToken()",
+    "message": "golang.org/x/sys/windows.OpenCurrentProcessToken is deprecated: Explicitly call OpenProcessToken(CurrentProcess(), ...) with the desired access instead, or use GetCurrentProcessToken for a TOKEN_QUERY token. "
+  },
+  {
+    "file": "internal/deploy/git_test.go",
+    "context": "func TestSourceSymlinkIsNotPackaged(t *testing.T) {",
+    "rule": "SA4006",
+    "source": "repo, commit := gitFixture(t)",
+    "message": "this value of commit is never used"
+  },
+  {
+    "file": "internal/deploy/enrollment.go",
+    "context": "func agentBinary(e Endpoint) ([]byte, error) {",
+    "rule": "ST1005",
+    "source": "return nil, fmt.Errorf(\"Windows agent companion missing; use a packaged client or set agent_binary in deploy.yaml: %w\", err)",
+    "message": "error strings should not be capitalized"
+  },
+  {
+    "file": "internal/deploy/auth.go",
+    "context": "func authConversation(out io.Reader, in io.Writer, prompt func(AuthFrame) (string, error)) error {",
+    "rule": "ST1005",
+    "source": "return errors.New(\"Steam authentication failed; rerun deploy to retry authentication\")",
+    "message": "error strings should not be capitalized"
+  },
+  {
+    "file": "internal/deploy/auth.go",
+    "context": "func authConversation(out io.Reader, in io.Writer, prompt func(AuthFrame) (string, error)) error {",
+    "rule": "ST1005",
+    "source": "return errors.New(\"Steam authentication requires an interactive terminal\")",
+    "message": "error strings should not be capitalized"
+  },
+  {
+    "file": "internal/deploy/auth.go",
+    "context": "func authConversation(out io.Reader, in io.Writer, prompt func(AuthFrame) (string, error)) error {",
+    "rule": "ST1005",
+    "source": "return fmt.Errorf(\"Steam authentication stream ended before success: %w\", err)",
+    "message": "error strings should not be capitalized"
+  },
+  {
+    "file": "internal/deploy/enrollment.go",
+    "context": "func hostVerifier(file, pin string, persist bool) (ssh.HostKeyCallback, error) {",
+    "rule": "U1000",
+    "source": "func hostVerifier(file, pin string, persist bool) (ssh.HostKeyCallback, error) {",
+    "message": "func hostVerifier is unused"
+  },
+  {
+    "file": "internal/deploy/enroll_windows.go",
+    "context": "func installPrerequisites(ctx context.Context, c HostConfig) error {",
+    "rule": "ST1005",
+    "source": "return fmt.Errorf(\"Microsoft runtime installation failed: %w\", err)",
+    "message": "error strings should not be capitalized"
+  },
+  {
+    "file": "internal/deploy/private_windows.go",
+    "context": "func privateACL(file string, directory bool) error {",
+    "rule": "SA1019",
+    "source": "token, err := windows.OpenCurrentProcessToken()",
+    "message": "golang.org/x/sys/windows.OpenCurrentProcessToken is deprecated: Explicitly call OpenProcessToken(CurrentProcess(), ...) with the desired access instead, or use GetCurrentProcessToken for a TOKEN_QUERY token. "
+  },
+  {
+    "file": "internal/deploy/enrollment.go",
+    "context": "func remoteStateDir(c HostConfig) string {",
+    "rule": "U1000",
+    "source": "func remoteStateDir(c HostConfig) string {",
+    "message": "func remoteStateDir is unused"
+  },
+  {
+    "file": "internal/deploy/service_windows.go",
+    "context": "func setupSSH(ctx context.Context, opt BootstrapOptions, sid string) (string, error) {",
+    "rule": "S1017",
+    "source": "if strings.HasPrefix(account, `.\\`) {",
+    "message": "should replace this if statement with an unconditional strings.TrimPrefix"
+  }
+]

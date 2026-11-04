@@ -3,11 +3,12 @@
 package deploy
 
 import (
-	"golang.org/x/sys/windows"
 	"os"
 	"path/filepath"
 	"testing"
 	"time"
+
+	"golang.org/x/sys/windows"
 )
 
 func TestAtomicReplaceRetriesTransientWindowsReader(t *testing.T) {

@@ -1,0 +1,42 @@
+{
+  "cmd/dzdeploy": {
+    "covered": 0,
+    "total": 1,
+    "tolerance_bps": 50
+  },
+  "cmd/dzdeploy-package": {
+    "covered": 1,
+    "total": 80,
+    "tolerance_bps": 50
+  },
+  "internal/deploy": {
+    "covered": 2759,
+    "total": 4535,
+    "tolerance_bps": 50
+  },
+  "internal/deploycli": {
+    "covered": 176,
+    "total": 724,
+    "tolerance_bps": 50
+  },
+  "internal/hostinspect": {
+    "covered": 14,
+    "total": 17,
+    "tolerance_bps": 50
+  },
+  "internal/lifecycle": {
+    "covered": 20,
+    "total": 26,
+    "tolerance_bps": 50
+  },
+  "internal/logreader": {
+    "covered": 208,
+    "total": 235,
+    "tolerance_bps": 50
+  },
+  "internal/snapshot": {
+    "covered": 171,
+    "total": 234,
+    "tolerance_bps": 50
+  }
+}

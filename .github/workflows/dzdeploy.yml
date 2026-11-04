@@ -4,22 +4,38 @@ on:
     branches: [main]
   pull_request:
     branches: [main, 'codex/**']
+  schedule:
+    - cron: '23 9 * * 1'
+  workflow_dispatch:
 permissions:
   contents: read
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 jobs:
   test:
+    name: Test / ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-latest]
     runs-on: ${{ matrix.os }}
+    timeout-minutes: 20
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-go@v5
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-go@v7.0.0
         with:
-          go-version: '1.27.3'
-      - run: go test ./...
+          go-version-file: go.mod
+          cache-dependency-path: go.sum
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.13'
+      - run: go version
+      - run: go mod verify
+      - run: python scripts/ci.py tidy
+      - run: go test -count=1 -timeout 10m ./...
       - run: go vet ./...
+      - run: go build ./...
       - run: go build -o .tools/bin/ ./cmd/dzdeploy
       - name: Test SSH bootstrap with mocked Windows facilities
         if: runner.os == 'Windows'
@@ -30,6 +46,45 @@ jobs:
         with:
           name: dzdeploy-${{ runner.os }}
           path: .tools/packages/*.zip
+          if-no-files-found: error
+      - name: Check clean checkout
+        shell: bash
+        run: |
+          git diff --exit-code
+          test -z "$(git status --porcelain)"
+  quality:
+    name: Quality / ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-go@v7.0.0
+        with:
+          go-version-file: go.mod
+          cache-dependency-path: go.sum
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.13'
+      - run: python scripts/ci.py install
+      - run: python -m unittest discover -s scripts -p "test_*.py"
+      - run: python scripts/smoke_ci.py
+      - run: python scripts/ci.py all
+      - name: Check clean checkout
+        shell: bash
+        run: |
+          git diff --exit-code
+          test -z "$(git status --porcelain)"
+      - name: Upload measured quality reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quality-${{ runner.os }}
+          path: .tools/ci-reports/
+          if-no-files-found: warn
   bootstrap-integration:
     strategy:
       fail-fast: false
@@ -38,7 +93,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7.0.1
       - name: Test real SSH bootstrap with unavailable Windows capabilities
         shell: powershell
         run: .\scripts\test-bootstrap-windows-integration.ps1 -DisposableRunner
@@ -51,22 +106,69 @@ jobs:
           if-no-files-found: warn
   race-and-vulnerabilities:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      GOVULNDB: https://vuln.go.dev
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-go@v5
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-go@v7.0.0
         with:
-          go-version: '1.27.3'
-      - run: go test -race ./...
-      - run: go run golang.org/x/vuln/cmd/govulncheck@latest ./...
+          go-version-file: go.mod
+          cache-dependency-path: go.sum
+      - run: go test -race -count=1 -timeout 10m ./...
+      - name: Check reachable vulnerabilities using the pinned scanner
+        run: |
+          version=$(python -c 'import json; print(json.load(open("scripts/ci-tools.json"))["govulncheck"])')
+          go run "$version" -version
+          go run "$version" ./...
+  fuzz:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-go@v7.0.0
+        with:
+          go-version-file: go.mod
+          cache-dependency-path: go.sum
+      - run: go test ./internal/deploy -run '^$' -fuzz '^FuzzSafeRelative$' -fuzztime 1000x -fuzzminimizetime 2s -parallel 2 -timeout 2m
+      - run: go test ./internal/logreader -run '^$' -fuzz '^FuzzDecodeRecord$' -fuzztime 1000x -fuzzminimizetime 2s -parallel 2 -timeout 2m
+      - name: Preserve failing fuzz reproducers
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fuzz-reproducers
+          path: internal/**/testdata/fuzz/
+          if-no-files-found: ignore
   operator-integration:
     runs-on: windows-2025
     timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-go@v5
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-go@v7.0.0
         with:
-          go-version: '1.27.3'
+          go-version-file: go.mod
+          cache-dependency-path: go.sum
       - name: Test isolated service, hard restart, backup, and restore
         run: go test ./internal/deploy -run '^TestOperatorServiceIntegration$' -count=1 -v -timeout 10m
         env:
           DZDEPLOY_OPERATOR_INTEGRATION: '1'
+  required:
+    # Stable aggregate: protect main with this context plus release's "validate".
+    name: CI
+    if: always()
+    needs: [test, quality, bootstrap-integration, race-and-vulnerabilities, fuzz, operator-integration]
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: Require every supported-platform check
+        env:
+          RESULTS: ${{ toJSON(needs) }}
+        run: |
+          python - <<'PY'
+          import json, os
+          results = json.loads(os.environ["RESULTS"])
+          failed = {name: value["result"] for name, value in results.items() if value["result"] != "success"}
+          if failed:
+              raise SystemExit(f"Required CI checks did not succeed: {failed}")
+          print("All supported-platform CI checks passed")
+          PY

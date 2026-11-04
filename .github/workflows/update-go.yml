@@ -1,0 +1,61 @@
+name: Update Go
+on:
+  schedule:
+    - cron: '41 13 * * *'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: update-go
+  cancel-in-progress: false
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+      pull-requests: write
+      actions: write
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+          persist-credentials: false
+      - uses: actions/setup-go@v7.0.0
+        with:
+          go-version-file: go.mod
+          cache-dependency-path: go.sum
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.13'
+      - name: Find the latest stable Go release
+        id: go
+        run: |
+          version=$(python scripts/update-go.py)
+          printf 'version=%s\n' "$version" >> "$GITHUB_OUTPUT"
+      - name: Create or update the Go version PR
+        id: pr
+        uses: peter-evans/create-pull-request@v8.1.1
+        with:
+          branch: automation/update-go
+          delete-branch: true
+          add-paths: go.mod
+          commit-message: 'build: update Go to ${{ steps.go.outputs.version }}'
+          title: 'build: update Go to ${{ steps.go.outputs.version }}'
+          body: |
+            Update go.mod's Go and existing toolchain directives to the newest stable release from https://go.dev/dl/?mode=json.
+
+            Includes new minor releases and patches; never lowers the effective selected toolchain.
+            Review compatibility, explicit legacy-analysis baselines, and all CI results before merging.
+            This workflow does not auto-merge.
+      # GITHUB_TOKEN-created PRs need explicit dispatch to run validations.
+      - name: Run validations on the updated PR branch
+        if: steps.pr.outputs.pull-request-operation == 'created' || steps.pr.outputs.pull-request-operation == 'updated'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          gh workflow run dzdeploy.yml --ref automation/update-go
+          if test -f .github/workflows/release.yml; then
+            gh workflow run release.yml --ref automation/update-go
+          fi
