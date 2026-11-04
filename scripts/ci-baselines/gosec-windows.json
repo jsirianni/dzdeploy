@@ -288,15 +288,6 @@
     "confidence": "HIGH"
   },
   {
-    "file": "internal/deploy/model.go",
-    "context": "func AtomicWrite(p string, b []byte, mode os.FileMode) error {",
-    "rule": "G703",
-    "source": "if err := os.MkdirAll(filepath.Dir(p), 0700); err != nil {",
-    "message": "Path traversal via taint analysis: os.MkdirAll",
-    "severity": "HIGH",
-    "confidence": "HIGH"
-  },
-  {
     "file": "internal/deploy/service_windows.go",
     "context": "func Bootstrap(ctx context.Context, opt BootstrapOptions) (result map[string]string, resultErr error) {",
     "rule": "G304",

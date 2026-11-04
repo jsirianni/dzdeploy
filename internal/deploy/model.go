@@ -313,6 +313,7 @@ func WriteJSON(p string, v any) error {
 	return AtomicWrite(p, append(b, '\n'), 0600)
 }
 func AtomicWrite(p string, b []byte, mode os.FileMode) error {
+	// #nosec G703 -- Internal path primitive: callers select configured paths or confine manifest paths with SafeJoin.
 	if err := os.MkdirAll(filepath.Dir(p), 0700); err != nil {
 		return err
 	}
