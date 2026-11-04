@@ -60,9 +60,22 @@ class GateTests(unittest.TestCase):
     def test_partial_fix_with_package_error_is_rejected(self):
         patch_text = "--- fixture.go (old)\n+++ fixture.go (new)\n@@ -1,1 +1,1 @@\n-package fixture\n+package changed\n"
         with patch.object(ci, "run", return_value=subprocess.CompletedProcess(
-                [], 1, patch_text, "package could not be loaded")), self.assertRaises(ValueError):
+                [], 1, patch_text, "go: downloading example.com/module v1.0.0\npackage could not be loaded")), self.assertRaises(ValueError):
             ci.fix_check(write=True)
         self.assertFalse((self.root / "scripts/ci-baselines").exists())
+
+    def test_only_exact_download_progress_is_accepted(self):
+        notices = "go: downloading example.com/module v1.0.0\ngo: downloading go1.27.3 (linux/amd64)\n"
+        self.assertEqual("", ci.tool_errors(notices))
+        for error in ("go: downloading example.com/module v1.0.0: network failed",
+                      "go: example.com/module: checksum mismatch",
+                      "package could not be loaded", "panic: failed"):
+            self.assertIn(error, ci.tool_errors(notices + error))
+        patch_text = "--- fixture.go (old)\n+++ fixture.go (new)\n@@ -1,1 +1,1 @@\n-package fixture\n+package changed\n"
+        with patch.object(ci, "run", return_value=subprocess.CompletedProcess(
+                [], 1, patch_text, notices)):
+            ci.fix_check(write=True)
+        self.assertTrue((self.root / f"scripts/ci-baselines/fix-{ci.PLATFORM}.json").exists())
 
     def test_crash_with_findings_is_not_accepted(self):
         diagnostic = {"location": {"file": "fixture.go", "line": 2}, "code": "SA1000", "message": "invalid"}

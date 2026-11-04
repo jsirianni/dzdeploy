@@ -25,6 +25,14 @@ def run(args, *, cwd=ROOT, env=None):
     return result
 
 
+def tool_errors(stderr):
+    # Successful cold-cache Go commands announce module/toolchain downloads on
+    # stderr. Whitelist only that exact progress format, never error messages.
+    progress = r"go: downloading (?:\S+ v[0-9]\S*|go\d+\.\d+\.\d+ \((?:linux|windows)/(?:amd64|arm64)\))"
+    return "\n".join(line for line in stderr.splitlines()
+                     if line.strip() and not re.fullmatch(progress, line))
+
+
 def tool(name):
     return BIN / (name + (".exe" if os.name == "nt" else ""))
 
@@ -140,7 +148,7 @@ def analyze(name, write=False):
         "gosec": ["-nosec-require-rules", "-nosec-require-justification", "-fmt", "json", "./..."],
     }
     result = run([tool(name), *flags[name]])
-    if name != "gosec" and result.stderr:
+    if name != "gosec" and tool_errors(result.stderr):
         raise ValueError(f"{name} wrote unexpected diagnostics to stderr")
     records = parse_findings(name, result.stdout)
     if result.returncode not in (0, 1) or (result.returncode != 0 and not records):
@@ -237,7 +245,7 @@ def fix_records(patch):
 
 def fix_check(write=False):
     result = run(["go", "fix", "-diff", "./..."])
-    if result.stderr:
+    if tool_errors(result.stderr):
         raise ValueError("go fix emitted package-load or tool errors")
     records = fix_records(result.stdout)
     if result.returncode not in (0, 1) or (result.returncode != 0 and not result.stdout):
